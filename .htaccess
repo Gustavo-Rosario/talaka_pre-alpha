@@ -1,0 +1,3 @@
+RewriteEngine On 
+RewriteRule ^exec/([A-Za-z]+)/([A-Za-z]+)/?$ app/web.php?class=$1&met=$2 
+RewriteRule ^exec/([A-Za-z]+)/([A-Za-z]+)/([0-9]+)/?$ app/web.php?class=$1&met=$2&arg0=$3 [L] 
