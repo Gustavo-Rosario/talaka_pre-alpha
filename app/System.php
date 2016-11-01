@@ -15,7 +15,7 @@ class System{
             $json = file_get_contents('php://input');
             $obj = json_decode($json);
             $db = new BD();
-            $resp = ( $db->inserir($obj) )? "success" : "fail_insert";
+            $resp = ( $db->inserir('User',$obj) )? "success" : "fail_insert";
             return json_encode(array("status" => $resp, "data" => null));
         }else{
             return json_encode(array("status" => "fail_content_type", "data" => null));

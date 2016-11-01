@@ -3,6 +3,7 @@
 include_once("class/Connection.php");
 include_once("System.php");
 include_once("class/BD.php");
+include_once("class/User.php");
 
 //Criando o objeto da classe para execução
 $class = ucfirst($_GET['class']);
@@ -19,11 +20,11 @@ echo "Classe: ".$class."<br>".
 */
 //Exemplos de curl
 //Insere
-//curl -v -X POST "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/system/exec" -H "Content-Type: application/json"  -d '{"login":"Eren","pwd":"teste","img":"teste/img"}'
+//curl -v -X POST "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/system/user" -H "Content-Type: application/json"  -d '{"login":"Eren","pwd":"teste","img":"teste/img"}'
 //Consulta
-//curl -v -X GET "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/system/exec/4"
+//curl -v -X GET "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/system/user/4"
 //Lista
-//curl -v -X GET "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/system/all"
+//curl -v -X GET "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/system/userall"
 if(isset($arg0)){
     $resp = json_decode($obj->$method($arg0));
 }else{

@@ -1,0 +1,157 @@
+/*font-family: 'Roboto', sans-serif;  ->  para título */
+/*font-family: 'Open Sans', sans-serif;  ->  para texto*/
+
+* {
+    font-size:10px;
+}
+
+body {
+    padding:0;
+    margin:0;
+    font-family: 'Open Sans', sans-serif;  
+}
+
+#container {
+    width:100%;
+}
+
+#projectCover,#projectCoverColor {
+     height:325px;
+     width:100%;
+}
+
+#projectCover {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size:cover;
+    background-image:url(../images/grimgar.png);
+    /*filter: blur(3px);*/
+    position:relative;
+}
+
+
+#projectCoverColor{
+    background-color:rgba(130,250,180,.3);
+    animation: color 10s infinite alternate;
+}
+
+@keyframes color {
+    0% {background-color:rgba(130,250,180,.3)}
+    50% {background-color:rgba(255,10,210,.3)}
+    100% {background-color:rgba(255,250,10,.3)}
+}
+
+nav {
+    width:100%;
+    height:50px;
+    position:absolute;
+    top:0;
+    z-index:2;
+    color:#fff;
+}
+
+nav ul {
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
+
+nav ul{
+    float:left;
+}
+
+nav li {
+    float:left;
+    padding:20px;
+    margin:0 10px;
+}
+
+nav ul:last-child {
+    float:right;
+}
+
+.wrapper {
+    width:1000px;
+    display:table;
+    margin:auto;
+}
+
+#projectInfos {
+    height:260px;
+    bottom:215px;
+    position:relative;
+    border:0;
+}
+
+#hqCover, #hqInfos {
+    float:left;
+}
+
+#hqCover {
+    height:260px;
+    background-color:#fff;
+    width:200px;
+    box-shadow:0 0 5px #000;
+    background-image:url(../images/grimgar2.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size:cover;
+    border-radius: 5px;
+}
+
+h1 {
+    font-size:3em;
+}
+
+h2 {
+    font-size:1.8em;
+}
+
+h3 {
+    font-size:1.6em;
+}
+p{
+    font-size:1.3em;
+}
+
+#hqInfos {
+    padding:0 15px;
+    color:#fff;
+}
+#hqInfos h1, #hqInfos h2 {
+    margin:0;
+    padding:0;
+    text-shadow:1px 1px 5px #000;
+}
+#hqInfos p {
+    max-width:600px;
+    max-height:100px;
+    text-shadow:1px 1px 5px #000;
+}
+#hqInfos h2 a {
+    font-size:inherit;
+    color:#fff;
+}
+#hqInfos span {
+    font-size:.5em;
+    padding:2px 13px;
+    display:inline-block;
+    margin:0 5px;
+    background-color:orange;
+}
+#hqTags {
+    max-width: 500px;
+    max-height: 60px;
+    overflow:hidden; 
+    list-style: none;
+    padding:0;
+    margin:0;
+}
+
+#hqTags li {
+    float:left;
+    margin:2.5px;
+    padding:5px 5px 5px 20px;
+    background-color:#ee8899;
+    text-align: center;
+}
