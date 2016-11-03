@@ -15,7 +15,8 @@ class System{
             $json = file_get_contents('php://input');
             $obj = json_decode($json);
             $db = new BD();
-            $resp = ( $db->inserir('User',$obj) )? "success" : "fail_insert";
+            //resp = ( $db->inserir('User',$obj) )? "success" : "fail_insert";
+            $resp = $db->inserir('User',$obj);
             return json_encode(array("status" => $resp, "data" => null));
         }else{
             return json_encode(array("status" => "fail_content_type", "data" => null));
@@ -31,7 +32,7 @@ class System{
     
     public function allGET(){
         $db = new BD();
-        $resp = ( $data = $db->listar() )? "success" : "fail_list";
+        $resp = ( $data = $db->listarUser() )? "success" : "fail_list";
         return json_encode(array("status" => $resp, "data" => $data));
     }
     

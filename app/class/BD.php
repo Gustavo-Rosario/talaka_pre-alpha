@@ -14,18 +14,20 @@
             //Prepara o sql
             $type = "";
             $param = "";
+            $vls = array();
             $query = "INSERT INTO ".$table."(";
             foreach ($obj as $colum => $value) {
                 $query .= $colum.",";
                 $param .= "?,";
-                $type .= gettype($value)[0];
+                $type  .= gettype($value)[0];
+                $vls[] = "&".$value;
             }
             
             $param = substr($param, 0, -1);
             $query = substr($query, 0, -1) . ") VALUES (". $param .")";
-            
             $stm = $this->con->prepare($query) or die("Erro 1".$con->error.http_response_code(405));
-            $stm->bind_param("isssi",$id,$obj->title,$obj->ds,$obj->img,$obj->meta) or die("Erro 2".$stm->error.http_response_code(405));
+            call_user_func_array(array($stm, "bind_param"), array_merge(array($type), $vls)) or die("Erro 2 ".$stm->error.http_response_code(405));
+            //$stm->bind_param($type,) or die("Erro 2".$stm->error.http_response_code(405));
             $stm->execute() or die("Erro 3".$stm->error.http_response_code(405));
             return true;
         }
