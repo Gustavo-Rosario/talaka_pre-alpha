@@ -59,6 +59,21 @@ class User{
         return isset($_SESSION['login']);
     }
     
+	public function authPOST(){
+        $accept = $_SERVER["CONTENT_TYPE"];
+        if($accept === "application/json" || $id === null){
+            $json = file_get_contents('php://input');
+            $obj = json_decode($json);
+            $authBD = new BD();
+            $authBD->checkUser($obj);
+            return json_encode(array("status" => $resp, "data" => null));
+        }else{
+            return json_encode(array("status" => "fail_content_type_or_id_not_passed", "data" => null));
+            http_response_code(400);
+        }
+         
+    }
+	
 }
 
 ?>
