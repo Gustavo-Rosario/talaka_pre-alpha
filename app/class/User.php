@@ -8,14 +8,33 @@ class User{
     }
     
     //Project methods
-    public function projectPOST($id=null){
+    public function projectPOST($id){
         $accept = $_SERVER["CONTENT_TYPE"];
         if($accept === "application/json" || $id === null){
             $json = file_get_contents('php://input');
             $obj = json_decode($json);
+            $obj->cd_user = $id;
+            $obj->dt_begin = $date("Y-m-d");
             $db = new BD();
-            $resp = ( $db->inserirProject($obj,$id) )? "success" : "fail_insert";
+            $resp = ( $db->inserir('Project',$obj) )? "success" : "fail_insert";
             return json_encode(array("status" => $resp, "data" => null));
+        }else{
+            return json_encode(array("status" => "fail_content_type_or_id_not_passed", "data" => null));
+            http_response_code(400);
+        }
+    }
+    
+    public function investPOST($id=1){
+        $accept = $_SERVER["CONTENT_TYPE"];
+        if($accept === "application/json" || $id === null){
+            $json = file_get_contents('php://input');
+            $obj = json_decode($json);
+            $obj->cd_user = $id;
+            $obj->dt_financing = date("Y-m-d");
+            $db = new BD();
+            $resp = ( $db->inserir('Financing',$obj) )? "success" : "fail_insert";
+            $vetor = array("status" => $resp, "data" => null);
+            return json_encode( $vetor );
         }else{
             return json_encode(array("status" => "fail_content_type_or_id_not_passed", "data" => null));
             http_response_code(400);
@@ -38,21 +57,6 @@ class User{
     public static function auth(){
         session_start();
         return isset($_SESSION['login']);
-    }
-    
-    public function authPOST(){
-        $accept = $_SERVER["CONTENT_TYPE"];
-        if($accept === "application/json" || $id === null){
-            $json = file_get_contents('php://input');
-            $obj = json_decode($json);
-            $authBD = new BD();
-            $authBD->checkUser($obj);
-            return json_encode(array("status" => $resp, "data" => null));
-        }else{
-            return json_encode(array("status" => "fail_content_type_or_id_not_passed", "data" => null));
-            http_response_code(400);
-        }
-        
     }
     
 }
