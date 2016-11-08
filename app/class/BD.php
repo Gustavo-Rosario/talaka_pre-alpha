@@ -59,6 +59,23 @@
             }
             return json_encode($r);
         }
+        
+        public function checkUser($obj){
+            $stmU = $this->con->prepare("SELECT cd_user, nm_user FROM User WHERE ds_login = ? and ds_pwd = ?") or die("Erro 1".$this->con->error.http_response_code(405));
+            $stmU->bind_param("ss", $obj->ds_login, $obj->ds_pwd) or die("Erro 2".$stmU->error.http_response_code(405));
+            $stmU->execute();
+            $stmU->bind_result($cdU,$nmU);
+            $stmu->fetch();
+            if ($cdU == "" || $cdU == null){
+                return json_encode(array("status"=>"fail", "data"=>"Erro ao efetuar login"));
+            } else {
+                session_start();
+                $_SESSION["cdUser"]=$cdU;
+                $_SESSION["nmUser"]=$nmU;
+                return json_encode(array("status"=>"sucess", "data"=>null));
+            }
+            
+        }
         //
         public function inserirProject($obj,$id){
             $stm = $this->con->prepare("INSERT INTO Project(cd_user,nm_title,ds_project,ds_path_img,vl_meta) VALUES (?,?,?,?,?)") or die("Erro 1".$con->error.http_response_code(405));
