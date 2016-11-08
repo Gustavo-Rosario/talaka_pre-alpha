@@ -9,13 +9,12 @@ class System{
         http_response_code(404);
     }
     
-    public function execPOST(){
+    public function userPOST(){
         $accept = $_SERVER["CONTENT_TYPE"];
         if($accept === "application/json"){
             $json = file_get_contents('php://input');
             $obj = json_decode($json);
             $db = new BD();
-            //resp = ( $db->inserir('User',$obj) )? "success" : "fail_insert";
             $resp = $db->inserir('User',$obj);
             return json_encode(array("status" => $resp, "data" => null));
         }else{

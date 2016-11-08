@@ -1,16 +1,6 @@
 <?php
-    
+    session_start();
     include_once("Connection.php");
-    
-    class Megaman{
-    
-        public function bind_param($type,$param1,$param2,$param3){
-            echo "\n Type: ".$type."\n
-                  Param1: ".$param1."\n
-                  Param2: ".$param2."\n
-                  Param3: ".$param3;
-        }
-    }
     
     class BD{
 
@@ -70,20 +60,19 @@
         }
         
         public function checkUser($obj){
-            $stmU = $this->con->prepare("SELECT cd_user, nm_user FROM User WHERE ds_login = ? and ds_pwd = ?") or die("Erro 1".$this->con->error.http_response_code(405));
-            $stmU->bind_param("ss", $obj->ds_login, $obj->ds_pwd) or die("Erro 2".$stmU->error.http_response_code(405));
-            $stmU->execute();
-            $stmU->bind_result($cdU,$nmU);
-            $stmu->fetch();
-            if ($cdU == "" || $cdU == null){
-                return json_encode(array("status"=>"fail", "data"=>"Erro ao efetuar login"));
+            $stm = $this->con->prepare("SELECT cd_user, nm_user FROM User WHERE ds_login = ? and ds_pwd = ?") or die("Erro 1 ".$this->con->error.http_response_code(405));
+            $stm->bind_param("ss", $obj->login, $obj->pwd) or die("Erro 2 ".$stm->error.http_response_code(405));
+            $stm->execute();
+            $stm->bind_result($cdU,$nmU);
+            $stm->fetch();
+            if ($cdU === "" || $cdU === null){
+                return json_encode(array("stats"=>"fail", "data"=> "Login ou senha Incorretos"));
             } else {
-                session_start();
                 $_SESSION["cdUser"]=$cdU;
                 $_SESSION["nmUser"]=$nmU;
-                return json_encode(array("status"=>"sucess", "data"=>null));
+                return json_encode(array("stats"=>"sucess", "data"=>"login efetuado"));
             }
-            
+            return true;
         }
         //
         public function inserirProject($obj,$id){

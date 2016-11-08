@@ -1,4 +1,5 @@
 <?php
+session_start();
 //Classes a serem implementadas
 include_once("class/Connection.php");
 include_once("System.php");
@@ -19,12 +20,16 @@ echo "Classe: ".$class."<br>".
      "HTTPM: ".$httpM;
 */
 //Exemplos de curl
-//Insere
-//curl -v -X POST "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/system/user" -H "Content-Type: application/json"  -d '{"login":"Eren","pwd":"teste","img":"teste/img"}'
+//Insere User
+//curl -v -X POST "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/system/user" -H "Content-Type: application/json"  -d '{"nm_user":"Eren","ds_login":"eren@gmail.com","ds_pwd":"teste","ds_path_img":"teste/img","dt_birth":"1997-06-28"}'
+//Insere Project
+//curl -v -X POST "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/user/" -H "Content-Type: application/json"  -d '{"nm_user":"Eren","ds_login":"eren@gmail.com","ds_pwd":"teste","ds_path_img":"teste/img","dt_birth":"1997-06-28"}'
 //Consulta
 //curl -v -X GET "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/system/user/4"
 //Lista
 //curl -v -X GET "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/system/userall"
+//Login
+//curl -v -X POST "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/user/auth" -H "Content-Type: application/json"  -d '{"login":"eren@gmail.com","pwd":"teste"}'
 if(isset($arg0)){
     $resp = json_decode($obj->$method($arg0));
 }else{
@@ -35,5 +40,5 @@ Para o Listar
 $ob = json_decode($resp->data);
 echo $ob->d1->login . "\n";
 */
-echo $resp->status. "\n" . $resp->data."\n";
+echo json_encode($resp);
 ?>
