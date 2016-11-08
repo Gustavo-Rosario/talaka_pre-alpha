@@ -2,6 +2,16 @@
     
     include_once("Connection.php");
     
+    class Megaman{
+    
+        public function bind_param($type,$param1,$param2,$param3){
+            echo "\n Type: ".$type."\n
+                  Param1: ".$param1."\n
+                  Param2: ".$param2."\n
+                  Param3: ".$param3;
+        }
+    }
+    
     class BD{
 
         private $con;
@@ -10,24 +20,23 @@
             $this->con = Connection::getCon("localhost","gmastersupreme","","TalakaPA",3306);
         }
         //Insert para todos
-        public function inserir($table,$obj,$id){
+        public function inserir($table,$obj){
             //Prepara o sql
             $type = "";
             $param = "";
             $vls = array();
             $query = "INSERT INTO ".$table."(";
-            foreach ($obj as $colum => $value) {
+            $var = (array)$obj;
+            foreach ($var as $colum => $value) {
                 $query .= $colum.",";
                 $param .= "?,";
                 $type  .= gettype($value)[0];
-                $vls[] = "&".$value;
+                $vls[] = &$var[$colum];
             }
-            
             $param = substr($param, 0, -1);
             $query = substr($query, 0, -1) . ") VALUES (". $param .")";
             $stm = $this->con->prepare($query) or die("Erro 1".$con->error.http_response_code(405));
-            call_user_func_array(array($stm, "bind_param"), array_merge(array($type), $vls)) or die("Erro 2 ".$stm->error.http_response_code(405));
-            //$stm->bind_param($type,) or die("Erro 2".$stm->error.http_response_code(405));
+            call_user_func_array(array($stm,"bind_param"),array_merge(array($type), $vls))or die("Erro 2".$stm->error.http_response_code(405));
             $stm->execute() or die("Erro 3".$stm->error.http_response_code(405));
             return true;
         }
