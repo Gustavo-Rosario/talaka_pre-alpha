@@ -41,6 +41,7 @@ body {
     color: #fff;
     background-color: #683AB7;
 }
+
 #help a,
 #areaLogin a {
     text-decoration: none;
@@ -662,3 +663,38 @@ header .wrapper {
     padding: 0px 20px 0 5px;
     font-weight: bold
 }
+
+/*CSS da Index */
+
+#intro {
+    background-color: #683AB7;
+    height: 350px;
+    width: 100%;
+    text-align: center;
+}
+
+#intro h1 {
+    color:white;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+}
+
+#intro p{
+    color: white;
+    font-size: 1.5em;
+    margin: 0;
+}
+
+#searchField{
+    color: #683AB7;
+    text-align: center;
+    margin: 50px;
+    font-size: 2.8em;
+}
+
+#searchField input{
+    width: 50%;
+    margin: 3px 0 7.5px 0;
+}
+
