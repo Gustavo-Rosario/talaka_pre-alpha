@@ -609,7 +609,6 @@ footer {
     position: relative
 }
 .progressbarvalue {
-    width: 90%;
     position: absolute;
     height: 15px;
     background-color: #DC367F;
@@ -674,6 +673,7 @@ header .wrapper {
 }
 
 #intro h1 {
+    padding-top: 50px;
     color:white;
     margin: auto;
     top: 50%;

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['cdUser'])){
-    echo "Tu ta logaaado";
+    header("location: /");
 }else{
 ?>
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ if(isset($_SESSION['cdUser'])){
 <head>
     <meta charset="UTF-8">
     <title> Login </title>
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="../view/css/style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:100,400,700" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
@@ -18,8 +18,7 @@ if(isset($_SESSION['cdUser'])){
         
         function main(){
             
-            $("#login-button").click(function(){ 
-                alert("Go");
+            $("#login-button").click(function(){
                 var login = $("input[name='email']").val();
                 var senha = $("input[name='password']").val();
                 var values = { "login": login, "pwd": senha };
@@ -34,7 +33,7 @@ if(isset($_SESSION['cdUser'])){
                     processData: false,
                 }).done(function(response){
                     if(response.stats === "success"){
-                        alert(response.data);  
+                        window.self.location = "/";
                     }else{
                         alert(response.data);
                     }
@@ -44,16 +43,12 @@ if(isset($_SESSION['cdUser'])){
             });
             
         }
-        
-        function enviar(){
-            
-        }
     </script>
 </head>
 
 <body>
     <div id="help">
-        Você não possui uma conta? <span> Crie uma </span>
+        Você não possui uma conta? <span><a style="text-decoration: none; color: white" href="/cadastrar"> Crie uma </a></span>
         <a href="#"> Precisa de ajuda? </a>
     </div>
 

@@ -16,7 +16,7 @@ class User{
             $json = file_get_contents('php://input');
             $obj = json_decode($json);
             $obj->cd_user = $id;
-            $obj->dt_begin = $date("Y-m-d");
+            $obj->dt_begin = date("Y-m-d");
             $db = new BD();
             $resp = ( $db->inserir('Project',$obj) )? "success" : "fail_insert";
             return json_encode(array("stats" => $resp, "data" => null));

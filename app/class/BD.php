@@ -31,14 +31,6 @@
             return true;
         }
         
-        
-        public function inserirUser($obj){
-            $stm = $this->con->prepare("INSERT INTO User(ds_login,ds_pwd,ds_path_img) VALUES (?,?,?)") or die("Erro 1".$con->error.http_response_code(405));
-            $stm->bind_param("sss",$obj->login,$obj->pwd,$obj->img) or die("Erro 2".$stm->error.http_response_code(405));
-            $stm->execute() or die("Erro 3".$stm->error.http_response_code(405));
-            return true;
-        }
-        
         public function consultarUser($id=1){
             $stm = $this->con->prepare("SELECT ds_login,ds_path_img FROM User WHERE cd_user = ?") or die("Erro 1".$con->error.http_response_code(405));
             $stm->bind_param("i",$id) or die("Erro 2".$stm->error.http_response_code(405));
@@ -60,43 +52,30 @@
         }
         
         public function checkUser($obj){
-            $stm = $this->con->prepare("SELECT cd_user, nm_user FROM User WHERE ds_login = ? and ds_pwd = ?") or die("Erro 1 ".$this->con->error.http_response_code(405));
+            $stm = $this->con->prepare("SELECT cd_user, nm_user, ds_path_img FROM User WHERE ds_login = ? and ds_pwd = ?") or die("Erro 1 ".$this->con->error.http_response_code(405));
             $stm->bind_param("ss", $obj->login, $obj->pwd) or die("Erro 2 ".$stm->error.http_response_code(405));
             $stm->execute();
-            $stm->bind_result($cdU,$nmU);
+            $stm->bind_result($cdU,$nmU,$imgU);
             $stm->fetch();
             if ($cdU === "" || $cdU === null){
                 return json_encode(array("stats"=>"fail", "data"=> "Login ou senha Incorretos"));
             } else {
                 $_SESSION["cdUser"]=$cdU;
                 $_SESSION["nmUser"]=$nmU;
-                return json_encode(array("stats"=>"sucess", "data"=>"login efetuado"));
+                $_SESSION["imgUser"]=$imgU;
+                return json_encode(array("stats"=>"success", "data"=>"login efetuado"));
             }
-            return true;
-        }
-        //
-        public function inserirProject($obj,$id){
-            $stm = $this->con->prepare("INSERT INTO Project(cd_user,nm_title,ds_project,ds_path_img,vl_meta) VALUES (?,?,?,?,?)") or die("Erro 1".$con->error.http_response_code(405));
-            $stm->bind_param("isssi",$id,$obj->title,$obj->ds,$obj->img,$obj->meta) or die("Erro 2".$stm->error.http_response_code(405));
-            $stm->execute() or die("Erro 3".$stm->error.http_response_code(405));
             return true;
         }
         
-        public function consultarProject($id=1,$where="cd_project"){
-            $stm = $this->con->prepare("SELECT cd_project,nm_title,ds_project,ds_path_img,vl_meta FROM Project WHERE ? = ?") or die("Erro 1".$con->error.http_response_code(405));
-            $stm->bind_param("si",$where,$id) or die("Erro 2".$stm->error.http_response_code(405));
+        public function consultarProject($id){
+            $stm = $this->con->prepare("SELECT nm_title,ds_project,ds_path_img,vl_meta,vl_collected,dt_begin,dt_final FROM Project WHERE cd_project = ?") or die("Erro 1".$this->con->error.http_response_code(405));
+            $stm->bind_param("i",$id) or die("Erro 2".$stm->error.http_response_code(405));
             $stm->execute()or die("Erro 3".$stm->error.http_response_code(405));
-            /*
-            $stm->bind_result($login,$img);
+            $stm->bind_result($title,$ds,$img,$vlM,$vlC,$dtB,$dtF);
             $stm->fetch();
-            return json_encode(array("id" => $id, "login" => $login, "img" => $img));
-            */
-            $stm->bind_result($id,$title,$ds,$img,$vl);
-            $r = array();
-            while($stm->fetch()){
-                $r["d".$id] = array("id" => $id, "title" => $title, "ds" => $ds,"img" => $img,"meta" =>$vl);
-            }
-            return json_encode($r);
+            $resp = json_encode( array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF) )or die("Erro no json");
+            return $resp;
         }
         
         public function listarProject(){
@@ -107,6 +86,24 @@
             while($stm->fetch()){
                 $r["d".$id] = array("id" => $id, "login" => $login, "img" => $img);
             }
+            return json_encode($r);
+        }
+        
+        public function pesqProject($name){
+            //$name = str_replace('%20', ' ', $name);
+            preg_replace("#(\s)+#", " ", $name);
+            $name = "%".$name."%";
+            $stm = $this->con->prepare("SELECT cd_project,nm_title,ds_project,vl_meta,vl_collected,dt_final,ds_path_img FROM Project WHERE nm_title LIKE ? LIMIT 6 ") or die("Erro 1".$con->error.http_response_code(405));
+            $stm->bind_param("s",$name)or die("Erro 2".$stm->error.http_response_code(405));
+            $stm->execute()or die("Erro 3".$stm->error.http_response_code(405));
+            $stm->bind_result($id,$title,$ds,$vlM,$vlC,$dt,$img);
+            $r = array();
+            $i = 0;
+            while($stm->fetch()){
+                $r["d".$i] = array("id" => $id, "title" => $title, "ds" => utf8_encode($ds), "meta" => $vlM,"collected" => $vlC, "img"=>$img, "dt"=>$dt);
+                $i++;
+            }
+            $r["total"] = $name;
             return json_encode($r);
         }
     }

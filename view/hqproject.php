@@ -1,8 +1,5 @@
 <?php
 session_start();
-if(isset($_SESSION['cdUser'])){
-    echo "Tu ta logaaado";
-}else{
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,39 +7,45 @@ if(isset($_SESSION['cdUser'])){
 <head>
     <meta charset="UTF-8">
     <title> Projeto </title>
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="../view/css/style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:100,400,700" rel="stylesheet">
 </head>
 
 <body>
      <header>
         <div class="wrapper">
+            <?php
+            if(isset($_SESSION['cdUser'])){
+            ?>
             <div class="userlogin">
-                <div id="userloginPhoto"></div>
-                <div id="userloginName" style="background-image:url(images/grimgar.jpg)">
-                    <p>Nome do usuário</p>
+                <div id="userloginPhoto" <?php echo 'style="background-image:url(../user-img/'.$_SESSION['imgUser'].')"' ?>></div>
+                <div id="userloginName" >
+                    <p><?= $_SESSION['nmUser']; ?></p>
                 </div>
             </div>
+            <?php
+            }
+            ?>
         </div>
     </header>
     <main>
         <section id="projectInfo">
             <div id="project" class="column columnLeft">
-                <div id="projectCover"></div>
+                <div id="projectCover" <?php echo 'style="background-image: url(../proj-img/'.$img.'); background-size:cover"'; ?>></div>
                 <div id="projectInformations">
-                    <h1>Nome do Projeto</h1>
+                    <h1><?= $title; ?></h1>
                     <h2>por Lucas Teixeira</h2>
 
                     <p>
-                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec nulla sit amet turpis mattis pulvinar id a justo. Fusce scelerisque quis augue nec tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean libero turpis, rutrum molestie turpis at, porttitor blandit eros. Nulla eu facilisis enim. In a sem vel mauris eleifend cursus feugiat non neque. Quisque porttitor faucibus facilisis. Donec nec felis vulputate, volutpat ante eu, ultricies tellus. Pellentesque volutpat nisl est, eget viverra dui egestas id. Integer rhoncus sem ut quam dignissim pulvinar. Nam rutrum nec tellus ut sodales. Proin elit arcu, fermentum eget dolor non, venenatis dapibus lectus.
+                         <?= $ds; ?>
                     </p>
                 </div>
             </div>
             <div id="finance" class="column columnRight">
                 <div id="goal">
-                    <h1 id='goal'>R$1000,00 <br><span>Investidos de R$3000,00</span></h1>
+                    <h1 id='goal'>R$<?= $collected ?>,00 <br><span>Investidos de R$<?= $meta ?>,00</span></h1>
                     <h2>10 dias restantes
-                    <br><span>31/10/2016 à 31/11/2016</span></h2>
+                    <br><span><?php echo implode("/", array_reverse(explode("-",$dtB)) ); ?> à<?php echo implode("/", array_reverse(explode("-",$dtF)) ); ?></span></h2>
                     
                     <h2>15 financiadores</h2>
                 </div>
@@ -109,7 +112,3 @@ if(isset($_SESSION['cdUser'])){
 </body>
 
 </html>
-
-<?php
-}
-?>
