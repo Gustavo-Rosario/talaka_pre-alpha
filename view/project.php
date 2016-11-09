@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(isset($_SESSION['cdUser'])){
+    echo "Tu ta logaaado";
+}else{
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,6 +13,16 @@
         <title> Página de Projeto </title>
     </head>
     <body>
+         <header>
+        <div class="wrapper">
+            <div class="userlogin">
+                <div id="userloginPhoto"></div>
+                <div id="userloginName" style="background-image:url(images/grimgar.jpg)">
+                    <p>Nome do usuário</p>
+                </div>
+            </div>
+        </div>
+    </header>
         <div id="container">
             <nav>
                 <div class="wrapper">
@@ -58,3 +74,7 @@
         </div>
     </body>
 </html>
+
+<?php
+}
+?>

@@ -538,88 +538,127 @@ footer {
 }
 
 /*Explore*/
-#searchText{
-    padding:30px 0 50px; 0;
-    background-color:#501AAC;
-    color:#fff;
+
+#searchText {
+    padding: 30px 0 50px;
+    0;
+    background-color: #501AAC;
+    color: #fff;
 }
 #searchText .wrapper {
-    background-color:transparent;
+    background-color: transparent;
     font-size: 1.5em;
-    padding:0;
+    padding: 0;
 }
-
 .explore {
-    padding:30px;
-    color:#3A0E85;
-    margin-top:-40px;
-    border-radius:.4em .4em 0 0;
+    padding: 30px;
+    color: #3A0E85;
+    margin-top: -40px;
+    border-radius: .4em .4em 0 0;
     display: table;
     box-shadow: 0 0 5px #666
 }
-.explore .eachProject{
-    width:31%;
-    margin:1%;
-    height:450px;
-    background-color:transparent;
-    border:1px solid #A484DD;
+.explore .eachProject {
+    width: 31%;
+    margin: 1%;
+    height: 450px;
+    background-color: transparent;
+    border: 1px solid #A484DD;
     border-radius: .4em;
     position: relative;
 }
-.eachProjectCover{
-    width:100%;
-    height:200px;
+.eachProjectCover {
+    width: 100%;
+    height: 200px;
     border-radius: .4em .4em 0 0;
     background-repeat: no-repeat;
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url(../images/grimgar.png);
 }
-.eachProjectInfo{
-    padding:10px 15px;
-    color:#000;
-    color:#340434;
+.eachProjectInfo {
+    padding: 10px 15px;
+    color: #000;
+    color: #340434;
     font-size: 1.2em;
 }
 .eachProjectInfo p:first-child {
-    color:#1369A1;
-    margin:0;
-    padding:0;
+    color: #1369A1;
+    margin: 0;
+    padding: 0;
 }
 .meta {
     position: absolute;
     bottom: 0;
-    width:96%;
+    width: 96%;
     left: 0;
-    padding:2%;
+    padding: 2%;
 }
 .meta p {
-    margin:5px 0;
+    margin: 5px 0;
 }
 .eachProjectInfo span:first-child {
     font-size: .9em;
 }
-.progressbar{
-    width:100%;
+.progressbar {
+    width: 100%;
     display: block;
-    height:15px;
-    border:1px solid #DC367F;
+    height: 15px;
+    border: 1px solid #DC367F;
     position: relative
 }
-.progressbarvalue{
-    width:90%;
+.progressbarvalue {
+    width: 90%;
     position: absolute;
-    height:15px;
-    background-color:#DC367F;
+    height: 15px;
+    background-color: #DC367F;
 }
 .meta ul {
-    width:100%;
+    width: 100%;
     font-size: 0.8em;
-    margin:5px 0 0 0;
+    margin: 5px 0 0 0;
 }
-.meta li{
-    float:left;
+.meta li {
+    float: left;
 }
-.meta li:last-child{
-    float:right;
+.meta li:last-child {
+    float: right;
+}
+
+/*Imagem de usuário*/
+
+header {
+    width: 100%;
+    padding: 20px 0;
+}
+header .wrapper {
+    margin: 0 auto;
+    padding: 0;
+    background-color: transparent;
+}
+.userlogin {
+    display: table;
+    padding: 10px;
+    height: 50px;
+    margin: auto;
+}
+#userloginPhoto,
+#userloginName {
+    float: left;
+    height: 50px;
+    margin: 0 10px 0 0;
+}
+#userloginPhoto {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-color: purple;
+}
+#userloginName {
+    font-size: 1.4em;
+    padding: 0px 20px 0 5px;
+    font-weight: bold
 }

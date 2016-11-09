@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(isset($_SESSION['cdUser'])){
+    echo "Tu ta logaaado";
+}else{
+?>
 <!DOCTYPE html>
 <html>
 
@@ -39,3 +45,6 @@
 </body> 
 
 </html>
+<?php
+}
+?>
