@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(isset($_SESSION['cdUser'])){
+    echo "Tu ta logaaado";
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -25,7 +31,7 @@
                     </div>
                 </div>
                 <div id="profileDescription">
-                    <h1>Lucas Teixeira de Lima</h1>
+                    <h1><?= $_SESSION[''] ?></h1>
                     <h2>Profissão</h2>
                     <h2>Localização</h2>
                     <p>
