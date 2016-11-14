@@ -48,10 +48,9 @@ class User{
         if($accept === "application/json" || $id === null){
             $json = file_get_contents('php://input');
             $obj = json_decode($json);
-            $obj->cd_user = $id;
-            $obj->dt_financing = date("Y-m-d");
+            $where = array("cd_user" => (int)$id);
             $db = new BD();
-            $resp = ( $db->inserir('Financing',$obj) )? "success" : "fail_insert";
+            $resp = ( $db->alterar('User',$obj,$where) )? "success" : "fail_insert";
             $vetor = array("stats" => $resp, "data" => null);
             return json_encode( $vetor );
         }else{

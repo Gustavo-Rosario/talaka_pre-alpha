@@ -30,7 +30,7 @@
             $stm->execute() or die("Erro 3".$stm->error.http_response_code(405));
             return true;
         }
-        
+        //Update para todos
         public function alterar($table,$obj,$where){
             //Prepara o sql
             $type = "";
@@ -45,8 +45,8 @@
             $query = substr($query, 0, -1) . " WHERE";
             foreach ($where as $col => $val) {
                 $query .= " ".$col." = ? AND";
-                $type  .= gettype($value)[0];
-                $vls[] = $where[$col];
+                $type  .= gettype($val)[0];
+                $vls[] = &$where[$col];
             }
             $query = substr($query, 0, -3);
             $stm = $this->con->prepare($query) or die("Erro 1".$con->error.http_response_code(405));
