@@ -45,14 +45,14 @@ session_start();
     <div id="container">
         <div id="searchText">
             <div class="wrapper">
-                <h1>Termo procurado:  "<?= $termo;?>"</h1>
+                <h1>Termo procurado:  "<?= $data['termo'];?>"</h1>
             </div>
         </div>
 
         <div class="wrapper explore">
             <h1> <?= $data['total'];?> Resultados foram encontrados</h1>
             <?php
-                for($a = 0; $a < (count($data) - 1); $a++){ 
+                for($a = 0; $a < (count($data) - 2); $a++){ 
                     $percent = (($data['d'.$a]->collected) * 100)/ $data['d'.$a]->meta;
             ?>
             <a <?= 'href="https://talaka-pre-alpha-gmastersupreme.c9users.io/project/'.$data['d'.$a]->id.'"';?>>
@@ -79,65 +79,6 @@ session_start();
             <?php
             }
             ?>
-            <!--
-            <div class="eachProject">
-                <div class='eachProjectCover'></div>
-                <div class="eachProjectInfo">
-                    <p>tag</p>
-                    <h2>Quadrinho de Terror</h2>
-                    <p> Projeto de um quadrinho de terror independente. Sua história se passa em 1950 com estranhos desaparecimentos numa cidade antiga, habitada quase que 100% por idosos. </p>
-                    
-                    <div class="meta">
-                        <p><b>R$ 734,00</b> <span>acumulados</span></p>
-                        <div class='progressbar'>
-                            <div class='progressbarvalue'></div>
-                        </div>
-                        <ul>
-                            <li>90%</li>
-                            <li>Aberto até 09/11/2016</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="eachProject">
-                <div class='eachProjectCover'></div>
-                <div class="eachProjectInfo">
-                    <p>tag</p>
-                    <h2>Quadrinho de Terror</h2>
-                    <p> Projeto de um quadrinho de terror independente. Sua história se passa em 1950 com estranhos desaparecimentos numa cidade antiga, habitada quase que 100% por idosos. </p>
-                    
-                    <div class="meta">
-                        <p><b>R$ 734,00</b> <span>acumulados</span></p>
-                        <div class='progressbar'>
-                            <div class='progressbarvalue'></div>
-                        </div>
-                        <ul>
-                            <li>90%</li>
-                            <li>Aberto até 09/11/2016</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="eachProject">
-                <div class='eachProjectCover'></div>
-                <div class="eachProjectInfo">
-                    <p>tag</p>
-                    <h2>Quadrinho de Terror</h2>
-                    <p> Projeto de um quadrinho de terror independente. Sua história se passa em 1950 com estranhos desaparecimentos numa cidade antiga, habitada quase que 100% por idosos. </p>
-                    
-                    <div class="meta">
-                        <p><b>R$ 734,00</b> <span>acumulados</span></p>
-                        <div class='progressbar'>
-                            <div class='progressbarvalue'></div>
-                        </div>
-                        <ul>
-                            <li>90%</li>
-                            <li>Aberto até 09/11/2016</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            -->
         </div>
     </div>
     <footer>

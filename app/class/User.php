@@ -26,7 +26,24 @@ class User{
         }
     }
     
-    public function investPOST($id=1){
+    public function investPOST($id){
+        $accept = $_SERVER["CONTENT_TYPE"];
+        if($accept === "application/json" || $id === null){
+            $json = file_get_contents('php://input');
+            $obj = json_decode($json);
+            $obj->cd_user = $id;
+            $obj->dt_financing = date("Y-m-d");
+            $db = new BD();
+            $resp = ( $db->inserir('Financing',$obj) )? "success" : "fail_insert";
+            $vetor = array("stats" => $resp, "data" => null);
+            return json_encode( $vetor );
+        }else{
+            return json_encode(array("stats" => "fail_content_type_or_id_not_passed", "data" => null));
+            http_response_code(400);
+        }
+    }
+    
+    public function profilePUT($id){
         $accept = $_SERVER["CONTENT_TYPE"];
         if($accept === "application/json" || $id === null){
             $json = file_get_contents('php://input');

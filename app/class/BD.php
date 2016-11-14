@@ -31,6 +31,30 @@
             return true;
         }
         
+        public function alterar($table,$obj,$where){
+            //Prepara o sql
+            $type = "";
+            $vls = array();
+            $query = "UPDATE ".$table." SET ";
+            $var = (array)$obj;
+            foreach ($var as $colum => $value) {
+                $query .= $colum." = ?,";
+                $type  .= gettype($value)[0];
+                $vls[] = &$var[$colum];
+            }
+            $query = substr($query, 0, -1) . " WHERE";
+            foreach ($where as $col => $val) {
+                $query .= " ".$col." = ? AND";
+                $type  .= gettype($value)[0];
+                $vls[] = $where[$col];
+            }
+            $query = substr($query, 0, -3);
+            $stm = $this->con->prepare($query) or die("Erro 1".$con->error.http_response_code(405));
+            call_user_func_array(array($stm,"bind_param"),array_merge(array($type), $vls))or die("Erro 2".$stm->error.http_response_code(405));
+            $stm->execute() or die("Erro 3".$stm->error.http_response_code(405));
+            return true;
+        }
+        
         public function consultarUser($id=1){
             $stm = $this->con->prepare("SELECT ds_login,ds_path_img FROM User WHERE cd_user = ?") or die("Erro 1".$con->error.http_response_code(405));
             $stm->bind_param("i",$id) or die("Erro 2".$stm->error.http_response_code(405));
@@ -69,12 +93,16 @@
         }
         
         public function consultarProject($id){
-            $stm = $this->con->prepare("SELECT nm_title,ds_project,ds_path_img,vl_meta,vl_collected,dt_begin,dt_final FROM Project WHERE cd_project = ?") or die("Erro 1".$this->con->error.http_response_code(405));
+            $stm = $this->con->prepare("SELECT p.nm_title,p.ds_project,p.ds_path_img,p.vl_meta,p.vl_collected,p.dt_begin,p.dt_final,u.nm_user, count(f.cd_user) total 
+            FROM Project as p, User as u, Financing as f 
+            WHERE p.cd_user = u.cd_user 
+            AND p.cd_project = f.cd_project
+            AND p.cd_project = ?") or die("Erro 1".$this->con->error.http_response_code(405));
             $stm->bind_param("i",$id) or die("Erro 2".$stm->error.http_response_code(405));
             $stm->execute()or die("Erro 3".$stm->error.http_response_code(405));
-            $stm->bind_result($title,$ds,$img,$vlM,$vlC,$dtB,$dtF);
+            $stm->bind_result($title,$ds,$img,$vlM,$vlC,$dtB,$dtF,$creator,$total);
             $stm->fetch();
-            $resp = json_encode( array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF) )or die("Erro no json");
+            $resp = json_encode( array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"total"=>$total) )or die("Erro no json");
             return $resp;
         }
         
@@ -89,10 +117,8 @@
             return json_encode($r);
         }
         
-        public function pesqProject($name){
-            //$name = str_replace('%20', ' ', $name);
-            preg_replace("#(\s)+#", " ", $name);
-            $name = "%".$name."%";
+        public function pesqProject($termo){
+            $name = "%".$termo."%";
             $stm = $this->con->prepare("SELECT cd_project,nm_title,ds_project,vl_meta,vl_collected,dt_final,ds_path_img FROM Project WHERE nm_title LIKE ? LIMIT 6 ") or die("Erro 1".$con->error.http_response_code(405));
             $stm->bind_param("s",$name)or die("Erro 2".$stm->error.http_response_code(405));
             $stm->execute()or die("Erro 3".$stm->error.http_response_code(405));
@@ -103,7 +129,8 @@
                 $r["d".$i] = array("id" => $id, "title" => $title, "ds" => utf8_encode($ds), "meta" => $vlM,"collected" => $vlC, "img"=>$img, "dt"=>$dt);
                 $i++;
             }
-            $r["total"] = $name;
+            $r["total"] = $i;
+            $r["termo"] = $termo;
             return json_encode($r);
         }
     }

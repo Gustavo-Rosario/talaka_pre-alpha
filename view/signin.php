@@ -24,7 +24,7 @@ if(isset($_SESSION['cdUser'])){
                 var values = { "login": login, "pwd": senha };
                 var json = JSON.stringify(values);
                 $.ajax({
-                    url: "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/user/auth",
+                    url: "https://talaka-pre-alpha-gmastersupreme.c9users.io/exec/user/auth",
                     method: "POST",
                     async: true,
                     headers:{"content-type":"application/json"},

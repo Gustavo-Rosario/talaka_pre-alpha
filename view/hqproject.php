@@ -12,17 +12,31 @@ session_start();
 </head>
 
 <body>
-     <header>
-        <div class="wrapper">
-            <?php
+     <?php
             if(isset($_SESSION['cdUser'])){
             ?>
-            <div class="userlogin">
-                <div id="userloginPhoto" <?php echo 'style="background-image:url(../user-img/'.$_SESSION['imgUser'].')"' ?>></div>
-                <div id="userloginName" >
-                    <p><?= $_SESSION['nmUser']; ?></p>
-                </div>
+            <div id="help">
+                <span><a style="text-decoration: none; color: white" href="../logout.php">Sair</a> </span>
             </div>
+            <header>
+                <div class="wrapper">
+                    <div class="userlogin">
+                        <div id="userloginPhoto" <?php echo 'style="background-image:url(../user-img/'.$_SESSION['imgUser'].')"' ?>></div>
+                        <div id="userloginName" >
+                            <p><?= $_SESSION['nmUser']; ?></p>
+                        </div>
+                    </div>
+            <?php
+            }else{
+            ?>
+            <div id="help">
+                <span> Você não possui uma conta? <a style="text-decoration: none; color: white" href="/cadastrar">Crie uma</a> ou <a style="text-decoration: none; color: white" href="/login">Faça Login</a></span>
+                <a href="#"> Precisa de ajuda? </a>
+            </div>
+            <header>
+                <div class="wrapper">
+                    <br>
+                    <br>
             <?php
             }
             ?>
@@ -34,7 +48,7 @@ session_start();
                 <div id="projectCover" <?php echo 'style="background-image: url(../proj-img/'.$img.'); background-size:cover"'; ?>></div>
                 <div id="projectInformations">
                     <h1><?= $title; ?></h1>
-                    <h2>por Lucas Teixeira</h2>
+                    <h2>por <?= $creator;?></h2>
 
                     <p>
                          <?= $ds; ?>
@@ -44,10 +58,10 @@ session_start();
             <div id="finance" class="column columnRight">
                 <div id="goal">
                     <h1 id='goal'>R$<?= $collected ?>,00 <br><span>Investidos de R$<?= $meta ?>,00</span></h1>
-                    <h2>10 dias restantes
-                    <br><span><?php echo implode("/", array_reverse(explode("-",$dtB)) ); ?> à<?php echo implode("/", array_reverse(explode("-",$dtF)) ); ?></span></h2>
+                    <h2><?= round( ( strtotime($dtF) - strtotime(date("Y-m-d")) ) / (60 * 60 * 24) ); ?> dias restantes
+                    <br><span><?= implode("/", array_reverse(explode("-",$dtB)) )." à ".implode("/", array_reverse(explode("-",$dtF)) ); ?></span></h2>
                     
-                    <h2>15 financiadores</h2>
+                    <h2><?= $total; ?> financiadores</h2>
                 </div>
                 <button id="btn_finance">Financiar</button>
                 <button id="btn_demo">Visuaizar Demonstração</button>

@@ -1,4 +1,7 @@
 RewriteEngine On 
+Header set Access-Control-Allow-Origin "https://talaka-pre-alpha-gmastersupreme.c9users.io"
+Header set Access-Control-Allow-Methods: "GET, POST, PUT"
+Header set Access-Control-Allow-Headers: "Content-Type"
 RewriteRule ^exec/([A-Za-z]+)/([A-Za-z]+)/?$ app/web.php?class=$1&met=$2
 RewriteRule ^project/([0-9]+)/?$ app/page.php?id=$1
 RewriteRule ^explore/name/([A-Za-z\s]+)/?$ app/pesq.php?arg=$1
@@ -6,4 +9,4 @@ RewriteRule ^cadastrar/?$ view/signup.php
 RewriteRule ^login/?$ view/signin.php
 RewriteRule ^/?$ view/index.php
 RewriteRule ^exec/([A-Za-z]+)/([A-Za-z]+)/([0-9]+)/?$ app/web.php?class=$1&met=$2&arg0=$3
-RewriteRule ^exec/([A-Za-z]+)/([A-Za-z]+)/([A-Za-z0-9\s]+)/?$ app/web.php?class=$1&met=$2&arg0=$3 [L] 
+RewriteRule ^exec/([A-Za-z]+)/([A-Za-z]+)/([A-Za-z0-9!@#$%^&*\s]+)/?$ app/web.php?class=$1&met=$2&arg0=$3 [L] 

@@ -1,13 +1,21 @@
 <?php
 session_start();
 header("Content-Type: text/html");
+include_once("../Model/Page.php");
 //Pegando valores
-$termo = $_GET['arg'];
-//Iniciando o cURL
-$curl = curl_init();
+$termo = $_GET['arg']; 
+$t= str_replace(" ","%2520",$termo);
+
+//Usando obj Page
+$pag = new Page();
+$data = $pag->curl("http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/system/pesqName/".$t);
+$pag->load("../view/explore.php",array("data" =>$data));
+/*
+
+
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/system/pesqName/".$termo,
+  CURLOPT_URL => "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/system/pesqName/".$t,
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -27,8 +35,8 @@ if ($err) {
 } else {
     $obj = json_decode($response);
     $data=(array)json_decode($obj->data);
-    include("../view/explore.php");
+    include();
 }
-
+*/
 
 ?>
