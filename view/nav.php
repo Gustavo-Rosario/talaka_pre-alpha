@@ -1,7 +1,9 @@
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:100,400,700" rel="stylesheet">
+    <script src='js/jquery.min.js' type='text/javascript'></script>
+    <script src='js/script.js' type='text/javascript'></script>
     <title>
         <?= $pag_title ?>
     </title>
@@ -25,22 +27,33 @@
                         <div id="userloginName">
                             José Luiz
                             <?= $_SESSION['nmUser']; ?>
-                                <a href="../logout.php"><span id="arrowOptions"></span></a>
+                                <span id="arrowOptions"></span>
+                        </div>
+                        <div id="options">
+                            <ul>
+                                <li>Ver perfil</li>
+                                <li>Alterar dados</li>
+                                <a href="../logout.php">
+                                    <li>Sair</li>
+                                </a>
+                            </ul>
                         </div>
                     </div>
+
 
                     <?php
             }else{
             ?>
                         <div class="userlogin">
                             <span>Você não possui uma conta? <br>
-                        <a href="">Crie uma </a>
+                        <a href="signup.php">Crie uma </a>
                         ou 
-                        <a href="">Logue-se </a>
+                        <a href="signin.php">Logue-se </a>
                     </span>
 
                         </div>
             </li>
         </ul>
+
     </div>
 </nav>
