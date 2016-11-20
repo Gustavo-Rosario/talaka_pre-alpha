@@ -132,9 +132,3 @@ session_start();
             </div>
         </section>
     </div>
-    <footer>
-        rodape
-    </footer>
-</body>
-
-</html>

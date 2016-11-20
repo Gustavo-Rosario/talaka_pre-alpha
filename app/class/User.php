@@ -1,73 +1,41 @@
 <?php
 
-//header("Access-Control-Allow-Origin","*");
-
-class User{
+abstract class User{
+    
+    protected $db;
+    
+    public function __construct($type){
+        $this->db = new System($type);
+    }
     
     public function __call($met,$arg){
-        return json_encode(array('stats' => 'fail', 'data' => 'metodo "'.$met .'" nao encontrado na classe User'));
+        return json_encode(array('stats' => 'fail', 'data' => 'metodo "'.$met .'" nao encontrado na classe Visitor'));
         http_response_code(404);
     }
     
-    //Project methods
-    public function projectPOST($id){
-        $accept = $_SERVER["CONTENT_TYPE"];
-        if($accept === "application/json" || $id === null){
-            $json = file_get_contents('php://input');
-            $obj = json_decode($json);
-            $obj->cd_user = $id;
-            $obj->dt_begin = date("Y-m-d");
-            $db = new BD();
-            $resp = ( $db->inserir('Project',$obj) )? "success" : "fail_insert";
-            return json_encode(array("stats" => $resp, "data" => null));
-        }else{
-            return json_encode(array("stats" => "fail_content_type_or_id_not_passed", "data" => null));
-            http_response_code(400);
-        }
-    }
-    
-    public function investPOST($id){
-        $accept = $_SERVER["CONTENT_TYPE"];
-        if($accept === "application/json" || $id === null){
-            $json = file_get_contents('php://input');
-            $obj = json_decode($json);
-            $obj->cd_user = $id;
-            $obj->dt_financing = date("Y-m-d");
-            $db = new BD();
-            $resp = ( $db->inserir('Financing',$obj) )? "success" : "fail_insert";
-            $vetor = array("stats" => $resp, "data" => null);
-            return json_encode( $vetor );
-        }else{
-            return json_encode(array("stats" => "fail_content_type_or_id_not_passed", "data" => null));
-            http_response_code(400);
-        }
-    }
-    
-    public function profilePUT($id){
-        $accept = $_SERVER["CONTENT_TYPE"];
-        if($accept === "application/json" || $id === null){
-            $json = file_get_contents('php://input');
-            $obj = json_decode($json);
-            $where = array("cd_user" => (int)$id);
-            $db = new BD();
-            $resp = ( $db->alterar('User',$obj,$where) )? "success" : "fail_insert";
-            $vetor = array("stats" => $resp, "data" => null);
-            return json_encode( $vetor );
-        }else{
-            return json_encode(array("stats" => "fail_content_type_or_id_not_passed", "data" => null));
-            http_response_code(400);
-        }
-    }
-    
-    public function projectGET($id=1){
-        $db = new BD();
-        $resp = ( $data = $db->consultarProject($id) )? "success" : "fail_select";
+    public function allprojectGET(){
+         
+        $resp = ( $data = $this->db->listarProject() )? "success" : "fail_list";
         return json_encode(array("stats" => $resp, "data" => $data));
     }
     
-    public function allprojectGET(){
-        $db = new BD();
-        $resp = ( $data = $db->listarProject() )? "success" : "fail_list";
+    public function projectGET($id){
+        $resp = ( $data = $this->db->consultarProject($id) )?"success" : "fail_select";
+        return json_encode(array("stats" => $resp, "data" => $data));
+    }
+    
+    public function pesqNameGET($name){
+        $resp = ( $data = $this->db->pesqProject($name) )?"success" : "fail_select";
+        return json_encode(array("stats" => $resp, "data" => $data));
+    }
+    
+    public function execGET($id=1){
+        $resp = ( $data = $this->db->consultar($id) )? "success" : "fail_select";
+        return json_encode(array("stats" => $resp, "data" => $data));
+    }
+    
+    public function allGET(){
+        $resp = ( $data = $this->db->listarUser() )? "success" : "fail_list";
         return json_encode(array("stats" => $resp, "data" => $data));
     }
     
@@ -77,21 +45,8 @@ class User{
         return isset($_SESSION['login']);
     }
     */
-	public function authPOST(){
-        $accept = $_SERVER["CONTENT_TYPE"];
-        if($accept === "application/json"){
-            $json = file_get_contents('php://input');
-            $obj = json_decode($json);
-            $db = new BD();
-            $resp = $db->checkUser($obj);
-            return $resp;
-        }else{
-            return json_encode(array("stats" => "fail_content_type", "data" => null));
-            http_response_code(400);
-        }
-         
-    }
-	
+    
 }
+
 
 ?>

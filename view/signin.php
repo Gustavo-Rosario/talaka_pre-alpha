@@ -12,38 +12,8 @@ if(isset($_SESSION['cdUser'])){
     <title> Login </title>
     <link href="../view/css/style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:100,400,700" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>
-        $(main);
-        
-        function main(){
-            
-            $("#login-button").click(function(){
-                var login = $("input[name='email']").val();
-                var senha = $("input[name='password']").val();
-                var values = { "login": login, "pwd": senha };
-                var json = JSON.stringify(values);
-                $.ajax({
-                    url: "https://talaka-pre-alpha-gmastersupreme.c9users.io/exec/user/auth",
-                    method: "POST",
-                    async: true,
-                    headers:{"content-type":"application/json"},
-                    data: json,
-                    contentType: "application/json",
-                    processData: false,
-                }).done(function(response){
-                    if(response.stats === "success"){
-                        window.self.location = "/";
-                    }else{
-                        alert(response.data);
-                    }
-                }).fail(function(response){
-                    alert("Erro ao efetuar login");
-                });
-            });
-            
-        }
-    </script>
+    <script src='/view/js/jquery.min.js' type='text/javascript'></script>
+    <script src='/view/js/script.js' type='text/javascript'></script>
 </head>
 
 <body>

@@ -2,13 +2,20 @@
     session_start();
     include_once("Connection.php");
     
-    class BD{
+    class System{
 
-        private $con;
+        private $con, $type;
         
-        public function __construct(){
+        public function __construct($type){
             $this->con = Connection::getCon("localhost","gmastersupreme","","TalakaPA",3306);
+            $this->type = $type;
         }
+        
+        public function __call($met,$arg){
+            return json_encode(array('stats' => 'fail', 'data' => 'metodo "'.$met .'" nao encontrado na classe System'));
+            http_response_code(404);
+        }
+        
         //Insert para todos
         public function inserir($table,$obj){
             //Prepara o sql
@@ -132,6 +139,10 @@
             $r["total"] = $i;
             $r["termo"] = $termo;
             return json_encode($r);
+        }
+        
+        public function verifyClass(){
+            return $this->type === "System";
         }
     }
     

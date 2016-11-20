@@ -32,7 +32,7 @@ class Page{
     }
     
     
-    public function load($url,$data){
+    public function load($url,$data=array("")){
         extract($data);
         return include($url);
     }

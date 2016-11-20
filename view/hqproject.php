@@ -1,47 +1,6 @@
 <?php
-session_start();
+defined("System-access") or exit("Não permitido o acesso direto");
 ?>
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <title> Projeto </title>
-    <link href="../view/css/style.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:100,400,700" rel="stylesheet">
-</head>
-
-<body>
-     <?php
-            if(isset($_SESSION['cdUser'])){
-            ?>
-            <div id="help">
-                <span><a style="text-decoration: none; color: white" href="../logout.php">Sair</a> </span>
-            </div>
-            <header>
-                <div class="wrapper">
-                    <div class="userlogin">
-                        <div id="userloginPhoto" <?php echo 'style="background-image:url(../user-img/'.$_SESSION['imgUser'].')"' ?>></div>
-                        <div id="userloginName" >
-                            <p><?= $_SESSION['nmUser']; ?></p>
-                        </div>
-                    </div>
-            <?php
-            }else{
-            ?>
-            <div id="help">
-                <span> Você não possui uma conta? <a style="text-decoration: none; color: white" href="/cadastrar">Crie uma</a> ou <a style="text-decoration: none; color: white" href="/login">Faça Login</a></span>
-                <a href="#"> Precisa de ajuda? </a>
-            </div>
-            <header>
-                <div class="wrapper">
-                    <br>
-                    <br>
-            <?php
-            }
-            ?>
-        </div>
-    </header>
     <main>
         <section id="projectInfo">
             <div id="project" class="column columnLeft">
@@ -120,9 +79,3 @@ session_start();
             </div>
         </section>
     </main>
-    <footer>
-        rodape
-    </footer>
-</body>
-
-</html>

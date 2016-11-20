@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['cdUser'])){
-    echo "Tu ta logaaado";
+    header('location:/');
 }else{
 ?>
 <!DOCTYPE html>
@@ -12,40 +12,8 @@ if(isset($_SESSION['cdUser'])){
     <title> Cadastro </title>
     <link href="../view/css/style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:100,400,700" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        function validator(){
-            if($("#senha").val() != $("#confirmar").val()){
-                alert("As senhas devem ser iguais");
-                $("#confirmar").css("border","1px solid red");
-            }else{
-                var nome = $("input[name='nome']").val();
-                var date = $("input[name='nascimento']").val();
-                var login = $("input[name='login']").val();
-                var senha = $("input[name='password']").val();
-                var values = { "nm_user": nome, "ds_pwd": senha,"dt_birth": date,"ds_login": login,"ds_path_img":"avatar.png" };
-                var json = JSON.stringify(values);
-                $.ajax({
-                    url: "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/system/user",
-                    method: "POST",
-                    async: true,
-                    headers:{"content-type":"application/json"},
-                    data: json,
-                    contentType: "application/json",
-                    processData: false,
-                }).done(function(response){
-                    if(response.stats === "success"){
-                        window.self.location = "/";
-                    }else{
-                        alert(response.data);
-                    }
-                }).fail(function(response){
-                    alert("Erro ao efetuar cadastro");
-                });
-            }
-            return false;
-        }
-    </script>
+    <script src='/view/js/jquery.min.js' type='text/javascript'></script>
+    <script src='/view/js/script.js' type='text/javascript'></script>
 </head>
 
 <body>
