@@ -24,6 +24,7 @@ body {
     background-color: #edf2f5;
     font-family: 'Open Sans', sans-serif;
     font-size: 10px;
+    color: #3f3f3f
 }
 #help,
 #areaLogin {
@@ -589,7 +590,7 @@ footer li:nth-child(3) {
     margin: 1%;
     height: 450px;
     background-color: transparent;
-    border: 1px solid #A484DD;
+    border: 1px solid #eee;
     border-radius: .4em;
     position: relative;
 }
@@ -631,13 +632,27 @@ footer li:nth-child(3) {
     display: block;
     height: 15px;
     border: 1px solid #DC367F;
-    position: relative
+    position: relative;
+    margin: 10px 0;
+    border-radius: .3em;
 }
 .progressbarvalue {
     width: 90%;
     position: absolute;
     height: 15px;
     background-color: #DC367F;
+}
+.projectOwner {
+    width: 50px;
+    height: 50px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: orange;
+    border-radius: 50%;
+    position: absolute;
+    left: 10px;
+    top: 10px;
 }
 .meta ul {
     width: 100%;
@@ -768,31 +783,565 @@ nav li:last-child {
     padding-left: 0;
 }
 #options {
-    width:100px;
+    width: 100px;
     padding: 5px 10px;
-    background-color:#fff;
+    background-color: #fff;
     position: absolute;
-    left:40px;
-    top:35px;
+    left: 40px;
+    top: 35px;
     z-index: 100;
-    display:none;
+    display: none;
 }
 #options li {
-    float:none;
+    float: none;
     position: static;
-    margin:10px 0;
-    padding:5px;
+    margin: 10px 0;
+    padding: 5px;
     transition: .3s;
-    width:auto;
+    width: auto;
     font-size: 1em;
-    cursor:pointer;
+    cursor: pointer;
 }
-#options  a{
+#options a {
     text-decoration: none;
-    color:#000;
+    color: #000;
+}
+#options li:hover {
+    background-color: #327DAD;
+    color: #fff;
 }
 
-#options li:hover{
-    background-color:#327DAD;
+/*index*/
+
+#carousel {
+    width: 100%;
+    height: 560px;
+    overflow: hidden;
+}
+#carouselWrapper {
+    height: 100%;
+    width: 400%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    position: relative;
+    animation: carousel 30s ease infinite;
+    animation-delay: 5s
+}
+.carouselEach {
+    width: 25%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    float: left;
+    position: relative;
+}
+.projectIndex {
+    width: 50%;
+    height: 480px;
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    color: #fff;
+}
+.projectIndexInfo {
+    width: 25%;
+    height: 400px;
+    background-color: red;
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    margin-top: -200px;
+}
+.projectIndexCover {
+    width: 100%;
+    height: 400px;
+    background-color: pink;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/grimgar.png);
+}
+.projectIndexInfo p {
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    background-color: #DC367F;
+    font-size: 1.4em;
+    margin: 10px 0 0 0;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.projectIndex h1 {
+    margin: 10px 0 0 0;
+}
+.btns {
+    width: 100%;
+    height: 15px;
+    margin: 10px0;
+    padding: 0;
+}
+.btns span {
+    display: inline-block;
+    margin: 5px 5px 5px 0;
+    background-color: black;
+    padding: 5px;
+    width: 20px;
+    height: 15px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.projectIndex h1 {
+    font-size: 4em;
+    width: 80%;
+    max-height: 200px;
+    text-shadow: 0px 0px 5px #000
+}
+.projectIndex ul {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+}
+.projectIndex li {
+    float: left;
+    height: 100px;
+}
+.projectIndex li:first-child {
+    width: 30%;
+}
+.projectIndex li:last-child {
+    width: 70%;
+}
+.carouselCover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(104, 58, 183, .5);
+    filter: blur(5px);
+}
+.carouselEach:nth-child(1) {
+    background-color: purple;
+    background-image: url(../images/grimgar.png);
+}
+.carouselEach:nth-child(2) {
+    background-color: orange;
+}
+.carouselEach:nth-child(3) {
+    background-color: darkred;
+}
+.carouselEach:nth-child(4) {
+    background-color: violet;
+}
+@keyframes carousel {
+    0% {
+        left: 0;
+    }
+    12.5% {
+        left: -100%;
+    }
+    25% {
+        left: -100%;
+    }
+    37.5% {
+        left: -200%;
+    }
+    50% {
+        left: -200%;
+    }
+    62.5% {
+        left: -300%;
+    }
+    75% {
+        left: -300%;
+    }
+    87.5% {
+        left: 0;
+    }
+    100% {
+        left: 0;
+    }
+}
+.sect {
+    width: 100%;
+    background-color: #fff;
+    padding-top: 30px;
+}
+.sect h1 {
+    color: #3A0E85;
+    font-weight: lighter;
+    font-size: 2.4em;
+}
+.sect .wrapper {
+    margin: 0 auto;
+    padding: 10px 0;
+}
+#sectProjects ul:first-child li {
+    float: left;
+    padding: 10px 10px 10px 0;
+    margin: 0 10px;
+    font-size: 1.4em;
+    color: #327DAD;
+    cursor: pointer;
+    transition: .1s;
+    text-align: left;
+}
+#sectProjects ul:first-child li:first-child {
+    margin-left: 0;
+    border-bottom: 3px solid #094F7D;
+    color: #094F7D
+}
+.icon {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+    background-color: red;
+}
+.icon2 + b {
+    font-size: 1.6em;
+    font-weight: 700;
+    position: relative;
+    margin: 0;
+    padding: 0 2.5px;
+    top: -5px;
+}
+.icon1 {
+    background: url(../images/sprites.png) no-repeat;
+}
+.icon2 {
+    background: url(../images/sprites2.png) no-repeat;
+    height: 24px;
+    width: 24px;
+}
+#iconResume {
+    background-position: 0 0;
+}
+.icon2 + b + p {
+    font-size: 1.2em;
+}
+.projectH2 {
+    width: 80%;
+    height: 70px;
+    position: relative;
+}
+.projectH2 .projectOwner,
+.projectH2 h2 {
+    float: left;
+    position: relative;
+    margin-left: 0;
+}
+.projectH2 h2 {
+    margin-left: 20;
+    margin-top: 20px;
+    font-size: 1.6em;
+    text-shadow: 0 0 3px #000
+}
+#iconPerson {
+    background-position: 0 -34px;
+}
+#iconMeta {
+    background-position: 0 -68px;
+}
+li b {
+    margin-top: -20px;
+    display: inline-block;
+    position: relative;
+    top: -5px;
+    font-weight: 100;
+}
+#iconPopular {
+    width: 24px;
+    height: 24px;
+    background-position: 0 -25px;
+}
+#iconNear {
+    width: 24px;
+    height: 24px;
+    background-position: 0 -50px;
+}
+#iconBalloon {
+    width: 24px;
+    height: 24px;
+    background-position: 0 0;
+}
+#iconNew {
+    width: 24px;
+    height: 24px;
+    background-position: 0 -75px;
+}
+#iconAut {
+    width: 24px;
+    height: 24px;
+    background-position: 0 -100px;
+}
+#indexProject .eachProject,
+#indexProject .pProjectsCreated,
+#indexProject .pProjectsWrapper {
+    height: 470px;
+}
+#indexProject .pProjectsWrapper,
+#indexProject .pProjectsCreated {
+    height: 1000px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+#indexProject .eachProject:first-child,
+#indexProject .eachProject:nth-child(4) {
+    margin-left: 0;
+}
+#indexProject .explore {
+    box-shadow: none;
+}
+.circular-progress {
+    background: -webkit-linear-gradient(97.2deg, #03A9F4 50%, transparent 50%, transparent), -webkit-linear-gradient(180deg, #03A9F4 50%, #E0E0E0 50%, #E0E0E0);
+    background: linear-gradient(-7.2deg, #03A9F4 50%, transparent 50%, transparent), linear-gradient(deg, #03A9F4 50%, #E0E0E0 50%, #E0E0E0);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    height: 100px;
+    margin: 1em 0 0 0;
+    position: relative;
+    width: 100px;
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+}
+.circular-progress::before {
+    background-color: #FAFAFA;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.54);
+    /*    muda aqui*/
+    content: "73%";
+    font-size: 3em;
+    font-weight: bold;
+    height: 100%;
+    left: 0;
+    line-height: 100px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    -webkit-transform: scale(0.87);
+    transform: scale(0.87);
+    width: 100%;
+}
+#categories {
+    width: 100%;
+    display: table;
+}
+#categories li {
+    width: 16.8%;
+    background-color: pink;
+    float: left;
+    display: block;
+    height: 160px;
+    margin: 1% 2%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative
+}
+#categories .icon {
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -20px;
+    margin-top: -20px;
+    background-image: url(../images/sprites3.png);
+    background-repeat: no-repeat;
+}
+#categories .icon:before {
+    display: block;
+    margin-top: 45px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.3em;
+    color: #fff;
+    width: 300%;
+    position: absolute;
+    left: -100%
+}
+#catAction {
+    width: 32px;
+    height: 32px;
+    background-position: -5px -89px;
+}
+#catComedy {
+    width: 32px;
+    height: 32px;
+    background-position: -5px -5px;
+}
+#catHorror {
+    width: 32px;
+    height: 32px;
+    background-position: -89px -47px;
+}
+#catHero {
+    width: 32px;
+    height: 32px;
+    background-position: -47px -89px;
+}
+#catBibliography {
+    width: 32px;
+    height: 32px;
+    background-position: -47px -5px;
+}
+#catHistory {
+    width: 32px;
+    height: 32px;
+    background-position: -47px -47px;
+}
+#catTirinhas {
+    width: 32px;
+    height: 32px;
+    background-position: -5px -47px;
+}
+#catFic {
+    width: 32px;
+    height: 32px;
+    background-position: -131px -5px;
+}
+#catDrama {
+    width: 32px;
+    height: 32px;
+    background-position: -89px -5px;
+}
+#catSport {
+    width: 32px;
+    height: 32px;
+    background-position: -89px -89px;
+}
+#catAction:before {
+    content: 'Ação'
+}
+#catComedy:before {
+    content: 'Comédia'
+}
+#catHorror:before {
+    content: 'Terror'
+}
+#catHero:before {
+    content: 'Super-heróis'
+}
+#catBibliography:before {
+    content: 'Bibliográfico'
+}
+#catHistory:before {
+    content: 'Histórico'
+}
+#catTirinhas:before {
+    content: 'Tirinhas'
+}
+#catFic:before {
+    content: 'Ficção Científica'
+}
+#catDrama:before {
+    content: 'Drama'
+}
+#catSport:before {
+    content: 'Esporte'
+}
+#categories li:nth-child(1),
+#categories li:nth-child(6) {
+    margin-left: 0;
+}
+#categories li:nth-child(5),
+#categories li:nth-child(10) {
+    margin-right: 0;
+}
+#sectPeople, #sectStart{
+    background-color: #683AB7;
+    padding-bottom: 30px;
+}
+#sectPeople h1, #sectStart h1{
     color:#fff;
+}
+#sectPeople .wrapper, #sectStart .wrapper{
+    background-color: transparent;
+}
+#peopleArea{
+    width:100%;
+    display: table;
+    padding:10px 0;
+}
+.eachPeopleSay{
+    padding:1%;
+    width:29%;
+    margin:1%;
+    box-shadow: 0 0 5px #000;
+    background-color:#fff;
+    height:auto;
+    float:left;
+}
+.eachPeopleSay ul{
+    width:100%;
+}
+.eachPeopleSay li {
+    float:left;
+}
+.eachPeopleSay li p{
+    font-size: 1.3em;
+    position: relative;
+    left:10px;
+    font-weight: bold;
+    color:#000;
+    margin:0;
+}
+.eachPeopleSay p {
+    font-size: 1.1em;
+}
+.eachPeopleSay li p b {
+    font-weight: lighter;
+    display: inline;
+    font-size: .8em;
+    top:1px;
+}
+.userPhoto{
+ width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-color: #D50E65;
+}
+.eachPeopleSay a{
+    text-align: right;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+#sectStart{
+    text-align: center;
+    color:#fff;
+    padding:30px 0;
+}
+#sectStart h1 {
+    font-weight: bold;
+}
+#sectStart p {
+    font-size: 1.4em;
+    width: 40%;
+    margin:10px auto;
+    padding:10px 0;
+}
+#sectStart button{
+    border:3px solid #fff;
+    padding:15px;
+    color:#fff;
+    font-weight: bold;
+    background-color: transparent;
+    margin:0 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: .3s;
+}
+#sectStart button:hover{
+    background-color: #fff;
+    color:#683AB7
 }
