@@ -50,7 +50,7 @@ function main() {
                 var senha = $("input[name='password']").val();
                 var values = { "login": login, "pwd": senha };
                 var json = JSON.stringify(values);
-                var url = document.URL;
+                var server = document.URL;
                 $.ajax({
                     url: "https://"+server.split("/")[2]+"/exec/client/auth",
                     method: "POST",
