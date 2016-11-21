@@ -1,7 +1,7 @@
 RewriteEngine On 
-Header set Access-Control-Allow-Origin "*"
-Header set Access-Control-Allow-Methods: "GET, POST, PUT"
-Header set Access-Control-Allow-Headers: "origin,Content-Type"
+#Header set Access-Control-Allow-Origin "*"
+#Header set Access-Control-Allow-Methods: "GET, POST, PUT"
+#Header set Access-Control-Allow-Headers: "origin,Content-Type"
 RewriteRule ^exec/([A-Za-z]+)/([A-Za-z]+)/?$ app/web.php?class=$1&met=$2
 RewriteRule ^project/([0-9]+)/?$ app/page.php?id=$1
 RewriteRule ^explore/name/([A-Za-z\s]+)/?$ app/pesq.php?arg=$1
