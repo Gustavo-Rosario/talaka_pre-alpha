@@ -7,7 +7,7 @@
         private $con, $type;
         
         public function __construct($type){
-            $this->con = Connection::getCon("localhost","gmastersupreme","","TalakaPA",3306);
+            $this->con = Connection::getCon("localhost","talaka","talaka","TalakaPA",3306);
             $this->type = $type;
         }
         
@@ -123,8 +123,10 @@
             $stm->execute()or die("Erro 2".$stm->error.http_response_code(405));
             $stm->bind_result($id,$title,$ds,$img,$vlM,$vlC,$dtB,$dtF,$creator,$imgB,$imgU,$percent);
             $r = array();
+            $i = 1;
             while($stm->fetch()){
-                $r["d".$id] = array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"imgB"=>$imgB,"imgU"=>$imgU,"percent"=>$percent) or die("Erro no json");
+                $r["d".$i] = array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"imgB"=>$imgB,"imgU"=>$imgU,"percent"=>$percent) or die("Erro no json");
+                $i++;
             }
             return json_encode($r);
         }

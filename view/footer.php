@@ -1,3 +1,6 @@
+<?php
+defined("System-access") or exit("Não permitido o acesso direto");
+?>
 <footer>
     <ul>
         <li></li>

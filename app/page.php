@@ -8,7 +8,7 @@ $id = $_GET['id'];
 
 //Usando o obj de Page
 $pag = new Page();
-$data = $pag->curl("http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/visitor/project/".$id,"GET");
+$data = $pag->curl("/exec/visitor/project/".$id);
 $pag->load("../view/nav.php",array("pag_title" =>"Projeto"));
 $pag->load("../view/hqproject.php",$data);
 $pag->load("../view/footer.php");

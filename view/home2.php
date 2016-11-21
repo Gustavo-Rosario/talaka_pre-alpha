@@ -1,3 +1,6 @@
+<?php
+defined("System-access") or exit("Não permitido o acesso direto");
+?>
 <style>
         a:hover{
            color: #D50C7E; 
@@ -8,17 +11,17 @@
             <div id="carouselWrapper">
                 
                 <?php
-                for($a = 1; $a <= (count($data)); $a++){ 
+                for($a = 1; $a <= (count($data)); $a++){
                 ?>
                 <div class="carouselEach">
-                    <div class="carouselCover" <?php echo 'style="background-size:cover;background-image:url(../../proj-img/'.$data['d'.$a]->imgB.')"' ?>></div>
+                    <div class="carouselCover" <?= 'style="background-size:cover;background-image:url(../../proj-img/'.$data['d'.$a]->imgB.')"' ?>></div>
                     <div class="projectIndex">
                         <div class="btns">
                             <span>left</span>
                             <span>right</span>
                         </div>
                         <h1>
-                            <?= $data['d'.$a]->title;?>
+                            <?= $data['d'.$a]->title; ?>
                         </h1>
                         <div class="projectH2">
                             <div class="projectOwner" <?php echo 'style="background-image:url(../../user-img/'.$data['d'.$a]->imgU.')"' ?>></div>
@@ -27,7 +30,8 @@
                         <ul>
                             <li>
                                 <span class="icon icon2" id="iconMeta"></span><b>Meta</b>
-                              <div class="circular-progress"></div>
+                                <?='<style>.bar'.$a.'::before{ content: "'.round($data['d'.$a]->percent).'%"; }</style>';?>
+                              <div <?= 'class="circular-progress bar'.$a.'"';?>></div>
                             </li>
                             <li>
                             <span class="icon icon2" id="iconResume"></span><b>Descrição</b>

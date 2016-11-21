@@ -6,7 +6,7 @@ class Page{
         //Iniciando o cURL
         $curl = curl_init();
         curl_setopt_array($curl, array(
-          CURLOPT_URL => $url,
+          CURLOPT_URL => "https://".$_SERVER['HTTP_HOST'].$url,
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => "",
           CURLOPT_MAXREDIRS => 10,

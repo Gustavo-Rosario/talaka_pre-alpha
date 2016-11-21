@@ -1117,7 +1117,6 @@ li b {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     color: rgba(0, 0, 0, 0.54);
     /*    muda aqui*/
-    content: "73%";
     font-size: 3em;
     font-weight: bold;
     height: 100%;

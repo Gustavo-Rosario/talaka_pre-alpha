@@ -1,3 +1,6 @@
+<?php
+defined("System-access") or exit("Não permitido o acesso direto");
+?>
 <head>
     <meta charset="UTF-8">
     <link href="/view/css/style.css" rel="stylesheet" type="text/css">
