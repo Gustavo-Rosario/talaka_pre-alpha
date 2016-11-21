@@ -12,7 +12,7 @@
     <div class="wrapper">
         <ul>
             <li>
-                <a href="#"><h1>Talaka</h1></a>
+                <a href="/"><h1>Talaka</h1></a>
             </li>
             <li>
                 <input id="search" name="name" type="search" placeholder="Pesquisar">

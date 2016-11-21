@@ -113,13 +113,18 @@
             return $resp;
         }
         
-        public function listarProject(){
-            $stm = $this->con->prepare("SELECT cd_user,ds_login,ds_path_img FROM User ") or die("Erro 1".$con->error.http_response_code(405));
+        public function listProject($num){
+            $stm = $this->con->prepare("SELECT p.cd_project, p.nm_title, p.ds_project, p.ds_path_img, p.vl_meta, p.vl_collected, p.dt_begin, p.dt_final, u.nm_user, p.ds_img_back, u.ds_path_img, ((p.vl_collected*100) / p.vl_meta) dif
+            FROM Project AS p, User AS u
+            WHERE p.cd_user = u.cd_user
+            ORDER BY dif DESC 
+            LIMIT ?") or die("Erro 1".$con->error.http_response_code(405));
+            $stm->bind_param("i",$num);
             $stm->execute()or die("Erro 2".$stm->error.http_response_code(405));
-            $stm->bind_result($id,$login,$img);
+            $stm->bind_result($id,$title,$ds,$img,$vlM,$vlC,$dtB,$dtF,$creator,$imgB,$imgU,$percent);
             $r = array();
             while($stm->fetch()){
-                $r["d".$id] = array("id" => $id, "login" => $login, "img" => $img);
+                $r["d".$id] = array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"imgB"=>$imgB,"imgU"=>$imgU,"percent"=>$percent) or die("Erro no json");
             }
             return json_encode($r);
         }

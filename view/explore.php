@@ -20,7 +20,8 @@ session_start();
                 <div class="eachProjectInfo">
                     <p>tag</p>
                     <h2><?= $data['d'.$a]->title;?></h2>
-                    <p> <?= $data['d'.$a]->ds;?> </p>
+                    <p> <?=  (strlen($data['d'.$a]->ds) > 300)? substr($data['d'.$a]->ds,0,300)." (...)" : $data['d'.$a]->ds;
+                    ?> </p>
                     
                     <div class="meta">
                         <p><b>R$ <?= $data['d'.$a]->collected;?>,00</b> <span>acumulados</span></p>

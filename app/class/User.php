@@ -29,6 +29,11 @@ abstract class User{
         return json_encode(array("stats" => $resp, "data" => $data));
     }
     
+    public function pesqOldGET($num){
+        $resp = ( $data = $this->db->listProject($num) )?"success" : "fail_select";
+        return json_encode(array("stats" => $resp, "data" => $data));
+    }
+    
     public function execGET($id=1){
         $resp = ( $data = $this->db->consultar($id) )? "success" : "fail_select";
         return json_encode(array("stats" => $resp, "data" => $data));

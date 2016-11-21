@@ -26,13 +26,13 @@ echo "Classe: ".$class."<br>".
 //Altera Info User
 //curl -v -X PUT "https://talaka-pre-alpha-gmastersupreme.c9users.io/exec/client/profile/1" -H "Content-Type: application/json"_user":"Eren Jeager"}'
 //Insere Project
-//curl -v -X POST "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/client/project/1" -H "Content-Type: application/json"  -d '{"nm_title":"The Indie Spider-Man","ds_project":"Peter Parker era um aluno brilhante na escola, mas n&atilde;o tinha muitos amigos. Por&etilde;m, era muito amado por seus tios, Ben e May Parker. Um dia, em uma mostra de ci&ecilc;ncias, Peter foi picado por uma aranha irradiada, que lhe deu a habilidade de escalar paredes al&eacute;m de força proporcional a de uma aranha e fator de cura. Peter tamb&eacute;m criou lan&ccedil;adores de teia. Peter começou a fazer apresenta&ccedil;$oatilde;es mostrando suas incr$iacute;veis habilidades. Ap&oacute;s o termino de uma dessas apresenta&ccedil;$oatilde;es, ele viu um criminoso fugindo.","vl_meta":2400.00,"ds_path_img":"spiderman.jpg"}'
+//curl -v -X POST "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/client/project/1" -H "Content-Type: application/json"  -d '{"nm_title":"Akira","ds_project":"Uma grande explos&aatilde;o fez com que T&oacute;quio fosse destru&iacute;da em 1988. Em seu lugar foi constru&iacute;da Neo T&oacute;quio, que, em 2019, sofre com atentados terroristas por toda a cidade. Kaneda (Mitsuo Iwata) e Tetsuo (Nozomu Sasaki) s&atilde;o amigos que integram uma gangue de motoqueiros. Eles disputam rachas violentos com uma gangue rival, os Palha&ccedil;os, at&eacute; que um dia Tetsuo encontra Takashi (Tatsuhiko Nakamura), uma estranha crian&ccedil;a com poderes que fugiu do hospital onde era mantido como cobaia.","vl_meta":3780.00,"dt_final":"2017-06-28","ds_path_img":"akira.jpg","ds_img_back":"spiCapa.jpg"}'
 //Consulta
 //curl -v -X GET "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/visitor/project/4"
 //Financing 
 //curl -v -X POST "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/client/invest/1" -H "Content-Type: application/json" -d '{"cd_project":2,"vl_financing":16.00}'
-//Lista
-//curl -v -X GET "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/visitor/userall"
+//Lista Project
+//curl -v -X GET "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/visitor/pesqOld/4"
 //Login
 //curl -v -X POST "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/client/auth" -H "Content-Type: application/json"  -d '{"login":"eren@gmail.com","pwd":"teste"}'
 if(isset($arg0)){
