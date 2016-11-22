@@ -15,33 +15,35 @@ defined("System-access") or exit("Não permitido o acesso direto");
                 ?>
                 <div class="carouselEach">
                     <div class="carouselCover" <?= 'style="background-size:cover;background-image:url(../../proj-img/'.$data['d'.$a]->imgB.')"' ?>></div>
-                    <div class="projectIndex">
-                        <div class="btns">
-                            <span>left</span>
-                            <span>right</span>
+                    <div class="wrapper cWrapper">
+                        <div class="projectIndexInfo">
+                            <div class='projectIndexCover' <?php echo 'style="background-image:url(../../proj-img/'.$data['d'.$a]->img.')"' ?>></div>
+                            <a <?= 'href="/project/'. $data['d'.$a]->id.'"' ?>><p> Conhecer projeto</p></a>
                         </div>
-                        <h1>
-                            <?= $data['d'.$a]->title; ?>
-                        </h1>
-                        <div class="projectH2">
-                            <div class="projectOwner" <?php echo 'style="background-image:url(../../user-img/'.$data['d'.$a]->imgU.')"' ?>></div>
-                            <h2><?= $data['d'.$a]->creator;?></h2>
+                        <div class="projectIndex">
+                            <div class="btns">
+                                <span>left</span>
+                                <span>right</span>
+                            </div>
+                            <h1>
+                                <?= $data['d'.$a]->title; ?>
+                            </h1>
+                            <div class="projectH2">
+                                <div class="projectOwner" <?php echo 'style="background-image:url(../../user-img/'.$data['d'.$a]->imgU.')"' ?>></div>
+                                <h2><?= $data['d'.$a]->creator;?></h2>
+                            </div>
+                            <ul>
+                                <li>
+                                    <span class="icon icon2" id="iconMeta"></span><b>Meta</b>
+                                    <?='<style>.bar'.$a.'::before{ content: "'.round($data['d'.$a]->percent).'%"; }</style>';?>
+                                  <div <?= 'class="circular-progress bar'.$a.'"';?>></div>
+                                </li>
+                                <li>
+                                <span class="icon icon2" id="iconResume"></span><b>Descrição</b>
+                                    <p><?= $data['d'.$a]->ds;?></p>
+                                </li>
+                            </ul>
                         </div>
-                        <ul>
-                            <li>
-                                <span class="icon icon2" id="iconMeta"></span><b>Meta</b>
-                                <?='<style>.bar'.$a.'::before{ content: "'.round($data['d'.$a]->percent).'%"; }</style>';?>
-                              <div <?= 'class="circular-progress bar'.$a.'"';?>></div>
-                            </li>
-                            <li>
-                            <span class="icon icon2" id="iconResume"></span><b>Descrição</b>
-                                <p><?= $data['d'.$a]->ds;?></p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="projectIndexInfo">
-                        <div class='projectIndexCover' <?php echo 'style="background-image:url(../../proj-img/'.$data['d'.$a]->img.')"' ?>></div>
-                        <a <?= 'href="/project/'. $data['d'.$a]->id.'"' ?>><p> Conhecer projeto</p></a>
                     </div>
                 </div>
                 <?php
@@ -261,33 +263,43 @@ defined("System-access") or exit("Não permitido o acesso direto");
                 <h1>Conheça as categorias</h1>
                 <ul id="categories">
                     <li>
+                        <div class='categoriesCover'></div>
                         <div class="icon" id="catAction"></div>
                     </li>
                     <li>
+                        <div class='categoriesCover'></div>
                         <div class="icon" id="catComedy"></div>
                     </li>
                     <li>
+                        <div class='categoriesCover'></div>
                         <div class="icon" id="catHorror"></div>
                     </li>
                     <li>
+                        <div class='categoriesCover'></div>
                         <div class="icon" id="catHero"></div>
                     </li>
                     <li>
+                        <div class='categoriesCover'></div>
                         <div class="icon" id="catBibliography"></div>
                     </li>
                     <li>
+                        <div class='categoriesCover'></div>
                         <div class="icon" id="catHistory"></div>
                     </li>
                     <li>
+                        <div class='categoriesCover'></div>
                         <div class="icon" id="catTirinhas"></div>
                     </li>
                     <li>
+                        <div class='categoriesCover'></div>
                         <div class="icon" id="catFic"></div>
                     </li>
                     <li>
+                        <div class='categoriesCover'></div>
                         <div class="icon" id="catDrama"></div>
                     </li>
                     <li>
+                        <div class='categoriesCover'></div>
                         <div class="icon" id="catSport"></div>
                     </li>
                 </ul>
