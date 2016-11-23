@@ -1528,8 +1528,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80683ab7', e
 }
 #formPublish{
     background-color:#fff;
-    height:140vh;
+    margin-bottom:50px;
 }
+
 #formPublish h1, #formPublish p {
     text-align:center;
     
@@ -1544,6 +1545,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80683ab7', e
 }
 #formPublish .wrapper{
     margin:0 auto;
+    background-color:transparent;
 }
 #formProject{
     width:65%;
@@ -1576,23 +1578,28 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80683ab7', e
 }
 .formLeft{
     width:52%;
-    height:60px;
 }
 .formRight{
     width:40%;
-    position:absolute;
     right:3%;
-    top:50%;
-    margin-top:-30px;
 }
 .formRight input, .formRight textarea{
     width:100%;
     padding:10px;
     height:40px;
     border:1px solid #DC367F;
-    resize:none;
-    overflow: hidden;
+    resize:vertical;
     font-size:2em;
+    margin-top:10px;
+}
+.formRight textarea{
+    min-height:120px;
+    margin-top:0;
+    width:101%;
+}
+.formLine:nth-child(2) .formLeft, .formLine:nth-child(2) .formRight,.formLine:nth-child(3) .formLeft, .formLine:nth-child(3) .formRight{
+    float:none;
+    width:95%;
 }
 .formRight input[type='file']{
     display: none;
