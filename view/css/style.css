@@ -305,6 +305,7 @@ footer {
     height: 160px;
     color: #fff;
     font-size: 1.2em;
+    bottom:0;
 }
 footer ul {
     position: absolute;
@@ -679,7 +680,7 @@ header .wrapper {
 }
 .userlogin {
     display: table;
-    max-width: 250px;
+    max-width: 350px;
     position: relative;
 }
 #userloginPhoto,
@@ -710,6 +711,7 @@ nav {
     background-color: #fff;
     box-shadow: 0 0 5px rgba(0, 0, 0, .1);
     padding: 15px 0;
+    z-index:10;
 }
 nav .wrapper {
     margin: 0 auto;
@@ -787,7 +789,6 @@ nav li:last-child {
     padding: 5px 10px;
     background-color: #fff;
     position: absolute;
-    right:0;
     z-index: 100;
     display: none;
 }
@@ -1403,4 +1404,223 @@ li b {
 #sectStart button:hover{
     background-color: #fff;
     color:#683AB7
+}
+#publish{
+    color:red;
+    float:left;
+}
+#publish button{
+    padding:5px 15px;
+    margin:3px;
+    border:0;
+    background-color:#DC367F;
+    color:#fff;
+    border-bottom:3px solid #A50249;
+}
+
+/*página de publicação*/
+#bannerPublish{
+    width:100%;
+    position:relative;
+    height:420px;
+    z-index:-1;
+    background-position: center  center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image:url(https://static.pexels.com/photos/160058/pexels-photo-160058.jpeg);
+}
+#bannerPublishCover{
+    width:100%;
+    height:100%;
+    background-color:rgba(100,0,100,.5);
+    position: absolute;
+    z-index: -1;
+    filter:brightness(100%) blur(5px) contrast(110%);
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#683ab7+0,dc367f+100&0.5+0,0.5+0 */
+background: -moz-linear-gradient(left,  rgba(104,58,183,0.6) 0%, rgba(220,54,127,0.6) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  rgba(104,58,183,0.6) 0%,rgba(220,54,127,0.6) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  rgba(104,58,183,0.6) 0%,rgba(220,54,127,0.6) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80683ab7', endColorstr='#80dc367f',GradientType=1 ); /* IE6-9 */
+
+}
+#bannerPublish .wrapper{
+    margin:0 auto;
+    background-color:transparent;
+    font-size:1.6em;
+    text-shadow: 0 0 2px #ccc;
+    color:#fff;
+    text-align:center;
+    position: absolute;
+    width:1000px;
+    left:50%;
+    margin-left:-500px;
+    top:21%;
+    height:120px;
+    padding:0;
+    
+}
+#bannerPublish h2 {
+    font-weight: normal
+}
+#bannerPublish button {
+    padding:10px 20px;
+    color:#fff;
+    border:0;
+    background-color:#DC367F;
+    font-weight: bold;
+}
+#advantages{
+    margin:-40px auto 0 auto;
+    display: table;
+    background-color: transparent
+}
+.adCard {
+    float:left;
+    width:25%;
+    margin:0 2%;
+    padding:2%;
+    background-color:#fff;
+    border-radius: .3em .3em 0 0;
+}
+.adIcon {
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    border:1px solid #DC367F;
+    margin:0 auto;
+}
+.adCard h3 {
+    font-size:2em;
+    text-align:center;
+}
+.adCard p {
+    font-size:1.2em;
+}
+#support{
+    width:96%;
+    background-color:#40AAB9; /*Palheta*/
+    padding:50px 2%;
+    font-size:2em;
+    color:#fff;
+    text-align:center;
+}
+#support h3 {
+    font-weight: 100;
+    margin-top:40px;
+}
+#support ul{
+    height:50px;
+    width:420px;
+    margin:auto;
+}
+#support li {
+    float:left;
+    width:50px;
+    height:50px;
+    border:2px solid rgba(255,255,255,.5);
+    border-radius: 50%;
+    margin:0 10%;
+}
+#support .wrapper {background-color:transparent;}
+#support p {
+    width:60%;margin:auto;
+    font-size:.8em;
+}
+#formPublish{
+    background-color:#fff;
+    height:140vh;
+}
+#formPublish h1, #formPublish p {
+    text-align:center;
+    
+    margin:10px auto;
+}
+#formPublish h1 {
+    font-size:3em;
+}
+#formPublish p:nth-child(2) {
+    font-size:1.8em;
+    width:70%;
+}
+#formPublish .wrapper{
+    margin:0 auto;
+}
+#formProject{
+    width:65%;
+    margin:30px auto 0 auto;
+}
+#formProject p {
+    text-align:left;
+    margin:0;
+    font-size: 1.4em
+}
+#formProject .formLine p:first-child{
+    font-weight: bold;
+    font-size:2.5em;
+}
+#formProject .formLine p:last-child{
+    font-size:1.2em;
+}
+.formLine{
+    display: table;
+    width:100%;
+    margin:10px 0;
+    border:1px solid #DC367F;
+    position: relative
+}
+.formLeft, .formRight{
+    float:left;
+    padding: 1%;
+    margin:1% ;
+    text-align:left;
+}
+.formLeft{
+    width:52%;
+    height:60px;
+}
+.formRight{
+    width:40%;
+    position:absolute;
+    right:3%;
+    top:50%;
+    margin-top:-30px;
+}
+.formRight input, .formRight textarea{
+    width:100%;
+    padding:10px;
+    height:40px;
+    border:1px solid #DC367F;
+    resize:none;
+    overflow: hidden;
+    font-size:2em;
+}
+.formRight input[type='file']{
+    display: none;
+}
+#confirm {
+    position:fixed;
+    padding:15px 0;
+    width:100%;
+    box-shadow:0 0 5px #f0f;
+    bottom:0;
+    background-color:#fff;
+}
+#confirm button{
+    display:block;
+    margin:auto;
+    padding:5px 40px;
+    border:0;
+    color:#fff;
+    background-color:#DC367F;
+    cursor:pointer;
+}
+.formRight label {
+    width:100%;
+    padding: 15px 0px;
+    text-align:center;
+    color:#fff;
+    font-size:1.4em;
+    background-color:#DC367F;
+    display: block;
+    cursor:pointer;
 }

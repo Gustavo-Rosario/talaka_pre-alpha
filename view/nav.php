@@ -4,7 +4,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
 <head>
     <meta charset="UTF-8">
     <link href="/view/css/style.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:100,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,400,700|Roboto:100,400,700" rel="stylesheet">
     <script src='/view/js/jquery.min.js' type='text/javascript'></script>
     <script src='/view/js/script.js' type='text/javascript'></script>
     <title>
@@ -30,9 +30,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
                         <div id="userloginName">
                             <?= $_SESSION['nmUser']; ?>
                                 <span id="arrowOptions"></span>
-                        </div>
-                    </div>
-                        <div id="options">
+                                <div id="options">
                             <ul>
                                 <li>Ver perfil</li>
                                 <li>Alterar dados</li>
@@ -41,6 +39,13 @@ defined("System-access") or exit("Não permitido o acesso direto");
                                 </a>
                             </ul>
                         </div>
+                        </div>
+                        <div id="publish">
+                           <button>Criar campanha</button>
+                        </div>
+                    </div>
+                    
+                        
                     </div>
 
 
