@@ -42,6 +42,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
                         </div>
                         </div>
                         <div id="publish">
+                            <?= $_SERVER['PHP_SELF'];;?>
                            <button>Criar campanha</button>
                         </div>
                     </div>
