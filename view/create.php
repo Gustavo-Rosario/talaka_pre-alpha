@@ -9,7 +9,7 @@
     <script src='/view/js/jquery.min.js' type='text/javascript'></script>
     <script src='/view/js/script.js' type='text/javascript'></script>
     <title>
-        TALAKA - <?= $pag_title ?>
+        TALAKA - 
     </title>
 </head>
 

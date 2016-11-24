@@ -6,6 +6,7 @@ include_once("class/System.php");
 include_once("class/User.php");
 include_once("class/Client.php");
 include_once("class/Visitor.php");
+include_once("../Controller/Pagecon.php");
 
 //Criando o objeto da classe para execução
 $class = ucfirst($_GET['class']);
