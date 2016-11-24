@@ -418,6 +418,7 @@ footer li:nth-child(3) {
 
 #container {
     width: 100%;
+    margin-top:65px;
     display: table;
 }
 #profile,
@@ -712,6 +713,8 @@ nav {
     box-shadow: 0 0 5px rgba(0, 0, 0, .1);
     padding: 15px 0;
     z-index:10;
+    position:fixed;
+    top:0;
 }
 nav .wrapper {
     margin: 0 auto;
@@ -1630,4 +1633,114 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80683ab7', e
     background-color:#DC367F;
     display: block;
     cursor:pointer;
+}
+#financeWrapper {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background-color:rgba(104, 58, 183,.7);
+    z-index: 1;
+    display:none;
+}
+#financeProject{
+    width:860px;
+    background-color:#fff;
+    height:430px;
+    top:50%;
+    margin-top:-285px;
+    padding:20px;
+    left:50%;
+    margin-left:-450px;
+    position: relative;
+}
+#financeClose{
+    position: absolute;
+    width:100%;
+    height:100%;
+}
+#financeProject div:first-child, #financeProject div:nth-child(2){
+    float:left;
+    padding:2%;
+    margin:0 1%;
+    height:94%;
+}
+#financeProject div:first-child{
+    width:35%;
+}
+#financeProject div:nth-child(2){
+    width:53%;
+}
+#financeProject h2 {
+    padding:0 0 10px 0;
+    margin:0;
+    font-size:2em;
+    border-bottom:1px solid purple;
+}
+#financeProject input[type='radio']{
+    display:none;
+}
+#financeProject label{
+    width:19%;
+    height: 30px;
+    background-color:purple;
+    display: block;
+    float:left;
+    margin:0 2% 10px 2%;
+    transition:.3s;
+    border:5px solid #fff;
+    cursor:pointer;
+}
+#financeProject label:nth-child(4){
+    margin-right:0;
+}
+#financeProject input[type='radio']:checked + label {
+    border:5px solid #DC367F;
+}
+#financeProject h3 {
+    font-weight:lighter;
+    margin:15px 0 5px 0;
+    font-size:1.4em;
+}
+#financeProject textarea{
+    width:100%;
+    height:190px;
+    border:1px solid #DC367F;
+    overflow:auto;
+    font-family: 'Roboto',sans-serif;
+    padding:10px;
+    resize:none;
+    font-size:1.1em;
+}
+#lineForm{
+    width:100%;
+    display:table;
+    height:30px;
+    margin:10px 0;
+}
+#financeProject button{
+    float:right;
+    padding:12px 30px;
+    border-radius:5px;
+    border:0;
+    background-color:#DC367F;
+    color:#fff;
+    font-weight:bold;
+    border:0;
+    cursor:pointer;
+}
+#lineForm input{
+    float:left;
+    padding:10px;
+    border:0;
+    resize:none;
+    font-size:2em;
+    color:#327DAD;
+}
+#financeCover {
+    width:100%;
+    height:100%;
+    position:relative;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size:cover;
 }

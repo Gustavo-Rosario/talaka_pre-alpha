@@ -1,5 +1,31 @@
 $(main);
 
+function fin(project){
+    var valor = $("input[name='valor']").val();
+    var values = {'cd_project':project,'vl_financing':valor};
+    var json = JSON.stringify(values);
+    var server = document.URL;
+    var id = $('#spanCdUser').html();
+    $.ajax({
+        url: "https://"+server.split("/")[2]+"/exec/client/invest/"+id,
+        method: "POST",
+        async: true,
+        headers:{"content-type":"application/json"},
+        data: json,
+        contentType: "application/json",
+        processData: false,
+    }).done(function(response){
+        if(response.stats === "success"){
+            alert('deu bom');
+            location.reload();
+        }else{
+            alert('deu ruim');
+        }
+    }).fail(function(response){
+        alert("Deu mega ruim");
+    });
+}
+
 function validator(){
             if($("#senha").val() != $("#confirmar").val()){
                 alert("As senhas devem ser iguais");
@@ -45,6 +71,16 @@ function main() {
         }
     });
     
+    $('#btn_finance').click(function(){
+        $('#financeWrapper').fadeIn('slow');
+    });
+    
+    $('#financeClose').click(function(){
+       $('#financeWrapper').fadeOut('slow');
+    });
+    
+    
+    
     $("#login-button").click(function(){
                 var login = $("input[name='email']").val();
                 var senha = $("input[name='password']").val();
@@ -69,5 +105,7 @@ function main() {
                     alert("Erro ao efetuar login");
                 });
             });
+            
+     
 }
 

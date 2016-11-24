@@ -12,6 +12,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
     </title>
 </head>
 <nav>
+    <span style='display:none' id='spanCdUser'><?= $_SESSION['cdUser']; ?></span>
     <div class="wrapper">
         <ul>
             <li>
