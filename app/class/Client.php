@@ -73,7 +73,20 @@ class Client extends User{
         }
          
     }
-	
+    
+    public function altprojectPUT($id){
+        $accept = $_SERVER["CONTENT_TYPE"];
+        if($accept === "application/json" || $id === null){
+            $json = file_get_contents('php://input');
+            $obj = json_decode($json);
+            $where["cd_project"] = $id;
+            $resp = ($this->db->alterar("Project",$obj,$where))? "success" : "fail_alter_project";
+            return json_encode(array("stats" => $resp, "data" => null));
+        }else{
+            return json_decode(array("stats" => "fail_alter_project", "data" => null));
+            http_response_code(400);
+        }
+    }
 }
 
 ?>
