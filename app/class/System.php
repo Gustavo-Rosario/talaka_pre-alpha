@@ -83,6 +83,7 @@
         }
         
         public function checkUser($obj){
+            $obj->pwd = hash("ripemd160" , $obj->pwd);
             $stm = $this->con->prepare("SELECT cd_user, nm_user, ds_path_img FROM User WHERE ds_login = ? and ds_pwd = ?") or die("Erro 1 ".$this->con->error.http_response_code(405));
             $stm->bind_param("ss", $obj->login, $obj->pwd) or die("Erro 2 ".$stm->error.http_response_code(405));
             $stm->execute();

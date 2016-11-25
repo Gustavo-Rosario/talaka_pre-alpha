@@ -23,7 +23,7 @@ echo "Classe: ".$class."<br>".
 */
 //Exemplos de curl
 //Insere User
-//curl -v -X POST "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/visitor/user" -H "Content-Type: application/json"  -d '{"nm_user":"Mikasa Ackerman","ds_login":"mikasa@gmail.com","ds_pwd":"1234","ds_path_img":"mikasa.jpg","dt_birth":"1999-03-11"}'
+//curl -v -X POST "http://talaka-pre-alpha-lucastexlima.c9users.io/exec/visitor/user" -H "Content-Type: application/json"  -d '{"nm_user":"Shinji","ds_login":"shinji@gmail.com","ds_pwd":"1234","ds_path_img":"","dt_birth":"1998-04-11"}'
 //Altera Info User
 //curl -v -X PUT "https://talaka-pre-alpha-gmastersupreme.c9users.io/exec/client/profile/1" -H "Content-Type: application/json"_user":"Eren Jeager"}'
 //Insere Project

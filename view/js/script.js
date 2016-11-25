@@ -39,7 +39,7 @@ function validator(){
                 var json = JSON.stringify(values);
                 var server = document.URL;
                 $.ajax({
-                    url: "http://"+server.split("/")[2]+"/exec/visitor/user",
+                    url: "https://"+server.split("/")[2]+"/exec/visitor/user",
                     method: "POST",
                     async: true,
                     headers:{"content-type":"application/json"},
@@ -47,10 +47,11 @@ function validator(){
                     contentType: "application/json",
                     processData: false,
                 }).done(function(response){
-                    if(response.stats === "success"){
+                    var r = JSON.parse(response);
+                    if(r.stats === "success"){
                         window.self.location = "/";
                     }else{
-                        alert(response.data);
+                        alert(r.data);
                     }
                 }).fail(function(response){
                     alert("Erro ao efetuar cadastro");
@@ -96,10 +97,11 @@ function main() {
                     contentType: "application/json",
                     processData: false,
                 }).done(function(response){
-                    if(response.stats === "success"){
+                    var r = JSON.parse(response);
+                    if(r.stats == "success"){
                         window.self.location = "/";
                     }else{
-                        alert(response.data);
+                        alert(r.data);
                     }
                 }).fail(function(response){
                     alert("Erro ao efetuar login");
