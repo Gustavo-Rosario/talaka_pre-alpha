@@ -431,7 +431,6 @@ footer li:nth-child(3) {
 #profile {
     width: 100%;
     padding: 20px 0;
-    background-image: url(../images/grimgar.png);
     text-shadow: 0 0 5px #000;
 }
 #profileInfo {
@@ -603,7 +602,6 @@ footer li:nth-child(3) {
     background-repeat: no-repeat;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url(../images/grimgar.png);
 }
 .eachProjectInfo {
     padding: 10px 15px;
@@ -943,7 +941,6 @@ nav li:last-child {
 }
 .carouselEach:nth-child(1) {
     background-color: purple;
-    background-image: url(../images/grimgar.png);
 }
 .carouselEach:nth-child(2) {
     background-color: orange;

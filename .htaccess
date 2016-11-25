@@ -5,9 +5,9 @@ RewriteEngine On
 RewriteRule ^exec/([A-Za-z]+)/([A-Za-z]+)/?$ app/web.php?class=$1&met=$2
 RewriteRule ^project/([0-9]+)/?$ app/web.php?class=Pagecon&met=project&arg0=$1
 RewriteRule ^explore/name/([A-Za-z\s]+)/?$ app/web.php?class=Pagecon&met=explore&arg0=$1
+RewriteRule ^/?$ app/web.php?class=Pagecon&met=index
 RewriteRule ^campanha/?$ app/camp.php 
 RewriteRule ^cadastrar/?$ view/signup.php
 RewriteRule ^login/?$ view/signin.php
-RewriteRule ^/?$ view/index.php
 RewriteRule ^exec/([A-Za-z]+)/([A-Za-z]+)/([0-9]+)/?$ app/web.php?class=$1&met=$2&arg0=$3
 RewriteRule ^exec/([A-Za-z]+)/([A-Za-z]+)/([A-Za-z0-9!@#$%^&*\s]+)/?$ app/web.php?class=$1&met=$2&arg0=$3 [L] 

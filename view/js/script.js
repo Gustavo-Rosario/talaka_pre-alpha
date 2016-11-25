@@ -15,8 +15,9 @@ function fin(project){
         contentType: "application/json",
         processData: false,
     }).done(function(response){
-        if(response.stats === "success"){
-            alert('deu bom');
+        var r = JSON.parse(response);
+        if(r.stats === "success"){
+            alert('Financiado com sucesso');
             location.reload();
         }else{
             alert('deu ruim');

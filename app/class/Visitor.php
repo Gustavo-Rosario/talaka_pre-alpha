@@ -18,7 +18,7 @@ class Visitor extends User{
         if($accept === "application/json"){
             $json = file_get_contents('php://input');
             $obj = json_decode($json);
-            $pwd = $obj->ds_pwd ;
+            $pwd = $obj->ds_pwd;
             $obj->ds_pwd = hash("ripemd160" , $obj->ds_pwd);
             if($this->db->inserir('User',$obj)){
                 $login = (object)array("login" => $obj->ds_login, "pwd" => $pwd);

@@ -12,7 +12,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
     </title>
 </head>
 <nav>
-    <span style='display:none' id='spanCdUser'><?= $_SESSION['cdUser']; ?></span>
+    <span style='display:none' id='spanCdUser'><?= isset($_SESSION['cdUser'])?$_SESSION['cdUser']:"" ; ?></span>
     <div class="wrapper">
         <ul>
             <li>
@@ -24,7 +24,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
             <li>
                 <?php
                 if (isset($_SESSION['cdUser'])){
-            ?>
+                ?>
 
                     <div class="userlogin">
                         <div id="userloginPhoto" <?php echo 'style="background-image:url(/user-img/'.$_SESSION[ 'imgUser']. ')"' ?>> </div>
@@ -50,9 +50,9 @@ defined("System-access") or exit("Não permitido o acesso direto");
                     </div>
 
 
-                    <?php
-            }else{
-            ?>
+                <?php
+                }else{
+                ?>
                         <div class="userlogin">
                             <span>Você não possui uma conta? <br>
                         <a href="/cadastrar">Crie uma </a>

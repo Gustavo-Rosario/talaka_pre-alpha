@@ -13,9 +13,15 @@ class Pagecon{
         define("System-access","Allow",TRUE);
     }
     
+    public function indexGET(){
+        $data = $this->page->curl("/exec/visitor/pesqOld/4");
+        $project = $this->page->curl("/exec/visitor/pesqOld/6");
+        $this->page->load("../view/nav.php",array("pag_title" =>"Home"));
+        $this->page->load("../view/home2.php",array("data" => $data,"project" => $project));
+        $this->page->load("../view/footer.php");
+    }
+    
     public function projectGET($id){
-        //Pegando valores
-        //$id = $_GET['id'];
         $data = $this->page->curl("/exec/visitor/project/".$id);
         $this->page->load("../view/nav.php",array("pag_title" =>"Projeto"));
         $this->page->load("../view/hqproject.php",$data);

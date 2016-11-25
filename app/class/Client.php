@@ -19,6 +19,7 @@ class Client extends User{
         if($accept === "application/json" || $id === null){
             $json = file_get_contents('php://input');
             $obj = json_decode($json);
+            $obj->ds_project = htmlspecialchars_decode( htmlentities($obj->ds_project) );
             $obj->cd_user = $id;
             $obj->dt_begin = date("Y-m-d");
             $resp = ( $this->db->inserir('Project',$obj) )? "success" : "fail_insert";
