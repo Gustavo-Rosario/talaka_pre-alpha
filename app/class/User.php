@@ -44,6 +44,11 @@ abstract class User{
         return json_encode(array("stats" => $resp, "data" => $data));
     }
     
+    public function catGET($cat){
+        $resp = ( $data = $this->db->pesqCat($cat) )? "success" : "fail_list";
+        return json_encode(array("stats" => $resp, "data" => $data));
+    }
+    
     //Especial
     public function visitationPUT($id){
         $num = (int)json_decode($this->db->consultarProject($id))->visit;

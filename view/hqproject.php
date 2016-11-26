@@ -49,9 +49,13 @@ Nam massa nunc, mollis eget nibh nec, ultrices laoreet nibh. In enim urna, pelle
     <?php
     }
     ?>
+    
+    <div id='projectPageCover'  <?= 'style="background-image:url(../../proj-img/'.$cover.')"' ?>>
+        <div id='projectPageCoverColour'></div>
+    </div>
+    
     <div id='container'>
-    <main>
-          
+    <main style='margin-top:40px'>
         <section id="projectInfo">
             <div id="project" class="column columnLeft">
                 <div id="projectCover" <?php echo 'style="background-image: url(../proj-img/'.$img.'); background-size:cover"'; ?>></div>

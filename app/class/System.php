@@ -101,16 +101,16 @@
         }
         
         public function consultarProject($id){
-            $stm = $this->con->prepare("SELECT p.nm_title,p.ds_project,p.ds_path_img,p.vl_meta,p.vl_collected,p.dt_begin,p.dt_final,u.nm_user,p.qt_visitation,count(f.cd_user) total 
+            $stm = $this->con->prepare("SELECT p.nm_title,p.ds_project,p.ds_path_img,p.ds_img_back,p.vl_meta,p.vl_collected,p.dt_begin,p.dt_final,u.nm_user,p.qt_visitation,count(f.cd_user) total 
             FROM Project as p, User as u, Financing as f
             WHERE p.cd_user = u.cd_user
             AND p.cd_project = f.cd_project
             AND p.cd_project = ?") or die("Erro 1".$this->con->error.http_response_code(405));
             $stm->bind_param("i",intval($id)) or die("Erro 2".$stm->error.http_response_code(405));
             $stm->execute()or die("Erro 3".$stm->error.http_response_code(405));
-            $stm->bind_result($title,$ds,$img,$vlM,$vlC,$dtB,$dtF,$creator,$visit,$total)or die("Erro 4");
+            $stm->bind_result($title,$ds,$img,$cover,$vlM,$vlC,$dtB,$dtF,$creator,$visit,$total)or die("Erro 4");
             $stm->fetch();
-            $resp = json_encode(array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"visit"=>$visit,"total"=>$total))or die("Erro no json mesmo");
+            $resp = json_encode(array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"cover"=>$cover,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"visit"=>$visit,"total"=>$total))or die("Erro no json mesmo");
             return $resp;
         }
         
@@ -132,25 +132,49 @@
             return json_encode($r);
         }
         
-        public function pesqProject($termo){
-            $name = "%".$termo."%";
-            $stm = $this->con->prepare("SELECT cd_project, nm_title, ds_project, vl_meta, vl_collected, dt_final, ds_path_img, cd_category
-            FROM Project
-            WHERE nm_title LIKE ?
-            LIMIT 6 ") or die("Erro 1".$con->error.http_response_code(405));
-            $stm->bind_param("s",$name)or die("Erro 2".$stm->error.http_response_code(405));
-            $stm->execute()or die("Erro 3".$stm->error.http_response_code(405));
-            $stm->bind_result($id,$title,$ds,$vlM,$vlC,$dt,$img,$idC)or die("Erro 4");
+        public function pesqCat($num){
+            $stm = $this->con->prepare("SELECT p.cd_project, p.nm_title, p.ds_project, p.ds_path_img, p.vl_meta, p.vl_collected, p.dt_begin, p.dt_final, u.nm_user, p.ds_path_img, u.ds_path_img
+            FROM Project AS p, User AS u
+            WHERE p.cd_category = ?
+			AND u.cd_user = p.cd_user
+            ORDER BY p.nm_title DESC
+            LIMIT 6") or die("Erro 1".$this->con->error.http_response_code(405));
+            $stm->bind_param("i",intval($num));
+            $stm->execute()or die("Erro 2".$stm->error.http_response_code(405));
+            $stm->bind_result($id,$title,$ds,$img,$vlM,$vlC,$dtB,$dtF,$creator,$imgB,$imgU);
             $r = array();
             $i = 0;
             while($stm->fetch()){
-                $r["d".$i] = array("id" => $id, "title" => $title, "ds" => utf8_encode($ds), "meta" => $vlM,"collected" => $vlC, "img"=>$img, "dt"=>$dt,"idC"=>$idC);
+                $r["d".$i] = array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dt"=>$dtF,"creator"=>$creator,"img"=>$img,"imgU"=>$imgU,"idC"=>$num) or die("Erro no json");
+                $i++;
+            }
+            $r['total'] = $i;
+            return json_encode($r);
+        }
+        
+        
+        public function pesqProject($termo){
+            $name = "%".$termo."%";
+            $stm = $this->con->prepare("SELECT p.cd_project, p.nm_title, p.ds_project, p.vl_meta, p.vl_collected, p.dt_final, p.ds_path_img, p.cd_category, u.ds_path_img
+            FROM Project as p, User as u
+            WHERE p.nm_title LIKE ?
+            AND u.cd_user = p.cd_user
+            LIMIT 6 ") or die("Erro 1".$con->error.http_response_code(405));
+            $stm->bind_param("s",$name)or die("Erro 2".$stm->error.http_response_code(405));
+            $stm->execute()or die("Erro 3".$stm->error.http_response_code(405));
+            $stm->bind_result($id,$title,$ds,$vlM,$vlC,$dt,$img,$idC,$imgU)or die("Erro 4");
+            $r = array();
+            $i = 0;
+            while($stm->fetch()){
+                $r["d".$i] = array("id" => $id, "title" => $title, "ds" => utf8_encode($ds), "meta" => $vlM,"collected" => $vlC, "img"=>$img, "dt"=>$dt,"idC"=>$idC,"imgU"=>$imgU);
                 $i++;
             }
             $r["total"] = $i;
-            $r["termo"] = $termo;
+            $r["termo"] = 'Termo procurado : "'.$termo.'"';
             return json_encode($r);
         }
+        
+        
         
         //Especial
         public static function getCategory($id){
@@ -168,6 +192,7 @@
         public function verifyClass(){
             return $this->type === "System";
         }
+        
     }
     
 ?>

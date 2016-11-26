@@ -77,6 +77,7 @@ function main() {
         }
     });
     
+    
     $('#btn_finance').click(function(){
         $('#financeWrapper').fadeIn('slow');
     });

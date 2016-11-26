@@ -1,60 +1,6 @@
 <?php
 defined("System-access") or exit("Não permitido o acesso direto");
 ?>
-<style>
-    a:hover{
-       color: #D50C7E; 
-    }
-    
-    .new-tab-link {
-  padding-right: 14px;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3ggXDSIzCeRHfQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAA9SURBVBjTY2RAA/+XMvxHF2NkwAOwacCq4P9Shv8suFQzRiNsYUEXwKoJ2VhkNrIaJgYiAAs2N2BVRMirAD6JHi10MCdVAAAAAElFTkSuQmCC) no-repeat right center;
-}
-.circles {
-  margin-bottom: -10px;
-}
-
-.circle {
-  width: 100px;
-  margin: 6px 6px 20px;
-  display: inline-block;
-  position: relative;
-  text-align: center;
-  line-height: 1.2;
-}
-
-.circle canvas {
-  vertical-align: top;
-}
-
-.circle strong {
-  position: absolute;
-  top: 30px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  line-height: 40px;
-  font-size: 30px;
-}
-
-.circle strong i {
-  font-style: normal;
-  font-size: 0.6em;
-  font-weight: normal;
-}
-
-.circle span {
-  display: block;
-  color: #aaa;
-  margin-top: 12px;
-}
-
-p {
-  margin: 40px 0;
-}
-
-    
-</style>
 <script src="https://cdn.rawgit.com/kottenator/jquery-circle-progress/1.2.0/dist/circle-progress.js"></script>
 <div id="container">
         <div id="carousel">
@@ -71,10 +17,7 @@ p {
                             <a <?= 'href="/project/'. $data['d'.$a]->id.'"' ?>><p> Conhecer projeto</p></a>
                         </div>
                         <div class="projectIndex">
-                            <div class="btns">
-                                <span>left</span>
-                                <span>right</span>
-                            </div>
+                            
                             <h1>
                                 <?= $data['d'.$a]->title; ?>
                             </h1>
@@ -208,46 +151,76 @@ p {
             <div class="wrapper">
                 <h1>Conheça as categorias</h1>
                 <ul id="categories">
-                    <li>
-                        <div class='categoriesCover'></div>
-                        <div class="icon" id="catAction"></div>
-                    </li>
-                    <li>
-                        <div class='categoriesCover'></div>
-                        <div class="icon" id="catComedy"></div>
-                    </li>
-                    <li>
-                        <div class='categoriesCover'></div>
-                        <div class="icon" id="catHorror"></div>
-                    </li>
-                    <li>
-                        <div class='categoriesCover'></div>
-                        <div class="icon" id="catHero"></div>
-                    </li>
-                    <li>
-                        <div class='categoriesCover'></div>
-                        <div class="icon" id="catBibliography"></div>
-                    </li>
-                    <li>
-                        <div class='categoriesCover'></div>
-                        <div class="icon" id="catHistory"></div>
-                    </li>
-                    <li>
-                        <div class='categoriesCover'></div>
-                        <div class="icon" id="catTirinhas"></div>
-                    </li>
-                    <li>
-                        <div class='categoriesCover'></div>
-                        <div class="icon" id="catFic"></div>
-                    </li>
-                    <li>
-                        <div class='categoriesCover'></div>
-                        <div class="icon" id="catDrama"></div>
-                    </li>
-                    <li>
-                        <div class='categoriesCover'></div>
-                        <div class="icon" id="catSport"></div>
-                    </li>
+                    <a href='/explore/category/1'>
+                        <li id='bgAction'>
+                            <div class='categoriesCover'></div>
+                            <div class="icon" id="catAction"></div>
+                        </li>
+                    </a>
+                    
+                    <a href='/explore/category/3'>
+                        <li id='bgComedy'>
+                            <div class='categoriesCover'></div>
+                            <div class="icon" id="catComedy"></div>
+                        </li>
+                    </a>
+                    
+                    <a href='/explore/category/9'>
+                        <li id='bgHorror'>
+                            <div class='categoriesCover'></div>
+                            <div class="icon" id="catHorror"></div>
+                        </li>
+                    </a>
+                    
+                    <a href='/explore/category/8'>
+                        <li id='bgHero'>
+                            <div class='categoriesCover'></div>
+                            <div class="icon" id="catHero"></div>
+                        </li>
+                    </a>
+                    
+                    <a href='/explore/category/2'>
+                        <li id='bgBiblio'>
+                            <div class='categoriesCover'></div>
+                            <div class="icon" id="catBibliography"></div>
+                        </li>
+                    </a>
+                    
+                    <a href='/explore/category/7'>
+                        <li id='bgHistory'>
+                            <div class='categoriesCover'></div>
+                            <div class="icon" id="catHistory"></div>
+                        </li>
+                    </a>
+                    
+                    
+                    <a href='/explore/category/10'>
+                        <li id='bgTirinhas'>
+                            <div class='categoriesCover'></div>
+                            <div class="icon" id="catTirinhas"></div>
+                        </li>
+                    </a>
+                    
+                    <a href='/explore/category/6'>
+                        <li id='bgFic'>
+                            <div class='categoriesCover'></div>
+                            <div class="icon" id="catFic"></div>
+                        </li>
+                    </a>
+                    
+                    <a href='/explore/category/4'>
+                        <li id='bgDrama'>
+                            <div class='categoriesCover'></div>
+                            <div class="icon" id="catDrama"></div>
+                        </li>
+                    </a>
+                    
+                    <a href='/explore/category/5'>
+                        <li id='bgSport'>
+                            <div class='categoriesCover'></div>
+                            <div class="icon" id="catSport"></div>
+                        </li>
+                    </a>
                 </ul>
             </div>
         </div>

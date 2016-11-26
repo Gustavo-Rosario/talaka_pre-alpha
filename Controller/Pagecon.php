@@ -36,6 +36,16 @@ class Pagecon{
         $this->page->load("../view/footer.php");
     }
     
+    
+    public function explorecatGET($id){
+        $data = $this->page->curl("/exec/visitor/cat/".$id);
+        $nm = System::getCategory($id);
+        $data['termo'] = 'Categoria procurado : "'.$nm.'"';
+        $this->page->load("../view/nav.php",array("pag_title" =>$nm));
+        $this->page->load("../view/explore.php",array("data" =>$data));
+        $this->page->load("../view/footer.php");
+    }
+    
     //Especial
     public function visitGET($id){
         $this->page->curl("/exec/visitor/visitation/".$id,"PUT");

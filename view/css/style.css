@@ -304,6 +304,7 @@ footer {
     color: #fff;
     font-size: 1.2em;
     bottom:0;
+    padding-bottom:15px;
 }
 footer ul {
     width: 270px;
@@ -595,6 +596,10 @@ footer li:nth-child(3) {
     border: 1px solid #eee;
     border-radius: .4em;
     position: relative;
+    transition:.5s;
+}
+.eachProject:hover{
+    border:1px solid #1369A1;
 }
 .eachProjectCover {
     width: 100%;
@@ -603,6 +608,9 @@ footer li:nth-child(3) {
     background-repeat: no-repeat;
     background-size: cover;
     background-repeat: no-repeat;
+}
+.eachProject p {
+    margin:0;
 }
 .eachProjectInfo {
     padding: 10px 15px;
@@ -711,7 +719,7 @@ nav {
     background-color: #fff;
     box-shadow: 0 0 5px rgba(0, 0, 0, .1);
     padding: 15px 0;
-    z-index:10;
+    z-index:100;
     position:fixed;
     top:0;
 }
@@ -883,7 +891,7 @@ nav li:last-child {
     cursor: pointer;
 }
 .projectIndex h1 {
-    margin: 10px 0 0 0;
+    margin: 15px 0 0 0;
 }
 .btns {
     width: 100%;
@@ -1171,34 +1179,38 @@ li b {
     background-color:rgba(0,0,0,.3)
     
 }
-#categories li:nth-child(1){
+#categories a {
+    margin:0;
+    padding:0;
+}
+#bgAction{
     background-image:url(../images/Acao.jpg);
 }
-#categories li:nth-child(2){
+#bgComedy{
     background-image:url(../images/Comedia.jpg);
 }
-#categories li:nth-child(3){
+#bgHorror{
     background-image:url(../images/Terror.jpg);
 }
-#categories li:nth-child(4){
+#bgHero{
     background-image:url(../images/SuperHeroi.jpg);
 }
-#categories li:nth-child(5){
+#bgBiblio{
     background-image:url(../images/Bibliografico.JPG);
 }
-#categories li:nth-child(6){
+#bgHistory{
     background-image:url(../images/Literatura.jpg);
 }
-#categories li:nth-child(7){
+#bgTirinhas{
     background-image:url(../images/Tirinha.jpg);
 }
-#categories li:nth-child(8){
+#bgFic{
     background-image:url(../images/FicaoCientifica.jpg);
 }
-#categories li:nth-child(9){
+#bgDrama{
     background-image:url(../images/Drama.jpg);
 }
-#categories li:nth-child(10){
+#bgSport{
     background-image:url(../images/Esporte.jpg);
 }
 #categories .icon {
@@ -1306,12 +1318,12 @@ li b {
 #catSport:before {
     content: 'Esporte'
 }
-#categories li:nth-child(1),
-#categories li:nth-child(6) {
+#categories a:nth-child(1) li,
+#categories a:nth-child(6) li {
     margin-left: 0;
 }
-#categories li:nth-child(5),
-#categories li:nth-child(10) {
+#categories a:nth-child(5) li,
+#categories a:nth-child(10) li {
     margin-right: 0;
 }
 #sectPeople, #sectStart{
@@ -2055,4 +2067,73 @@ span.menu {
     border:0;
     cursor:pointer;
     font-size:1.6em;
+}
+
+/*Capa do projeto*/
+#projectPageCover{
+    width:100%;
+    height:500px;
+    background-color:orange;
+    position:absolute;
+    z-index:-1;
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#projectPageCoverColour{
+    width:100%;
+    height:100%;
+    position: relative;
+    background: -moz-linear-gradient(top, rgba(213,14,101,0.7) 0%, rgba(213,14,101,0.5) 43%, rgba(213,18,104,0.5) 44%, rgba(237,242,245,1) 100%);
+background: -webkit-linear-gradient(top, rgba(213,14,101,0.7) 0%,rgba(213,14,101,0.5) 43%,rgba(213,18,104,0.5) 44%,rgba(237,242,245,1) 100%);
+background: linear-gradient(to bottom, rgba(213,14,101,0.7) 0%,rgba(213,14,101,0.5) 43%,rgba(213,18,104,0.5) 44%,rgba(237,242,245,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3d50e65', endColorstr='#edf2f5',GradientType=0 );
+}
+
+
+    a:hover{
+       color: #D50C7E; 
+    }
+    
+    .new-tab-link {
+  padding-right: 14px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3ggXDSIzCeRHfQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAA9SURBVBjTY2RAA/+XMvxHF2NkwAOwacCq4P9Shv8suFQzRiNsYUEXwKoJ2VhkNrIaJgYiAAs2N2BVRMirAD6JHi10MCdVAAAAAElFTkSuQmCC) no-repeat right center;
+}
+.circles {
+  margin-bottom: -10px;
+}
+
+.circle {
+  width: 100px;
+  margin: 6px 6px 20px;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.circle canvas {
+  vertical-align: top;
+}
+
+.circle strong {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  line-height: 40px;
+  font-size: 30px;
+}
+
+.circle strong i {
+  font-style: normal;
+  font-size: 0.6em;
+  font-weight: normal;
+}
+
+.circle span {
+  display: block;
+  color: #aaa;
+  margin-top: 12px;
 }

@@ -1,10 +1,10 @@
 <?php
-session_start();
+defined("System-access") or exit("Não permitido o acesso direto");
 ?>
     <div id="container">
         <div id="searchText">
             <div class="wrapper">
-                <h1>Termo procurado:  "<?= $data['termo'];?>"</h1>
+                <h1><?= $data['termo'];?></h1>
             </div>
         </div>
 
@@ -16,7 +16,9 @@ session_start();
             ?>
             <a <?= 'href="https://'.$_SERVER['HTTP_HOST'].'/project/'.$data['d'.$a]->id.'"';?>>
             <div class="eachProject">
-                <div class='eachProjectCover' <?php echo 'style="background-image:url(../../proj-img/'.$data['d'.$a]->img.')"' ?>></div>
+                <div class='eachProjectCover' <?php echo 'style="background-image:url(/proj-img/'.$data['d'.$a]->img.')"' ?>>
+                    <div class="projectOwner" <?php echo 'style="background-image:url(/user-img/'.$data['d'.$a]->imgU.')"' ?>></div>
+                </div>
                 <div class="eachProjectInfo">
                     <p><?= System::getCategory($data['d'.$a]->idC);?></p>
                     <h2><?= $data['d'.$a]->title;?></h2>
