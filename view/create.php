@@ -1,25 +1,13 @@
-<!-- <?php
-// defined("System-access") or exit("Não permitido o acesso direto");
-// ?>
--->
-<head>
-    <meta charset="UTF-8">
-    <link href="/view/css/style.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:100,400,700" rel="stylesheet">
-    <script src='/view/js/jquery.min.js' type='text/javascript'></script>
-    <script src='/view/js/script.js' type='text/javascript'></script>
-    <title>
-        TALAKA - 
-    </title>
-</head>
-
+<?php
+defined("System-access") or exit("Não permitido o acesso direto");
+?>
 <div id="container">
     <div id="bannerPublish">
         <div id="bannerPublishCover"></div>
         <div class="wrapper">
             <h1>Talaka é uma plataforma para incentivo de quadrinhos nacionais</h1>
             <h2>Inicie sua campanha. Incentive sua arte.</h2>
-            <button>Crie sua campanha</button>
+            <?= (isset($_SESSION['cdUser']))?'<a href="/newProject"><button>Crie sua campanha</button></a>' : '<a href="/signin"><button>Faça Login</button></a>' ;?>
         </div>
     </div>
     <section id="advantages" class='wrapper'>

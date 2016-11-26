@@ -1,9 +1,3 @@
-<?php
-session_start();
-if(isset($_SESSION['cdUser'])){
-    header('location:/');
-}else{
-?>
 <!DOCTYPE html>
 <html>
 
@@ -45,9 +39,5 @@ if(isset($_SESSION['cdUser'])){
             <input type="submit" value="Cadastrar">
         </form>
     </div>
-</body> 
-
+</body>
 </html>
-<?php
-}
-?>

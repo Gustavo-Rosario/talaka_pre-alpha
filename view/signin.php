@@ -1,9 +1,3 @@
-<?php
-session_start();
-if(isset($_SESSION['cdUser'])){
-    header("location: /");
-}else{
-?>
 <!DOCTYPE html>
 <html>
 
@@ -18,7 +12,7 @@ if(isset($_SESSION['cdUser'])){
 
 <body>
     <div id="help">
-        Você não possui uma conta? <span><a style="text-decoration: none; color: white" href="/cadastrar"> Crie uma </a></span>
+        Você não possui uma conta? <span><a style="text-decoration: none; color: white" href="/signup"> Crie uma </a></span>
         <a href="#"> Precisa de ajuda? </a>
     </div>
 
@@ -45,6 +39,3 @@ if(isset($_SESSION['cdUser'])){
     </div>
 </body>
 </html>
-<?php
-}
-?>

@@ -42,7 +42,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
                         </div>
                         </div>
                         <div id="publish">
-                           <button>Criar campanha</button>
+                           <a href="/campaign"><button>Criar campanha</button></a>
                         </div>
                     </div>
                     
@@ -55,9 +55,9 @@ defined("System-access") or exit("Não permitido o acesso direto");
                 ?>
                         <div class="userlogin">
                             <span>Você não possui uma conta? <br>
-                        <a href="/cadastrar">Crie uma </a>
+                        <a href="/signup">Crie uma </a>
                         ou 
-                        <a href="/login">Logue-se </a>
+                        <a href="/signin">Logue-se </a>
                     </span>
 
                         </div>

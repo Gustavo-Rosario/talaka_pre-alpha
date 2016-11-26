@@ -9,11 +9,12 @@ class Pagecon{
     
     public function __construct($bd){
         //$bd nao sera utilizado
+        session_start();
         $this->page = new Page();
         define("System-access","Allow",TRUE);
     }
     
-    public function indexGET(){
+    public function index(){
         $data = $this->page->curl("/exec/visitor/pesqOld/4");
         $project = $this->page->curl("/exec/visitor/pesqOld/6");
         $this->page->load("../view/nav.php",array("pag_title" =>"Home"));
@@ -21,14 +22,14 @@ class Pagecon{
         $this->page->load("../view/footer.php");
     }
     
-    public function projectGET($id){
+    public function project($id){
         $data = $this->page->curl("/exec/visitor/project/".$id);
         $this->page->load("../view/nav.php",array("pag_title" =>"Projeto"));
         $this->page->load("../view/hqproject.php",$data);
         $this->page->load("../view/footer.php");
     }
     
-    public function exploreGET($termo){
+    public function explore($termo){
         $t= str_replace(" ","%2520",$termo);
         $data = $this->page->curl("/exec/visitor/pesqName/".$t);
         $this->page->load("../view/nav.php",array("pag_title" =>"Pesquisa"));
@@ -37,7 +38,7 @@ class Pagecon{
     }
     
     
-    public function explorecatGET($id){
+    public function explorecat($id){
         $data = $this->page->curl("/exec/visitor/cat/".$id);
         $nm = System::getCategory($id);
         $data['termo'] = 'Categoria procurado : "'.$nm.'"';
@@ -46,8 +47,36 @@ class Pagecon{
         $this->page->load("../view/footer.php");
     }
     
+    public function signup(){
+        if(!isset($_SESSION['cdUser'])){
+            $this->page->load("../view/signup.php");
+        }else{
+            header("location: /");
+        }
+    }
+    
+    public function signin(){
+        if(!isset($_SESSION['cdUser'])){
+            $this->page->load("../view/signin.php");
+        }else{
+            header("location:/");
+        }
+    }
+    
+    public function campaign(){
+        $this->page->load("../view/nav.php");
+        $this->page->load("../view/create.php");
+        $this->page->load("../view/footer.php");
+    }
+    
+    public function newProject(){
+        $this->page->load("../view/nav.php");
+        $this->page->load("../view/publish.php");
+        $this->page->load("../view/footer.php");
+    }
+    
     //Especial
-    public function visitGET($id){
+    public function visit($id){
         $this->page->curl("/exec/visitor/visitation/".$id,"PUT");
         return json_encode(array("stats"=>"success","data"=>null));
     }

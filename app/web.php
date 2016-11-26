@@ -14,13 +14,7 @@ $obj = new $class($class);
 $met = $_GET['met'];
 $arg0 = $_GET['arg0'];
 $httpM = $_SERVER['REQUEST_METHOD'];
-$method = $met.$httpM;
-/*
-echo "Classe: ".$class."<br>".
-     "Metodo: ".$met."<br>".
-     "Arg: ".$arg0."<br>".
-     "HTTPM: ".$httpM;
-*/
+$method = ($class === "Pagecon" )? $met : $met.$httpM;
 //Exemplos de curl
 //Insere User
 //curl -v -X POST "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/visitor/user" -H "Content-Type: application/json"  -d '{"nm_user":"Mikasa Ackerman","ds_login":"mikasa@gmail.com","ds_pwd":"1234","ds_path_img":"mikasa.jpg","dt_birth":"1999-03-11"}'
@@ -36,15 +30,11 @@ echo "Classe: ".$class."<br>".
 //curl -v -X GET "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/visitor/pesqOld/4"
 //Login
 //curl -v -X POST "http://talaka-pre-alpha-gmastersupreme.c9users.io/exec/client/auth" -H "Content-Type: application/json"  -d '{"login":"eren@gmail.com","pwd":"teste"}'
-if(isset($arg0)){
-    $resp = json_decode($obj->$method($arg0));
-}else{
-    $resp = json_decode($obj->$method());
-}
+$resp = (isset($arg0))?  json_decode($obj->$method($arg0)) : json_decode($obj->$method());
 /*
 Para o Listar
 $ob = json_decode($resp->data);
 echo $ob->d1->login . "\n";
 */
-echo json_encode($resp);
+echo ($class === "Pagecon" )? ""  : json_encode($resp);
 ?>

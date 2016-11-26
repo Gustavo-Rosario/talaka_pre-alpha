@@ -232,6 +232,6 @@ defined("System-access") or exit("Não permitido o acesso direto");
                     Descubra novas campanhas de financiamento ou comece sua própria campanha para criar seus projetos.
                 </p>
                 <button>Explorar campanhas</button>
-                <button>Começar campanha</button>
+                <a href="/campaign"><button>Começar campanha</button></a>
             </div>
         </div>
