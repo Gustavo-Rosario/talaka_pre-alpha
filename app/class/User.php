@@ -44,6 +44,15 @@ abstract class User{
         return json_encode(array("stats" => $resp, "data" => $data));
     }
     
+    //Especial
+    public function visitationPUT($id){
+        $num = (int)json_decode($this->db->consultarProject($id))->visit;
+        $obj = (object)array("qt_visitation" => ($num + 1));
+        $where = array("cd_project"=>$id);
+        $r = ($this->db->alterar("Project",$obj,$where))? "success" : "fail";
+        return json_encode(array("stats"=>"success","data"=>$r));
+    }
+    
     /*
     public static function auth(){
         session_start();

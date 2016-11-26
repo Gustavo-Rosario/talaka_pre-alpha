@@ -1,7 +1,8 @@
 <?php
 defined("System-access") or exit("Não permitido o acesso direto");
-?>
-     
+?>    
+    <script type="text/javascript" src="/view/js/visit.js"></script>
+    <?= '<span id="projectID" style="display:none">'.$id.';</span>';?>
     <?php   if (isset($_SESSION['cdUser'])){ ?>
     <div id='financeWrapper'>
         <div id="financeClose"></div>

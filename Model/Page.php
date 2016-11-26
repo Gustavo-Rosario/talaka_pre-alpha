@@ -25,8 +25,6 @@ class Page{
             return "cURL Error #:" . $err;
         }else{
             $obj = json_decode($response);
-            //print_r((array)json_decode($obj->data));
-            //return extract( (array)json_decode($obj->data) );
             return (array)json_decode($obj->data);
         }
     }

@@ -36,6 +36,12 @@ class Pagecon{
         $this->page->load("../view/footer.php");
     }
     
+    //Especial
+    public function visitGET($id){
+        $this->page->curl("/exec/visitor/visitation/".$id,"PUT");
+        return json_encode(array("stats"=>"success","data"=>null));
+    }
+    
 }
 
 

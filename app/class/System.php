@@ -101,16 +101,16 @@
         }
         
         public function consultarProject($id){
-            $stm = $this->con->prepare("SELECT p.nm_title,p.ds_project,p.ds_path_img,p.vl_meta,p.vl_collected,p.dt_begin,p.dt_final,u.nm_user, count(f.cd_user) total 
+            $stm = $this->con->prepare("SELECT p.nm_title,p.ds_project,p.ds_path_img,p.vl_meta,p.vl_collected,p.dt_begin,p.dt_final,u.nm_user,p.qt_visitation, count(f.cd_user) total 
             FROM Project as p, User as u, Financing as f 
             WHERE p.cd_user = u.cd_user 
             AND p.cd_project = f.cd_project
             AND p.cd_project = ?") or die("Erro 1".$this->con->error.http_response_code(405));
             $stm->bind_param("i",$id) or die("Erro 2".$stm->error.http_response_code(405));
             $stm->execute()or die("Erro 3".$stm->error.http_response_code(405));
-            $stm->bind_result($title,$ds,$img,$vlM,$vlC,$dtB,$dtF,$creator,$total);
+            $stm->bind_result($title,$ds,$img,$vlM,$vlC,$dtB,$dtF,$creator,$visit,$total);
             $stm->fetch();
-            $resp = json_encode( array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"total"=>$total) )or die("Erro no json");
+            $resp = json_encode( array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"visit"=>$visit,"total"=>$total) )or die("Erro no json");
             return $resp;
         }
         
@@ -121,7 +121,7 @@
             ORDER BY dif DESC 
             LIMIT ?") or die("Erro 1".$con->error.http_response_code(405));
             $stm->bind_param("i",$num);
-            $stm->execute()or die("Erro 2".$stm->error.http_response_code(405));
+            $stm->execute()or die("Erro 2".$stm->error." ".http_response_code(405));
             $stm->bind_result($id,$title,$ds,$img,$vlM,$vlC,$dtB,$dtF,$creator,$imgB,$imgU,$percent);
             $r = array();
             $i = 1;

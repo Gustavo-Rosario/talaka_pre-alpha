@@ -10,12 +10,6 @@ defined("System-access") or exit("Não permitido o acesso direto");
   padding-right: 14px;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3ggXDSIzCeRHfQAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAA9SURBVBjTY2RAA/+XMvxHF2NkwAOwacCq4P9Shv8suFQzRiNsYUEXwKoJ2VhkNrIaJgYiAAs2N2BVRMirAD6JHi10MCdVAAAAAElFTkSuQmCC) no-repeat right center;
 }
-
-.page-title {
-  font: 400 40px/1.5 Open Sans, sans-serif;
-  text-align: center;
-}
-
 .circles {
   margin-bottom: -10px;
 }

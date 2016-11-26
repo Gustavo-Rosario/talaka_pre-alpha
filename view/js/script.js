@@ -17,7 +17,7 @@ function fin(project){
     }).done(function(response){
         var r = JSON.parse(response);
         if(r.stats === "success"){
-            alert('Financiado com sucesso');
+            alert('Financiado com sucess');
             location.reload();
         }else{
             alert('deu ruim');
