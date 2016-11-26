@@ -25,12 +25,12 @@ abstract class User{
     }
     
     public function pesqNameGET($name){
-        $resp = ( $data = $this->db->pesqProject($name) )?"success" : "fail_select";
+        $resp = ( $data = $this->db->pesqProject($name) )? "success" : "fail_select";
         return json_encode(array("stats" => $resp, "data" => $data));
     }
     
     public function pesqOldGET($num){
-        $resp = ( $data = $this->db->listProject($num) )?"success" : "fail_select";
+        $resp = ($data = $this->db->listProject($num) )? "success" : "fail_select";
         return json_encode(array("stats" => $resp, "data" => $data));
     }
     

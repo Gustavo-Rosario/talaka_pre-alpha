@@ -14,11 +14,11 @@ session_start();
                 for($a = 0; $a < (count($data) - 2); $a++){ 
                     $percent = (($data['d'.$a]->collected) * 100)/ $data['d'.$a]->meta;
             ?>
-            <a <?= 'href="https://talaka-pre-alpha-gmastersupreme.c9users.io/project/'.$data['d'.$a]->id.'"';?>>
+            <a <?= 'href="https://'.$_SERVER['HTTP_HOST'].'/project/'.$data['d'.$a]->id.'"';?>>
             <div class="eachProject">
                 <div class='eachProjectCover' <?php echo 'style="background-image:url(../../proj-img/'.$data['d'.$a]->img.')"' ?>></div>
                 <div class="eachProjectInfo">
-                    <p>tag</p>
+                    <p><?= System::getCategory($data['d'.$a]->idC);?></p>
                     <h2><?= $data['d'.$a]->title;?></h2>
                     <p> <?=  (strlen($data['d'.$a]->ds) > 300)? substr($data['d'.$a]->ds,0,300)." (...)" : $data['d'.$a]->ds;
                     ?> </p>

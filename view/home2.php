@@ -130,11 +130,11 @@ p {
                                 for($b = 1; $b <= (count($project)); $b++){ 
                                     $percent = (($project['d'.$b]->collected) * 100)/ $project['d'.$b]->meta;
                             ?>
-                            <a <?= 'href="https://talaka-pre-alpha-gmastersupreme.c9users.io/project/'.$project['d'.$b]->id.'"';?>>
+                            <a <?= 'href="https://'.$_SERVER['HTTP_HOST'].'/project/'.$project['d'.$b]->id.'"';?>>
                             <div class="eachProject">
                                 <div class='eachProjectCover' <?= 'style="background-image:url(../../proj-img/'.$project['d'.$b]->img.')"' ?>></div>
                                 <div class="eachProjectInfo">
-                                    <p>tag</p>
+                                    <p><?= System::getCategory($project['d'.$b]->idC);?></p>
                                     <h2><?= $project['d'.$b]->title;?></h2>
                                     <p> <?=  (strlen($project['d'.$b]->ds) > 300)? substr($project['d'.$b]->ds,0,300)." (...)" : $project['d'.$b]->ds;
                                     ?> </p>
