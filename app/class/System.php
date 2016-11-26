@@ -101,32 +101,34 @@
         }
         
         public function consultarProject($id){
-            $stm = $this->con->prepare("SELECT p.nm_title,p.ds_project,p.ds_path_img,p.vl_meta,p.vl_collected,p.dt_begin,p.dt_final,u.nm_user,p.qt_visitation, count(f.cd_user) total 
-            FROM Project as p, User as u, Financing as f 
+            $stm = $this->con->prepare("SELECT p.nm_title,p.ds_project,p.ds_path_img,p.vl_meta,p.vl_collected,p.dt_begin,p.dt_final,u.nm_user,p.qt_visitation,c.nm_category,count(f.cd_user) total 
+            FROM Project as p, User as u, Financing as f, Category as c
             WHERE p.cd_user = u.cd_user 
+            AND p.cd_category = c.cd_category
             AND p.cd_project = f.cd_project
             AND p.cd_project = ?") or die("Erro 1".$this->con->error.http_response_code(405));
             $stm->bind_param("i",$id) or die("Erro 2".$stm->error.http_response_code(405));
             $stm->execute()or die("Erro 3".$stm->error.http_response_code(405));
-            $stm->bind_result($title,$ds,$img,$vlM,$vlC,$dtB,$dtF,$creator,$visit,$total);
+            $stm->bind_result($title,$ds,$img,$vlM,$vlC,$dtB,$dtF,$creator,$visit,$category,$total);
             $stm->fetch();
-            $resp = json_encode( array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"visit"=>$visit,"total"=>$total) )or die("Erro no json");
+            $resp = json_encode( array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"visit"=>$visit,"category"=>$category,"total"=>$total) )or die("Erro no json");
             return $resp;
         }
         
         public function listProject($num){
-            $stm = $this->con->prepare("SELECT p.cd_project, p.nm_title, p.ds_project, p.ds_path_img, p.vl_meta, p.vl_collected, p.dt_begin, p.dt_final, u.nm_user, p.ds_img_back, u.ds_path_img, ((p.vl_collected*100) / p.vl_meta) dif
-            FROM Project AS p, User AS u
+            $stm = $this->con->prepare("SELECT p.cd_project, p.nm_title, p.ds_project, p.ds_path_img, p.vl_meta, p.vl_collected, p.dt_begin, p.dt_final, u.nm_user, p.ds_img_back, u.ds_path_img, c.nm_category, ((p.vl_collected*100) / p.vl_meta) dif
+            FROM Project AS p, User AS u, Category AS c
             WHERE p.cd_user = u.cd_user
+            AND p.cd_category = c.cd_category
             ORDER BY dif DESC 
             LIMIT ?") or die("Erro 1".$con->error.http_response_code(405));
             $stm->bind_param("i",$num);
-            $stm->execute()or die("Erro 2".$stm->error." ".http_response_code(405));
-            $stm->bind_result($id,$title,$ds,$img,$vlM,$vlC,$dtB,$dtF,$creator,$imgB,$imgU,$percent);
+            $stm->execute()or die("Erro 2".$stm->error.http_response_code(405));
+            $stm->bind_result($id,$title,$ds,$img,$vlM,$vlC,$dtB,$dtF,$creator,$imgB,$imgU,$category,$percent);
             $r = array();
             $i = 1;
             while($stm->fetch()){
-                $r["d".$i] = array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"imgB"=>$imgB,"imgU"=>$imgU,"percent"=>$percent) or die("Erro no json");
+                $r["d".$i] = array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"imgB"=>$imgB,"imgU"=>$imgU,"category"=>$category,"percent"=>$percent) or die("Erro no json");
                 $i++;
             }
             return json_encode($r);
@@ -134,14 +136,18 @@
         
         public function pesqProject($termo){
             $name = "%".$termo."%";
-            $stm = $this->con->prepare("SELECT cd_project,nm_title,ds_project,vl_meta,vl_collected,dt_final,ds_path_img FROM Project WHERE nm_title LIKE ? LIMIT 6 ") or die("Erro 1".$con->error.http_response_code(405));
+            $stm = $this->con->prepare("SELECT p.cd_project, p.nm_title, p.ds_project, p.vl_meta, p.vl_collected, p.dt_final, p.ds_path_img, c.nm_category
+            FROM Project as p, Category as c
+            WHERE p.nm_title LIKE ?
+            AND p.cd_category = c.cd_category
+            LIMIT 6 ") or die("Erro 1".$con->error.http_response_code(405));
             $stm->bind_param("s",$name)or die("Erro 2".$stm->error.http_response_code(405));
             $stm->execute()or die("Erro 3".$stm->error.http_response_code(405));
-            $stm->bind_result($id,$title,$ds,$vlM,$vlC,$dt,$img);
+            $stm->bind_result($id,$title,$ds,$vlM,$vlC,$dt,$img,$category);
             $r = array();
             $i = 0;
             while($stm->fetch()){
-                $r["d".$i] = array("id" => $id, "title" => $title, "ds" => utf8_encode($ds), "meta" => $vlM,"collected" => $vlC, "img"=>$img, "dt"=>$dt);
+                $r["d".$i] = array("id" => $id, "title" => $title, "ds" => utf8_encode($ds), "meta" => $vlM,"collected" => $vlC, "img"=>$img, "dt"=>$dt, "category"=>$category);
                 $i++;
             }
             $r["total"] = $i;
