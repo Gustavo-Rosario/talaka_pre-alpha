@@ -81,7 +81,19 @@ function main() {
        $('#financeWrapper').fadeOut('slow');
     });
     
-    
+    $('#fixedMenu').click(function(){
+        var aside = $('aside').css('left');
+       if (aside === '-17%'){
+            $('aside').show();
+            $('aside').css('left','0');
+            $('#allStatistic').css('width','83%');
+       } else {
+           $('aside').css('left','-17%');
+           $('aside').hide();
+            $('#allStatistic').css('width','100%');$(this).css('left','2%');
+            
+       }
+    });
     
     $("#login-button").click(function(){
                 var login = $("input[name='email']").val();
