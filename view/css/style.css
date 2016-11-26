@@ -301,17 +301,19 @@ footer {
     text-align: Center;
     background-color: #A50249;
     position: relative;
-    height: 160px;
     color: #fff;
     font-size: 1.2em;
     bottom:0;
 }
 footer ul {
-    position: absolute;
     width: 270px;
-    left: 50%;
-    margin-left: -135px;
+    margin:auto;
+    display:table;
 }
+footer p {
+    margin:0;
+}
+
 footer li {
     float: left;
     width: 50px;
@@ -1892,4 +1894,165 @@ span.menu {
 
 #iconprojects{
     background-image:url(../images/school.png);
+}
+
+/*Alterar informações de usuário*/
+.bg {
+    background-color:#fff;
+    padding:10px 0;
+}
+#profileUser, #profileInfos {
+    float:left;
+    padding:10px 0;
+}
+#profileUser {
+    width:30%;
+    height:100%;
+    text-align:center;
+    font-size:1.2em;
+}
+#profileInfos{
+    width:70%;
+    height:100%;
+}
+#profileAlter h1{
+    margin:0;
+    text-align:center;
+    font-size:1.4em;
+    color:#3A0E85;
+}
+#alterPhoto {
+    width:80px;
+    height:80px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-color:purple;
+    margin: 15px auto;
+    border-radius:50%;
+}
+#profileAlter h2 {
+    color:#D50E65;
+    margin:0;
+    font-weight:400;
+}
+#profileAlter h3 {
+    color:#333;
+    margin:3px;
+    font-weight: 100
+}
+
+#profileUser ul{
+    width:100%;
+    margin: 20px 0;
+}
+#profileUser li {
+    width:50%;
+    float:left;
+}
+#profileUser li p span{
+    display:block;
+    font-size:2em;
+    color:#1369A1;
+}
+#upload{
+    display:none;
+}
+#profileUser label, #profileUser input[type='button'] {
+    width:50%;
+    padding:10px 15px;
+    text-transform: uppercase;
+    display:block;
+    border-radius:1em;
+    margin:5px auto 15px auto;
+    color:#fff;
+    cursor: pointer;
+}
+#profileUser label{
+    background-color:#D50E65;
+}
+#profileUser input[type='button']{
+    border:3px solid #D50E65;
+    background-color:transparent;
+    color:#D50E65;
+    width:60%;
+}
+#profileUser form{
+    margin-bottom:50px;
+}
+#profileInfos h1, #profileInfos h2, #profileInfos h3  {
+    text-align:left;
+}
+#profileInfos h1{
+    border-bottom:1px solid grey;
+    padding-bottom:20px;
+}
+#profileInfos h1:not(:first-child){
+    margin-top:50px;
+}
+#profileInfos label {
+    display:block;
+    font-size:1.3em;
+    margin:10px 0 5px 0;
+    text-transform: uppercase;
+    color:#1369A1;
+}
+#profileInfos input, #profileInfos textarea {
+    width:98%;
+    padding:1.5% 1%;
+    border:1px solid #D50E65;
+    border-radius:.4em;
+    resize: vertical;
+    color:#1369A1;
+}
+#profileInfos input, #profileInfos textarea::-webkit-input-placeholder {
+    color: #EE84B3;
+    font-family: 'Roboto', sans-serif;
+}
+#profileInfos input, #profileInfos textarea:-moz-placeholder {
+    color: #EE84B3;
+    font-family: 'Roboto', sans-serif;
+}
+#profileInfos input, #profileInfos textarea::-moz-placeholder {
+    color: #EE84B3;
+    font-family: 'Roboto', sans-serif;
+}
+#profileInfos input, #profileInfos textarea:-ms-input-placeholder {
+    color: #EE84B3;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+#profileInfos input, #profileInfos input::-webkit-input-placeholder {
+    color: #EE84B3;
+    font-family: 'Roboto', sans-serif;
+}
+#profileInfos input, #profileInfos input:-moz-placeholder {
+    color: #EE84B3;
+    font-family: 'Roboto', sans-serif;
+}
+#profileInfos input, #profileInfos input::-moz-placeholder {
+    color: #EE84B3;
+    font-family: 'Roboto', sans-serif;
+}
+#profileInfos input, #profileInfos input:-ms-input-placeholder {
+    color: #EE84B3;
+    font-family: 'Roboto', sans-serif;
+}
+
+#profileInfos textarea {
+    min-height:200px;
+    max-height:300px;
+    font-family:'roboto';
+}
+#profileInfos button {
+    float:right;
+    margin:15px 20px 15px 0;
+    background-color:#D50E65;
+    color:#fff;
+    font-weight: bold;
+    padding:10px 20px;
+    border:0;
+    cursor:pointer;
+    font-size:1.6em;
 }

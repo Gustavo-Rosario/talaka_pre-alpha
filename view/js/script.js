@@ -62,6 +62,10 @@ function validator(){
         }
 
 function main() {
+    $('#sectProjects li').click(function(){
+       $('#sectProjects li').css('border-bottom','3px solid #fff');
+       $(this).css('border-bottom','3px solid #094F7D');
+    });
     $("#userloginName").click(function() {
         $("#options").slideToggle();
     });
