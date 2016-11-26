@@ -31,16 +31,21 @@ body {
 }
 #help,
 #areaLogin {
-    color: #fff
+    color: #fff;
 }
 #help {
-    float: right;
+    width:100%;
+    margin:0;
+    text-align:right;
+    padding:15px 0;
+    font-size:1.4em;
 }
 #help span {
     padding: 5px 7.5px;
     border-radius: 3px;
     color: #fff;
-    background-color: #683AB7;
+    background-color: #D50E65;
+    margin:0 10px;
 }
 #help a,
 #areaLogin a {
@@ -48,15 +53,18 @@ body {
     color: #327DAD;
 }
 #areaLogin {
-    width: 320px;
-    height: 405px;
+    width: 290px;
+    height: 420px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -202.5px;
-    margin-left: -160px;
+    margin-top: -210px;
+    margin-left: -145px;
     font-size: 1.4em;
-    color: #777
+    color: #777;
+    padding:0 15px 10px 15px;
+    border-radius:3px;
+    background-color:#fff;
 }
 #areaLogin p {
     text-align: center;
@@ -346,7 +354,8 @@ footer li:nth-child(3) {
     border: 3px solid #DC367F;
     position: absolute;
     left: 50%;
-    top: 5%;
+    top:50%;
+    margin-top:-255px;
     margin-left: -250px;
     font-size: 1em;
     display: table;
@@ -2138,4 +2147,37 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3d50e65', e
   display: block;
   color: #aaa;
   margin-top: 12px;
+}
+
+/*Página de erro*/
+.error, .char {
+    float:left;
+    width:50%;
+    height:300px;
+    font-size:1.5em;
+}
+.error h1, .error h2, .error h3{
+    font-weight:100;
+}
+.error h1{
+    font-size:3em;
+}
+.char{
+    background-image:url(../images/bball.gif);
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:cover;
+    height:400px;
+}
+#bgForms{
+    width:100%;
+    height:100%;
+    position:absolute;
+    z-index:-10;
+    background-image:url(../images/bgfull.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    position:fixed;
+    top:0;
 }

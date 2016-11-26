@@ -17,6 +17,7 @@ if(isset($_SESSION['cdUser'])){
 </head>
 
 <body>
+    <div id='bgForms'>
     <div id="signup">
         <div id="signupStep">
             <div class="step"></div>
@@ -44,6 +45,7 @@ if(isset($_SESSION['cdUser'])){
             -->
             <input type="submit" value="Cadastrar">
         </form>
+    </div>
     </div>
 </body> 
 
