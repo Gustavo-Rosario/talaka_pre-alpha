@@ -254,15 +254,17 @@ section {
     margin: 0;
     padding: 0;
 }
-.socialnetwork li {
+#socialnetwork li {
     float: left;
     width: 45px;
     height: 45px;
     border: 1px solid #fff;
-    margin: 0 10px
+    margin: 0 10px;
+    border-radius:50%;
+    border:1px solid #1369A1;
 }
 #projectDescription ul {
-    border-bottom: 3px solid purple;
+    border-bottom: 3px solid #1369A1;
     width: 103%;
 }
 #projectDescription li {
@@ -276,7 +278,7 @@ section {
 #projectDescription li:first-child {
     margin-left: 0;
     color: #fff;
-    background-color: purple;
+    background-color: #1369A1;
 }
 #info {
     font-size: 1.3em;

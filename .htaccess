@@ -4,7 +4,7 @@ RewriteEngine On
 #Header set Access-Control-Allow-Headers: "origin,Content-Type"
 RewriteRule ^exec/([A-Za-z]+)/([A-Za-z]+)/?$ app/web.php?class=$1&met=$2
 RewriteRule ^project/([0-9]+)/?$ app/web.php?class=Pagecon&met=project&arg0=$1
-RewriteRule ^explore/name/([A-Za-z\s]+)/?$ app/web.php?class=Pagecon&met=explore&arg0=$1
+RewriteRule ^explore/name/([A-Za-z0-9\s]+)/?$ app/web.php?class=Pagecon&met=explore&arg0=$1
 RewriteRule ^explore/category/([0-9\s]+)/?$ app/web.php?class=Pagecon&met=explorecat&arg0=$1
 RewriteRule ^/?$ app/web.php?class=Pagecon&met=index
 RewriteRule ^campanha/?$ app/camp.php 

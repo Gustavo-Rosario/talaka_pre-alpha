@@ -35,7 +35,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
                             <ul>
                                 <li>Ver perfil</li>
                                 <li>Alterar dados</li>
-                                <a href="../logout.php">
+                                <a href="/logout.php">
                                     <li>Sair</li>
                                 </a>
                             </ul>

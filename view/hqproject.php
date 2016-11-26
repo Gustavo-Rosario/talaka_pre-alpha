@@ -74,10 +74,10 @@ Nam massa nunc, mollis eget nibh nec, ultrices laoreet nibh. In enim urna, pelle
                     <h2><?= round( ( strtotime($dtF) - strtotime(date("Y-m-d")) ) / (60 * 60 * 24) ); ?> dias restantes
                     <br><span><?= implode("/", array_reverse(explode("-",$dtB)) )." à ".implode("/", array_reverse(explode("-",$dtF)) ); ?></span></h2>
                     
-                    <h2><?= $total; ?> financiadores</h2>
+                    <h2><?= $total; ?> financiamentos</h2>
                 </div>
                 <button id="btn_finance">Financiar</button>
-                <button id="btn_demo">Visuaizar Demonstração</button>
+                <button id="btn_demo">Visualizar Demonstração</button>
 
 
                 <div id="socialnetwork">
@@ -102,7 +102,7 @@ Nam massa nunc, mollis eget nibh nec, ultrices laoreet nibh. In enim urna, pelle
                     <li>Galeria</li>
                 </ul>
                 <div id="info">
-                    <h1> <i>icon</i> Conheça o projeto .nome do projeto.? </h1>
+                    <h1> <i>icon</i> Conheça o projeto <?= $title ; ?> </h1>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec nulla sit amet turpis mattis pulvinar id a justo. Fusce scelerisque quis augue nec tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean libero turpis, rutrum molestie turpis at, porttitor blandit eros. Nulla eu facilisis enim. In a sem vel mauris eleifend cursus feugiat non neque. Quisque porttitor faucibus facilisis. Donec nec felis vulputate, volutpat ante eu, ultricies tellus. Pellentesque volutpat nisl est, eget viverra dui egestas id. Integer rhoncus sem ut quam dignissim pulvinar. Nam rutrum nec tellus ut sodales. Proin elit arcu, fermentum eget dolor non, venenatis dapibus lectus.
                     </p>
@@ -114,13 +114,13 @@ Nam massa nunc, mollis eget nibh nec, ultrices laoreet nibh. In enim urna, pelle
             <div id="reward" class="column columnRight">
                 <h1>Recompensa</h1>
                 <div class="eachReward">
-                    <h3>R$ 10,00</h3>
+                    <h3>R$ 30,00</h3>
                     <h4>5 apoiadores</h4>
                     <p>Phasellus nibh nibh, auctor ac vestibulum ut, vestibulum eu ipsum. Curabitur mollis risus a purus vestibulum semper. Morbi nibh elit, facilisis non efficitur et, scelerisque vel lorem. Donec sed massa libero. Maecenas gravida efficitur nisl, in maximus purus dictum et.</p>
                 </div>
 
                 <div class="eachReward">
-                    <h3>R$ 10,00</h3>
+                    <h3>R$ 20,00</h3>
                     <h4>5 apoiadores</h4>
                     <p>Phasellus nibh nibh, auctor ac vestibulum ut, vestibulum eu ipsum. Curabitur mollis risus a purus vestibulum semper. Morbi nibh elit, facilisis non efficitur et, scelerisque vel lorem. Donec sed massa libero. Maecenas gravida efficitur nisl, in maximus purus dictum et.</p>
                 </div>
