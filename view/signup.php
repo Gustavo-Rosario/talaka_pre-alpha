@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <div id='bgForms'>
     <div id="signup">
         <div id="signupStep">
             <div class="step"></div>

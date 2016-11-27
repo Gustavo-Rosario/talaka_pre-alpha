@@ -13,7 +13,7 @@
     </title>
 </head>
 
-
+<div id='bgForms'></div>
 <div id="formPublish">
     <div class='wrapper'>
         <h1>Preencha com as informações abaixo</h1>

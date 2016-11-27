@@ -11,31 +11,32 @@
 </head>
 
 <body>
-    <div id="help">
-        Você não possui uma conta? <span><a style="text-decoration: none; color: white" href="/signup"> Crie uma </a></span>
-        <a href="#"> Precisa de ajuda? </a>
-    </div>
-
-    <div id="areaLogin">
-        <h2></h2>
-        <div id="logoLogin">
-            Logo do Talaka
+    <div id='bgForms'>
+        <div id="help">
+            Você não possui uma conta? <span><a style="text-decoration: none; color: white" href="/cadastrar"> Crie uma </a></span>
         </div>
-        <p>Logue-se no Talaka usando...</p>
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-        
-        <p> ou use seu email: </p>
-        
-        <form onsubmit="return false" id="login">
-            <input type="email" name="email" placeholder="E-mail">
-            <input type="password" name="password" placeholder="Senha">
-            <a href="#">Esqueci minha senha</a>
-            <input id="login-button" type="submit" value="Fazer login">
-        </form>
+    
+        <div id="areaLogin">
+            <h2></h2>
+            <div id="logoLogin">
+                Talaka
+            </div>
+            <p>Logue-se no Talaka usando...</p>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            
+            <p> ou use seu email: </p>
+            
+            <form onsubmit="return false" id="login">
+                <input type="email" name="email" placeholder="E-mail">
+                <input type="password" name="password" placeholder="Senha">
+                <a href="#">Esqueci minha senha</a>
+                <input id="login-button" type="submit" value="Fazer login">
+            </form>
+        </div>
     </div>
 </body>
 </html>
