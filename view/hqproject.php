@@ -38,7 +38,7 @@ Nam massa nunc, mollis eget nibh nec, ultrices laoreet nibh. In enim urna, pelle
                 </form>
                 <div id='lineForm'>
                     <input type='number' name='valor' placeholder='Ex: 10,00'>
-                    <button <?= 'onclick="fin('.$id.')"' ;?>>
+                    <button id="apoiar" <?= 'onclick="fin('.$id.')"' ;?> disabled="true">
                         Apoiar
                     </button>
                 </div>
@@ -61,7 +61,7 @@ Nam massa nunc, mollis eget nibh nec, ultrices laoreet nibh. In enim urna, pelle
                 <div id="projectCover" <?php echo 'style="background-image: url(../proj-img/'.$img.'); background-size:cover"'; ?>></div>
                 <div id="projectInformations">
                     <h1><?= $title; ?></h1>
-                    <h2>por <?= $creator;?></h2>
+                    <h2>por <?= $creator;?> </h2>
 
                     <p>
                          <?= $ds; ?>
@@ -83,10 +83,10 @@ Nam massa nunc, mollis eget nibh nec, ultrices laoreet nibh. In enim urna, pelle
                 <div id="socialnetwork">
                     <h1>Redes sociais</h1>
                     <ul>
-                        <li>Facebook</li>
-                        <li>Twitter</li>
-                        <li>GooglePlus</li>
-                        <li>Linkedin</li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
                     </ul>
                 </div>
             </div>

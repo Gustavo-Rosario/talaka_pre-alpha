@@ -64,15 +64,35 @@ class Pagecon{
     }
     
     public function campaign(){
-        $this->page->load("../view/nav.php");
+        $this->page->load("../view/nav.php",array("pag_title" =>"Campanha"));
         $this->page->load("../view/create.php");
         $this->page->load("../view/footer.php");
     }
     
-    public function newProject(){
-        $this->page->load("../view/nav.php");
+    public function newproject(){
+        $this->page->load("../view/nav.php",array("pag_title" =>"Novo Projeto"));
         $this->page->load("../view/publish.php");
         $this->page->load("../view/footer.php");
+    }
+    
+    public function altprofile(){
+        if(isset($_SESSION['cdUser'])){
+            $this->page->load("../view/nav.php",array("pag_title" =>"Alterar Perfil"));
+            $this->page->load("../view/alterUser.php");
+            $this->page->load("../view/footer.php");
+        }else{
+            header("location: /");
+        }
+    }
+    
+    public function profile(){
+        if(isset($_SESSION['cdUser'])){
+            $this->page->load("../view/nav.php",array("pag_title" =>"Perfil"));
+            $this->page->load("../view/profile.php");
+            $this->page->load("../view/footer.php");
+        }else{
+            header("location: /");
+        }
     }
     
     //Especial

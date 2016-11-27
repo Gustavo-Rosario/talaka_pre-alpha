@@ -135,16 +135,17 @@ function main() {
                 });
             });
             
-    $("form input[type='number']").keypress(
-        function() {
-            var valor = parseInt($(this).val());
-            if(valor > 0){
-                $("#apoiar").attr("disabled", "false");
-            }else{
-                $("#apoiar").attr("disabled", "true");
-            }
-        }    
-    )
+    $("input[name='valor']").keyup(function(){
+        var valor = parseInt($(this).val());
+        if(valor > 0){
+            $("#apoiar").removeAttr("disabled");
+        }else{
+            $("#apoiar").attr("disabled");
+        }
+    });
+    
+    
+    
      
 }
 
