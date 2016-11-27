@@ -71,9 +71,13 @@ function main() {
     });
     
     $("#search").keypress(function(event){
-        if( event.which == 13 ){
+        if(event.which == 13 ){
             var arg = $(this).val();
-            window.self.location = "/explore/name/"+arg;
+            if(arg == null || arg == undefined || arg == ""){
+                alert("O campo está vazio");
+            }else{
+                 window.self.location = "/explore/name/"+arg;
+            }
         }
     });
     
