@@ -14,7 +14,6 @@ abstract class User{
     }
     
     public function allprojectGET(){
-         
         $resp = ( $data = $this->db->listarProject() )? "success" : "fail_list";
         return json_encode(array("stats" => $resp, "data" => $data));
     }
@@ -24,8 +23,8 @@ abstract class User{
         return json_encode(array("stats" => $resp, "data" => $data));
     }
     
-    public function pesqNameGET($name){
-        $resp = ( $data = $this->db->pesqProject($name) )? "success" : "fail_select";
+    public function pesqNameGET($name,$pag){
+        $resp = ( $data = $this->db->pesqProject($name,$pag) )? "success" : "fail_select";
         return json_encode(array("stats" => $resp, "data" => $data));
     }
     

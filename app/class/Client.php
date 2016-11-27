@@ -51,6 +51,7 @@ class Client extends User{
         if($accept === "application/json" || $id === null){
             $json = file_get_contents('php://input');
             $obj = json_decode($json);
+            $obj->ds_pwd = hash("ripemd160" , $obj->ds_pwd);
             $where = array("cd_user" => (int)$id); 
             $resp = ( $this->db->alterar('User',$obj,$where) )? "success" : "fail_insert";
             $vetor = array("stats" => $resp, "data" => null);
@@ -87,6 +88,11 @@ class Client extends User{
             return json_decode(array("stats" => "fail_alter_project", "data" => null));
             http_response_code(400);
         }
+    }
+    
+    public function profileGET($id){
+        $resp = ($data = $this->db->consultarUser($id))? "success" : "fail_alter_project";
+        return json_encode(array("stats" => $resp, "data" => $data));
     }
 }
 

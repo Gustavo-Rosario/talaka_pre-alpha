@@ -1,49 +1,33 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
-    <title> Projeto </title>
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:100,400,700" rel="stylesheet">
-</head>
-
 <body>
     <div id="container">
-        <div id="profile">
+        <div id="profile" style='background-image:url(/view/images/<?= $cover ?>)'>
             <div id="profileColor"></div>
             <div id="profileInfo">
                 <div id="profilePhoto">
-                    <div id="pPhoto"></div>
+                    <div id="pPhoto" style='background-image:url(/user-img/<?=$img?>)'></div>
                     <div id="pProjects">
                         <ul>
                             <li>Criados
-                                <br> <span>2</span></li>
+                                <br> <span><?= $projects ?></span></li>
                             <li>Apoiados
-                                <br> <span>32</span></li>
+                                <br> <span><?= $finances ?></span></li>
                         </ul>
                     </div>
                 </div>
                 <div id="profileDescription">
-                    <h1><?= $_SESSION[''] ?></h1>
-                    <h2>Profissão</h2>
-                    <h2>Localização</h2>
+                    <h1><?= $nome ?></h1>
+                    
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas cursus nunc ac ante malesuada feugiat. Duis a tincidunt risus. Morbi eget ex in augue scelerisque rutrum. Sed vel vestibulum leo, et ultrices felis. Suspendisse potenti. Integer eget risus euismod, laoreet nisi vel, aliquet justo. Nunc non congue justo, at rutrum augue. Nulla non fringilla ante, non tristique ex. Maecenas malesuada massa egestas dolor fringilla pharetra. Mauris nisl ligula, ullamcorper nec ante et, viverra ullamcorper sem. Sed imperdiet sollicitudin enim, malesuada maximus nunc aliquam non.Nulla non fringilla ante, non tristique ex. Maecenas malesuada massa egestas dolor fringilla pharetra. Mauris nisl ligula, ullamcorper nec ante et, viverra ullamcorper sem. Sed imperdiet sollicitudin enim, malesuada maximus nunc aliquam non.
+                        <?= $biography ?>
                     </p>
-                    <h2>Redes Sociais</h2>
-                    <ul class="socialnetwork">
-                        <li>Facebook</li>
-                        <li>Facebook</li>
-                        <li>Facebook</li>
-                        <li>Facebook</li>
-                        <li>Facebook</li>
-                        <li>Facebook</li>
-                        <li>Facebook</li>
-                        <li>Facebook</li>
+                    
+                    <ul id="socialnetwork">
+                        <h2>Redes Sociais</h2>
+                        <li></li>
+                        <li></li>
+                        <li></li>
                     </ul>
                     <buttton id="message">Enviar mensagem</buttton>
                 </div>

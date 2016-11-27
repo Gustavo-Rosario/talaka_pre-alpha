@@ -196,6 +196,12 @@ section {
     margin-left: 1%;
     width: 51%;
 }
+.projectIndex a {
+    color:#fff;
+}
+#projectInfo a{
+    color:#1369A1;
+}
 #projectCover {
     float: left;
     border-radius: 1em;
@@ -268,7 +274,6 @@ section {
     float: left;
     width: 45px;
     height: 45px;
-    border: 1px solid #fff;
     margin: 0 10px;
     border-radius:50%;
     background-position:center;
@@ -487,7 +492,7 @@ footer li:nth-child(3) {
     float: left;
 }
 #pPhoto {
-    background-image: url(../images/pp.jpg);
+    background-color:#fff;
     width: 270px;
     height: 250px;
     box-shadow: 0 0 5px #000;
@@ -527,6 +532,7 @@ footer li:nth-child(3) {
     margin: 0;
     max-height: 150px;
     overflow: hidden;
+    margin-top:10px;
 }
 #message {
     position: absolute;
@@ -724,9 +730,9 @@ footer li:nth-child(3) {
     width:100px;
     height:100px;
     position:absolute;
-    background-color:orange;
-    bottom:-25px;
-    right:-25px;
+    background-color:#D50E65;
+    bottom:-30px;
+    right:-30px;
     border-radius:50%;
     background-position:center;
     background-repeat:no-repeat;
@@ -2262,4 +2268,33 @@ textarea:focus, input:focus, select:focus {
     border: 0 none;
     outline: 0;
 } 
+/*Explore*/
+#listProjects {
+    clear:both;
+    height:45px;
+    display:table;
+    margin:auto;
+    padding:15px 10px 0 10px;
+}
+#listProjects li {
+    float:left;
+    display:block;
+    padding:5px 10px;
+    margin:0 10px;
+    transition:.3s;
+    border:1px solid #D50E65;
+    cursor:pointer;
+    border-radius:50%;
+    font-size:1.3em;
+}
+#listProjects li:first-child {
+    color:#fff;
+    background-color:#A50249;
+    border:1px solid #A50249;
+}
+#listProjects li:hover{
+    border:1px solid #D50E65;
+    background-color:#D50E65;
+    color:#fff;
+}
 

@@ -84,15 +84,16 @@ function main() {
             if(arg == null || arg == undefined || arg == ""){
                 alert("O campo está vazio");
             }else{
-                 window.self.location = "/explore/name/"+arg;
+                 window.self.location = "/explore/name/"+arg+"/1";
             }
         }
     });
     
-    
     $('#btn_finance').click(function(){
-        
         $('#financeWrapper').fadeIn('slow');
+        $('#financeClose').click(function(){
+           $('#financeWrapper').fadeOut('slow') ;
+        });
     });
     
     $('#fixedMenu').click(function(){
@@ -144,7 +145,34 @@ function main() {
         }
     });
     
-    
+    $("#save").click(function(){
+            var nome = $("#alternome").val();
+            var login = $("#alterlogin").val();
+            var biografia = $("#alterbiography").val();
+            var values = {'nm_user':nome,'ds_login':login, 'ds_biography':biografia};
+            var json = JSON.stringify(values);
+            var server = document.URL;
+            var id = $('#userloginName').attr("cd");
+            $.ajax({
+                url: "https://"+server.split("/")[2]+"/exec/client/profile/"+id,
+                method: "PUT",
+                async: true,
+                headers:{"content-type":"application/json"},
+                data: json,
+                contentType: "application/json",
+                processData: false,
+            }).done(function(response){
+                var r = JSON.parse(response);
+                if(r.stats === "success"){
+                    alert('Alterado com sucesso');
+                    window.location.href = "/myprofile";
+                }else{
+                    alert('Problema ao alterar');
+                }
+            }).fail(function(response){
+                alert("Deu mega ruim");
+            });
+    });
     
      
 }

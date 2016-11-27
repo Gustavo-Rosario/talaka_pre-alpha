@@ -29,9 +29,9 @@ class Pagecon{
         $this->page->load("../view/footer.php");
     }
     
-    public function explore($termo){
+    public function explore($termo,$pag){
         $t= str_replace(" ","%2520",$termo);
-        $data = $this->page->curl("/exec/visitor/pesqName/".$t);
+        $data = $this->page->curl("/exec/visitor/pesqName/".$t."/".$pag);
         $this->page->load("../view/nav.php",array("pag_title" =>"Pesquisa"));
         $this->page->load("../view/explore.php",array("data" =>$data));
         $this->page->load("../view/footer.php");
@@ -77,21 +77,34 @@ class Pagecon{
     
     public function altprofile(){
         if(isset($_SESSION['cdUser'])){
+            $user = $this->page->curl('/exec/client/profile/'.$_SESSION['cdUser']);
             $this->page->load("../view/nav.php",array("pag_title" =>"Alterar Perfil"));
-            $this->page->load("../view/alterUser.php");
+            $this->page->load("../view/alterUser.php",$user);
             $this->page->load("../view/footer.php");
         }else{
             header("location: /");
         }
     }
     
-    public function profile(){
+    public function myprofile(){
         if(isset($_SESSION['cdUser'])){
-            $this->page->load("../view/nav.php",array("pag_title" =>"Perfil"));
-            $this->page->load("../view/profile.php");
+            $user = $this->page->curl('/exec/client/profile/'.$_SESSION['cdUser']);
+            $this->page->load("../view/nav.php",array("pag_title" =>"Meu Perfil"));
+            $this->page->load("../view/profile.php",$user);
             $this->page->load("../view/footer.php");
         }else{
             header("location: /");
+        }
+    }
+    
+    public function profile($id){
+        if ($id == $_SESSION['cdUser']){
+            header('location: /myprofile');
+        } else {
+            $user = $this->page->curl('/exec/client/profile/'.$id);
+            $this->page->load("../view/nav.php",array("pag_title" =>"Perfil"));
+            $this->page->load('../view/profile.php',$user);
+            $this->page->load("../view/footer.php");
         }
     }
     

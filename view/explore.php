@@ -11,6 +11,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
         <div class="wrapper explore">
             <h1> <?= $data['total'];?> Resultados foram encontrados</h1>
             <?php
+                $numPag = ($data['total'] == 1)? 1 : round($data['total'] / 6);
                 for($a = 0; $a < (count($data) - 2); $a++){ 
                     $percent = (($data['d'.$a]->collected) * 100)/ $data['d'.$a]->meta;
             ?>
@@ -41,5 +42,13 @@ defined("System-access") or exit("Não permitido o acesso direto");
             <?php
             }
             ?>
+            <ul id='listProjects'>
+                <?php
+                    for($i=1;$i<=$numPag;$i++){
+                        echo "<a href='/explore/name/".explode('"',$data['termo'])[1]."/".$i."'><li>".$i."</li></a>";
+                    }
+                ?>
+                
+            </ul>
         </div>
     </div>

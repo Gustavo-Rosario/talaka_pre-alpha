@@ -21,10 +21,12 @@ defined("System-access") or exit("Não permitido o acesso direto");
                             <h1>
                                 <?= $data['d'.$a]->title; ?>
                             </h1>
-                            <div class="projectH2">
-                                <div class="projectOwner" <?php echo 'style="background-image:url(../../user-img/'.$data['d'.$a]->imgU.')"' ?>></div>
-                                <h2><?= $data['d'.$a]->creator;?></h2>
-                            </div>
+                            <a href='/profile/<?= $data['d'.$a]->user ?>'>
+                                <div class="projectH2">
+                                    <div class="projectOwner" <?php echo 'style="background-image:url(../../user-img/'.$data['d'.$a]->imgU.')"' ?>></div>
+                                    <h2><?= $data['d'.$a]->creator;?></h2>
+                                </div>
+                            </a>
                             <ul>
                                 <li>
                                     <span class="icon icon2" id="iconMeta"></span><b>Meta</b>

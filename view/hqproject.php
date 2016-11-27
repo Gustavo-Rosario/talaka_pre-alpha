@@ -18,27 +18,27 @@ defined("System-access") or exit("Não permitido o acesso direto");
                 
                     <form method='post'>
                         <input type='radio' name='pag' id='visa'>
-                        <label for='visa'></label>
+                        <label class='visa' for='visa'></label>
                         
                         <input type='radio' name='pag' id='mastercard'>
-                        <label for='mastercard'></label>
+                        <label class='mastercard' for='mastercard'></label>
                         
                         <input type='radio' name='pag' id='american'>
-                        <label for='american'></label>
+                        <label class='american' for='american'></label>
                         
                         <input type='radio' name='pag' id='hiper'>
-                        <label for='hiper'></label>
+                        <label class='hiper' for='hiper'></label>
                 <h3>
                     Termos de compromisso
                 </h3>
-                <textarea>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porta nibh elit, a cursus lacus tempor id. In et odio at turpis cursus vulputate. Nam sit amet vulputate dui. Proin ut rhoncus dolor. Proin in mi et metus scelerisque accumsan eu interdum odio. Donec elementum consectetur molestie. Nam pulvinar turpis elit, ac finibus nulla venenatis sed. Morbi eget leo nec velit elementum egestas posuere non turpis.
+                <div id='termcom'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porta nibh elit, a cursus lacus tempor id. In et odio at turpis cursus vulputate. Nam sit amet vulputate dui. Proin ut rhoncus dolor. Proin in mi et metus scelerisque accumsan eu interdum odio. Donec elementum consectetur molestie. Nam pulvinar turpis elit, ac finibus nulla venenatis sed. Morbi eget leo nec velit elementum egestas posuere non turpis.
 
 Nam massa nunc, mollis eget nibh nec, ultrices laoreet nibh. In enim urna, pellentesque ut semper quis, porttitor a urna. Sed porttitor accumsan sem vel gravida. Praesent sed mauris erat. Proin finibus ex eget libero tristique, feugiat varius dolor tempus. Nunc rutrum commodo facilisis. Integer eget lorem quis nisi fermentum scelerisque a et ipsum. Suspendisse vitae dolor non nunc lobortis mattis. Proin tincidunt eleifend odio, sit amet fringilla purus maximus vitae. Vestibulum molestie pulvinar mi, eget ultrices tellus efficitur et. Donec luctus neque in metus blandit euismod. Donec cursus ac velit et ullamcorper. Aenean eu elementum dolor, imperdiet suscipit dolor. Aenean tellus tellus, condimentum et purus ornare, scelerisque dignissim justo. Donec ornare porttitor efficitur. Aenean rutrum blandit arcu, sit amet varius elit lobortis sed
-                </textarea>
+                </div>
                 </form>
                 <div id='lineForm'>
-                    <input type='number' name='valor' placeholder='Ex: 10,00'>
-                    <button id="apoiar" <?= 'onclick="fin('.$id.')"' ;?> disabled="true">
+                    <input type='number' id='valor' name='valor' placeholder='Ex: 10,00'>
+                    <button id='apoiar' <?= 'onclick="fin('.$id.')"' ;?>>
                         Apoiar
                     </button>
                 </div>
@@ -58,10 +58,12 @@ Nam massa nunc, mollis eget nibh nec, ultrices laoreet nibh. In enim urna, pelle
     <main style='margin-top:40px'>
         <section id="projectInfo">
             <div id="project" class="column columnLeft">
-                <div id="projectCover" <?php echo 'style="background-image: url(../proj-img/'.$img.'); background-size:cover"'; ?>></div>
+                <div id="projectCover" <?php echo 'style="background-image: url(../proj-img/'.$img.'); background-size:cover"'; ?>>
+                    <a href='/profile/<?= $usuario ?>'><div id='projectOwner' <?php echo 'style="background-image: url(../user-img/'.$imgU.'); background-size:cover"'; ?>></div></a>
+                </div>
                 <div id="projectInformations">
                     <h1><?= $title; ?></h1>
-                    <h2>por <?= $creator;?> </h2>
+                    <h2>por <a href='/profile/<?= $usuario ?>'> <?= $creator;?></a></h2>
 
                     <p>
                          <?= $ds; ?>

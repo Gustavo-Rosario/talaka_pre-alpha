@@ -24,6 +24,7 @@
         </ul>
     </aside>
     <div id='allStatistic'>
+        <h1>Valor acumulado</h1>
         <div id='time'>
             <div id='fixedMenu'></div>
             <div id='activities'>

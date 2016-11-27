@@ -62,13 +62,27 @@
             return true;
         }
         
-        public function consultarUser($id=1){
-            $stm = $this->con->prepare("SELECT ds_login,ds_path_img FROM User WHERE cd_user = ?") or die("Erro 1".$con->error.http_response_code(405));
-            $stm->bind_param("i",$id) or die("Erro 2".$stm->error.http_response_code(405));
+        public function consultarUser($id){
+            $stm = $this->con->prepare("SELECT u.ds_login, u.ds_path_img, u.nm_user, u.ds_biography, u.ds_img_back, (
+            SELECT COUNT( p.cd_project ) 
+            FROM User AS u, Project AS p
+            WHERE p.cd_user = u.cd_user
+            AND u.cd_user = ?
+            ) AS projects, (
+            
+            SELECT COUNT( f.cd_financing ) 
+            FROM User AS u, Financing AS f
+            WHERE f.cd_user = u.cd_user
+            AND u.cd_user = ?
+            ) AS finan
+            FROM User AS u, Project AS p, Financing AS f
+            WHERE u.cd_user = ?
+            GROUP BY u.ds_login") or die("Erro 1".$con->error.http_response_code(405));
+            $stm->bind_param("iii",$id,$id,$id) or die("Erro 2".$stm->error.http_response_code(405));
             $stm->execute()or die("Erro 3".$stm->error.http_response_code(405));
-            $stm->bind_result($login,$img);
+            $stm->bind_result($login,$img,$nome,$biography,$cover,$projects,$finances);
             $stm->fetch();
-            return json_encode(array("id" => $id, "login" => $login, "img" => $img));
+            return json_encode(array("id" => $id, "login" => $login, "img" => $img, "nome" => $nome, "biography" => $biography, "cover" => $cover, "projects" => $projects, "finances" => $finances ));
         }
         
         public function listarUser(){
@@ -101,32 +115,32 @@
         }
         
         public function consultarProject($id){
-            $stm = $this->con->prepare("SELECT p.nm_title,p.ds_project,p.ds_path_img,p.ds_img_back,p.vl_meta,p.vl_collected,p.dt_begin,p.dt_final,u.nm_user,p.cd_user,u.ds_path_img,p.qt_visitation,count(f.cd_user) total 
+            $stm = $this->con->prepare("SELECT p.nm_title,p.ds_project,p.ds_path_img,p.ds_img_back,p.vl_meta,p.vl_collected,p.dt_begin,p.dt_final,u.nm_user,p.cd_user,u.ds_path_img,p.qt_visitation,count(f.cd_user) total,u.cd_user 
             FROM Project as p, User as u, Financing as f
             WHERE p.cd_user = u.cd_user
             AND p.cd_project = f.cd_project
             AND p.cd_project = ?") or die("Erro 1".$this->con->error.http_response_code(405));
             $stm->bind_param("i",intval($id)) or die("Erro 2".$stm->error.http_response_code(405));
             $stm->execute()or die("Erro 3".$stm->error.http_response_code(405));
-            $stm->bind_result($title,$ds,$img,$cover,$vlM,$vlC,$dtB,$dtF,$creator,$creID,$imgU,$visit,$total)or die("Erro 4");
+            $stm->bind_result($title,$ds,$img,$cover,$vlM,$vlC,$dtB,$dtF,$creator,$creID,$imgU,$visit,$total,$usuario)or die("Erro 4");
             $stm->fetch();
-            $resp = json_encode(array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"cover"=>$cover,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"creID"=>$creID,"imgU"=>$imgU,"visit"=>$visit,"total"=>$total))or die("Erro no json mesmo");
+            $resp = json_encode(array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"cover"=>$cover,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"creID"=>$creID,"imgU"=>$imgU,"visit"=>$visit,"total"=>$total,"usuario"=>$usuario))or die("Erro no json mesmo");
             return $resp;
         }
         
         public function listProject($num){
-            $stm = $this->con->prepare("SELECT p.cd_project, p.nm_title, p.ds_project, p.ds_path_img, p.vl_meta, p.vl_collected, p.dt_begin, p.dt_final, u.nm_user, p.ds_img_back, u.ds_path_img, p.cd_category, ((p.vl_collected*100) / p.vl_meta) dif
+            $stm = $this->con->prepare("SELECT p.cd_project, p.nm_title, p.ds_project, p.ds_path_img, p.vl_meta, p.vl_collected, p.dt_begin, p.dt_final, u.nm_user, p.ds_img_back, u.ds_path_img, p.cd_category, ((p.vl_collected*100) / p.vl_meta) dif, u.cd_user
             FROM Project AS p, User AS u
             WHERE p.cd_user = u.cd_user
             ORDER BY dif DESC 
             LIMIT ?") or die("Erro 1".$this->con->error.http_response_code(405));
             $stm->bind_param("i",intval($num));
             $stm->execute()or die("Erro 2".$stm->error.http_response_code(405));
-            $stm->bind_result($id,$title,$ds,$img,$vlM,$vlC,$dtB,$dtF,$creator,$imgB,$imgU,$idC,$percent);
+            $stm->bind_result($id,$title,$ds,$img,$vlM,$vlC,$dtB,$dtF,$creator,$imgB,$imgU,$idC,$percent,$user);
             $r = array();
             $i = 1;
             while($stm->fetch()){
-                $r["d".$i] = array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"imgB"=>$imgB,"imgU"=>$imgU,"idC"=>$idC,"percent"=>$percent) or die("Erro no json");
+                $r["d".$i] = array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"imgB"=>$imgB,"imgU"=>$imgU,"idC"=>$idC,"percent"=>$percent,"user"=>$user) or die("Erro no json");
                 $i++;
             }
             return json_encode($r);
@@ -153,13 +167,15 @@
         }
         
         
-        public function pesqProject($termo){
+        public function pesqProject($termo,$pag){
+            $max = (($pag - 1) == 0)? 0 : ($pag * 5) - 1;
             $name = "%".$termo."%";
             $stm = $this->con->prepare("SELECT p.cd_project, p.nm_title, p.ds_project, p.vl_meta, p.vl_collected, p.dt_final, p.ds_path_img, p.cd_category, u.ds_path_img
             FROM Project as p, User as u
             WHERE p.nm_title LIKE ?
             AND u.cd_user = p.cd_user
-            LIMIT 6 ") or die("Erro 1".$con->error.http_response_code(405));
+            LIMIT 6 
+            OFFSET ".$max." ") or die("Erro 1".$this->con->error.http_response_code(405));
             $stm->bind_param("s",$name)or die("Erro 2".$stm->error.http_response_code(405));
             $stm->execute()or die("Erro 3".$stm->error.http_response_code(405));
             $stm->bind_result($id,$title,$ds,$vlM,$vlC,$dt,$img,$idC,$imgU)or die("Erro 4");

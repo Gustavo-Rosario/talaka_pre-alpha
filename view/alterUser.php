@@ -5,9 +5,9 @@ defined("System-access") or exit("Não permitido o acesso direto");
     <div class='wrapper' id='profileAlter'>
         <div id='profileUser'>
             <h1>Perfil</h1>
-            <div id='alterPhoto'></div>
-            <h2>José Luiz Reis</h2>
-            <h3>@login</h3>
+            <div id='alterPhoto' <?= 'style="background-image: url(/user-img/'.$img.')"';?>></div>
+            <h2><?= $nome;?></h2>
+            <h3>@<?= $login;?></h3>
             
             <ul>
                 <li>
@@ -26,21 +26,21 @@ defined("System-access") or exit("Não permitido o acesso direto");
                 <h1>
                     Biografia
                 </h1>
-                <p>Lore ipsum dolor sit amrmet, consecterur adelit. Sed a pulvinar justo aliquam interdum dolor. Mauris id congue metus. Curabitur ferme dapibus dapibus.</p>
+                <p><?= $biography;?></p>
             </div>
         </div>
         
         <div id='profileInfos'>
             <h1>Informações básicas</h1>
-            <form method='post' action=''>
-                <label for='alternome'>Nome completo</label>
-                    <input id='alternome' type='text' placeholder='nome atual do usuário'>
+            <form>
+                <label for='alternome'>Nome Completo</label>
+                    <input id='alternome' type='text' placeholder='nome atual do usuário' <?= 'value="'.$nome.'"';?>>
                 <label for='alterlogin'>Login</label>
-                    <input id='alterlogin' type='text' placeholder='login atual do usuário'>
+                    <input id='alterlogin' type='text' placeholder='login atual do usuário' <?= 'value="'.$login.'"';?>>
             
             <h1>Sobre mim</h1>
             <label for='alterbiography'>Biografia</label>
-            <textarea id='alterbiography' placeholder='Biografia atual do usuário'></textarea>
+            <textarea id='alterbiography' placeholder='Biografia atual do usuário'><?= $biography;?></textarea>
             
             <h1>Links Externos</h1>
             <label for='alterfacebook'>URL do Facebook</label>
@@ -59,9 +59,9 @@ defined("System-access") or exit("Não permitido o acesso direto");
             <h1>Segurança</h1>
             <label for='altersenha'>Senha</label>
                 <input type='password' id='altersenha' placeholder='******'>
-                
-                <button id="save">Salvar</button>
             </form>
+            
+            <button id="save">Salvar</button>
             
         </div>
     </div>

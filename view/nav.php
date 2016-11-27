@@ -28,13 +28,13 @@ defined("System-access") or exit("Não permitido o acesso direto");
 
                     <div class="userlogin">
                         <div id="userloginPhoto" <?php echo 'style="background-image:url(/user-img/'.$_SESSION[ 'imgUser']. ')"' ?>> </div>
-                        <div id="userloginName">
+                        <div id="userloginName" <?= 'cd="'.$_SESSION['cdUser'].'"';?> >
                             <?= $_SESSION['nmUser']; ?>
                                 <span id="arrowOptions"></span>
                                 <div id="options">
                             <ul>
-                                <li>Ver perfil</li>
-                                <li>Alterar dados</li>
+                                <a href='/myprofile'><li>Ver perfil</li></a>
+                                <a href='/altprofile'><li>Alterar dados</li></a>
                                 <a href="/logout.php">
                                     <li>Sair</li>
                                 </a>
