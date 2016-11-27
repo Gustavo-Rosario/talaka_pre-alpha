@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title> error </title>
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <title> Error - 404 </title>
+    <link href="/view/css/style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:100,400,700" rel="stylesheet">
 </head>
 

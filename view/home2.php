@@ -76,6 +76,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
                             <a <?= 'href="https://'.$_SERVER['HTTP_HOST'].'/project/'.$project['d'.$b]->id.'"';?>>
                             <div class="eachProject">
                                 <div class='eachProjectCover' <?= 'style="background-image:url(../../proj-img/'.$project['d'.$b]->img.')"' ?>></div>
+                                <div class="projectOwner" <?= 'style="background-image:url(/user-img/'.$project['d'.$b]->imgU.')"' ?>></div>
                                 <div class="eachProjectInfo">
                                     <p><?= System::getCategory($project['d'.$b]->idC);?></p>
                                     <h2><?= $project['d'.$b]->title;?></h2>

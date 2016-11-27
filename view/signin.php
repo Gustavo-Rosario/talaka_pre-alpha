@@ -13,7 +13,7 @@
 <body>
     <div id='bgForms'>
         <div id="help">
-            Você não possui uma conta? <span><a style="text-decoration: none; color: white" href="/cadastrar"> Crie uma </a></span>
+            Você não possui uma conta? <span><a style="text-decoration: none; color: white" href="/signin"> Crie uma </a></span>
         </div>
     
         <div id="areaLogin">

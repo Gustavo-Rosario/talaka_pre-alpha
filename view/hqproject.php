@@ -76,7 +76,7 @@ Nam massa nunc, mollis eget nibh nec, ultrices laoreet nibh. In enim urna, pelle
                     
                     <h2><?= $total; ?> financiamentos</h2>
                 </div>
-                <button id="btn_finance">Financiar</button>
+                <button id="btn_finance" <?= ($_SESSION['cdUser'] === $creID)? '>Dados Estatísticos':'onclick="finance()">Financiar';?> </button>
                 <button id="btn_demo">Visualizar Demonstração</button>
 
 

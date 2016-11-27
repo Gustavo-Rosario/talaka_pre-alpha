@@ -101,16 +101,16 @@
         }
         
         public function consultarProject($id){
-            $stm = $this->con->prepare("SELECT p.nm_title,p.ds_project,p.ds_path_img,p.ds_img_back,p.vl_meta,p.vl_collected,p.dt_begin,p.dt_final,u.nm_user,p.qt_visitation,count(f.cd_user) total 
+            $stm = $this->con->prepare("SELECT p.nm_title,p.ds_project,p.ds_path_img,p.ds_img_back,p.vl_meta,p.vl_collected,p.dt_begin,p.dt_final,u.nm_user,p.cd_user,u.ds_path_img,p.qt_visitation,count(f.cd_user) total 
             FROM Project as p, User as u, Financing as f
             WHERE p.cd_user = u.cd_user
             AND p.cd_project = f.cd_project
             AND p.cd_project = ?") or die("Erro 1".$this->con->error.http_response_code(405));
             $stm->bind_param("i",intval($id)) or die("Erro 2".$stm->error.http_response_code(405));
             $stm->execute()or die("Erro 3".$stm->error.http_response_code(405));
-            $stm->bind_result($title,$ds,$img,$cover,$vlM,$vlC,$dtB,$dtF,$creator,$visit,$total)or die("Erro 4");
+            $stm->bind_result($title,$ds,$img,$cover,$vlM,$vlC,$dtB,$dtF,$creator,$creID,$imgU,$visit,$total)or die("Erro 4");
             $stm->fetch();
-            $resp = json_encode(array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"cover"=>$cover,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"visit"=>$visit,"total"=>$total))or die("Erro no json mesmo");
+            $resp = json_encode(array("id"=>$id,"title"=>$title,"ds"=>utf8_encode($ds),"img"=>$img,"cover"=>$cover,"meta"=>$vlM,"collected"=>$vlC,"dtB"=>$dtB,"dtF"=>$dtF,"creator"=>$creator,"creID"=>$creID,"imgU"=>$imgU,"visit"=>$visit,"total"=>$total))or die("Erro no json mesmo");
             return $resp;
         }
         

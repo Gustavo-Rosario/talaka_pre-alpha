@@ -1,5 +1,13 @@
 $(main);
 
+function finance(log){
+    if(log == 0){
+        alert("Para financiar é necessário estar logado");
+    }else{
+        $('#financeWrapper').fadeOut('slow');
+    }
+}
+
 function fin(project){
     var valor = $("input[name='valor']").val();
     var values = {'cd_project':project,'vl_financing':valor};
@@ -83,11 +91,8 @@ function main() {
     
     
     $('#btn_finance').click(function(){
+        
         $('#financeWrapper').fadeIn('slow');
-    });
-    
-    $('#financeClose').click(function(){
-       $('#financeWrapper').fadeOut('slow');
     });
     
     $('#fixedMenu').click(function(){
@@ -130,6 +135,16 @@ function main() {
                 });
             });
             
+    $("form input[type='number']").keypress(
+        function() {
+            var valor = parseInt($(this).val());
+            if(valor > 0){
+                $("#apoiar").attr("disabled", "false");
+            }else{
+                $("#apoiar").attr("disabled", "true");
+            }
+        }    
+    )
      
 }
 
