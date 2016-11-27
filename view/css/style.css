@@ -584,11 +584,43 @@ footer li:nth-child(3) {
     overflow-y: hidden;
     overflow-x: auto;
 }
+.pProjectsCreadted a {
+    color:#fff;
+}
 .pProjectsWrapper {
     overflow: hidden;
     height: 300px;
     display: inline-flex;
     position: relative;
+    color:#fff;
+}
+.nomeProjeto {
+    font-size:3em;
+    margin:0;
+    color:#fff;
+    font-weight:bold;
+    text-shadow:0 0 3px #fff;
+    text-align:center;
+    position:relative;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,.4);
+    transition:0.4s;
+}
+.nomeProjeto:hover {
+    background-color:rgba(0,0,0,.15);
+}
+.nomeProjeto h4 {
+    margin:0;
+    position:relative;
+    top:35%;
+}
+.nomeProjeto + .progressbar{
+    bottom:27px;
+    position:relative;
+    border-radius:0;
+    width:348px;padding:0;
+    background-color:#FEA4C3;
 }
 .eachProject {
     width: 350px;
@@ -599,6 +631,8 @@ footer li:nth-child(3) {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    transition:.5s;
+    border:1px solid #fff;
 }
 .eachProject:first-child {
     margin-left: 0;
@@ -1090,7 +1124,6 @@ nav li:last-child {
 #sectProjects ul:first-child li:first-child {
     margin-left: 0;
     border-bottom: 3px solid #094F7D;
-    color: #094F7D
 }
 .icon {
     display: inline-block;
@@ -1187,6 +1220,14 @@ li b {
     margin: 0;
     padding: 0;
     width: 100%;
+}
+.pageProfile p {
+    font-size:2em;
+    text-align:center;
+    margin:125px auto;
+    display: block;
+    position:relative;
+    width:100%;
 }
 #indexProject .eachProject:first-child,
 #indexProject .eachProject:nth-child(4) {
@@ -1568,20 +1609,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80683ab7', e
     padding:2%;
     background-color:#fff;
     border-radius: .3em .3em 0 0;
+    height:260px;
 }
 .adIcon {
-    width:65px;
-    height:65px;
+    width:70px;
+    height:70px;
     border-radius:50%;
-    border:1px solid #DC367F;
     margin:0 auto;
 }
 .adCard h3 {
     font-size:2em;
     text-align:center;
+    color:#7C367F;
 }
 .adCard p {
-    font-size:1.2em;
+    font-size:1.3em;
 }
 #support{
     width:96%;
@@ -1590,6 +1632,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80683ab7', e
     font-size:2em;
     color:#fff;
     text-align:center;
+    margin:0;
 }
 #support h3 {
     font-weight: 100;
@@ -1597,14 +1640,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80683ab7', e
 }
 #support ul{
     height:50px;
-    width:420px;
+    width:580px;
     margin:auto;
 }
 #support li {
     float:left;
-    width:50px;
-    height:50px;
-    border:2px solid rgba(255,255,255,.5);
+    width:70px;
+    height:70px;
     border-radius: 50%;
     margin:0 10%;
 }
@@ -2263,7 +2305,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3d50e65', e
     top:0;
 }
 
-textarea:focus, input:focus, select:focus {
+textarea:focus, input:focus, select:focus, button:focus {
     box-shadow: 0 0 0 0;
     border: 0 none;
     outline: 0;
@@ -2297,4 +2339,96 @@ textarea:focus, input:focus, select:focus {
     background-color:#D50E65;
     color:#fff;
 }
+.iconsprite{
+    width:16px;
+    height:16px;
+    position:relative;
+    top:3px;
+    display:inline-block;
+}
+.sprite {
+    background-image: url(../images/spritesheet.png);
+    background-repeat: no-repeat;
+    margin:0 5px 0 0;
+}
 
+.sprite-commerce {
+    width: 16px;
+    height: 16px;
+    background-position: -5px -5px;
+    margin-right:5px;
+}
+
+.sprite-eye {
+    width: 16px;
+    height: 16px;
+    background-image:url(../images/eye.png);
+    margin-left:-10px;
+}
+
+.sprite-like {
+    width: 16px;
+    height: 16px;
+    background-position: -57px -5px;
+    margin-left:-10px;
+}
+
+.sprite-like-1 {
+    width: 16px;
+    height: 16px;
+    background-position: -5px -31px;
+}
+
+.sprite-mail {
+    width: 16px;
+    height: 16px;
+    background-position: -31px -31px;
+}
+
+.sprite-paper {
+    width: 16px;
+    height: 16px;
+    background-position: -57px -31px;
+}
+
+.sprite2 {
+    background-image: url(../images/spritesheet2.png);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-mail {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -5px;
+}
+
+.sprite-phone-receiver {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -5px;
+}
+
+.sprite-share {
+    width: 64px;
+    height: 64px;
+    background-position: -5px -79px;
+}
+
+.sprite-small-light-bulb {
+    width: 64px;
+    height: 64px;
+    background-position: -79px -79px;
+}
+
+.sprite-users {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -5px;
+}
+
+.sprite-whatsapp-logo {
+    width: 64px;
+    height: 64px;
+    background-position: -153px -79px;
+}

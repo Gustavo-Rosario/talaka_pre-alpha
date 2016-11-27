@@ -89,6 +89,8 @@ class Pagecon{
     public function myprofile(){
         if(isset($_SESSION['cdUser'])){
             $user = $this->page->curl('/exec/client/profile/'.$_SESSION['cdUser']);
+            $user['myprojects'] = $this->page->curl('/exec/client/myprojects/'.$_SESSION['cdUser']);
+            $user['myfinances'] = $this->page->curl('/exec/client/myfinances/'.$_SESSION['cdUser']);
             $this->page->load("../view/nav.php",array("pag_title" =>"Meu Perfil"));
             $this->page->load("../view/profile.php",$user);
             $this->page->load("../view/footer.php");
@@ -102,6 +104,8 @@ class Pagecon{
             header('location: /myprofile');
         } else {
             $user = $this->page->curl('/exec/client/profile/'.$id);
+            $user['myprojects'] = $this->page->curl('/exec/client/myprojects/'.$id);
+            $user['myfinances'] = $this->page->curl('/exec/client/myfinances/'.$id);
             $this->page->load("../view/nav.php",array("pag_title" =>"Perfil"));
             $this->page->load('../view/profile.php',$user);
             $this->page->load("../view/footer.php");

@@ -18,9 +18,11 @@
     
         <div id="areaLogin">
             <h2></h2>
-            <div id="logoLogin">
-                Talaka
-            </div>
+            <a href='/'>
+                <div id="logoLogin">
+                    Talaka
+                </div>
+            </a>
             <p>Logue-se no Talaka usando...</p>
             <ul>
                 <li></li>

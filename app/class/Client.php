@@ -20,6 +20,7 @@ class Client extends User{
             $json = file_get_contents('php://input');
             $obj = json_decode($json);
             $obj->ds_project = htmlspecialchars_decode( htmlentities($obj->ds_project) );
+            $obj->ds_resume = htmlspecialchars_decode( htmlentities($obj->ds_resume) );
             $obj->cd_user = $id;
             $obj->dt_begin = date("Y-m-d");
             $resp = ( $this->db->inserir('Project',$obj) )? "success" : "fail_insert";
@@ -92,6 +93,16 @@ class Client extends User{
     
     public function profileGET($id){
         $resp = ($data = $this->db->consultarUser($id))? "success" : "fail_alter_project";
+        return json_encode(array("stats" => $resp, "data" => $data));
+    }
+    
+    public function myprojectsGET($id){
+        $resp = ($data = $this->db->listMyProjects($id))? "success" : "fail_alter_project";
+        return json_encode(array("stats" => $resp, "data" => $data));
+    }
+    
+    public function myfinancesGET($id){
+        $resp = ($data = $this->db->listMyFinances($id))? "success" : "fail_alter_project";
         return json_encode(array("stats" => $resp, "data" => $data));
     }
 }

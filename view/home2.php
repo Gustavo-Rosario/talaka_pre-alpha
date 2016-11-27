@@ -14,7 +14,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
                     <div class="wrapper cWrapper">
                         <div class="projectIndexInfo">
                             <div class='projectIndexCover' <?php echo 'style="background-image:url(../../proj-img/'.$data['d'.$a]->img.')"' ?>></div>
-                            <a <?= 'href="/project/'. $data['d'.$a]->id.'"' ?>><p> Conhecer projeto</p></a>
+                            <a <?= 'href="/project/'. $data['d'.$a]->id.'"' ?>><p><span class='iconsprite sprite sprite-like'></span> Conhecer projeto</p></a>
                         </div>
                         <div class="projectIndex">
                             
@@ -80,7 +80,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
                                 <div class='eachProjectCover' <?= 'style="background-image:url(../../proj-img/'.$project['d'.$b]->img.')"' ?>></div>
                                 <div class="projectOwner" <?= 'style="background-image:url(/user-img/'.$project['d'.$b]->imgU.')"' ?>></div>
                                 <div class="eachProjectInfo">
-                                    <p><?= System::getCategory($project['d'.$b]->idC);?></p>
+                                    <p><span class='iconsprite sprite sprite-commerce'></span><?= System::getCategory($project['d'.$b]->idC);?></p>
                                     <h2><?= $project['d'.$b]->title;?></h2>
                                     <p> <?=  (strlen($project['d'.$b]->ds) > 300)? substr($project['d'.$b]->ds,0,300)." (...)" : $project['d'.$b]->ds;
                                     ?> </p>
