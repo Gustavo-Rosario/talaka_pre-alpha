@@ -1,18 +1,6 @@
-<!-- <?php
-// defined("System-access") or exit("Não permitido o acesso direto");
-// ?>
--->
-<head>
-    <meta charset="UTF-8">
-    <link href="/view/css/style.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:100,400,700" rel="stylesheet">
-    <script src='/view/js/jquery.min.js' type='text/javascript'></script>
-    <script src='/view/js/script.js' type='text/javascript'></script>
-    <title>
-        TALAKA - <?= $pag_title ?>
-    </title>
-</head>
-
+<?php
+defined("System-access") or header('location: /error');
+?> 
 <div id='bgForms'></div>
 <div id="formPublish">
     <div class='wrapper'>

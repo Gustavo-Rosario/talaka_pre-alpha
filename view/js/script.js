@@ -1,5 +1,12 @@
 $(main);
 
+function showFin(){
+        $('#financeWrapper').fadeIn('slow');
+        $('#financeClose').click(function(){
+           $('#financeWrapper').fadeOut('slow') ;
+        });
+}
+
 function finance(log){
     if(log == 0){
         alert("Para financiar é necessário estar logado");
@@ -44,7 +51,9 @@ function validator(){
                 var date = $("input[name='nascimento']").val();
                 var login = $("input[name='login']").val();
                 var senha = $("input[name='password']").val();
-                var values = { "nm_user": nome, "ds_pwd": senha,"dt_birth": date,"ds_login": login,"ds_path_img":"avatar.png" };
+                var bio = $("#signbio").val();
+                alert(bio);
+                var values = { "nm_user": nome, "ds_pwd": senha,"dt_birth": date,"ds_biography":bio,"ds_login": login,"ds_path_img":"avatar.png" };
                 var json = JSON.stringify(values);
                 var server = document.URL;
                 $.ajax({
@@ -89,12 +98,7 @@ function main() {
         }
     });
     
-    $('#btn_finance').click(function(){
-        $('#financeWrapper').fadeIn('slow');
-        $('#financeClose').click(function(){
-           $('#financeWrapper').fadeOut('slow') ;
-        });
-    });
+    
     
     $('#fixedMenu').click(function(){
         var aside = $('aside').css('left');

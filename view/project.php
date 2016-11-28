@@ -1,14 +1,6 @@
 <?php
-session_start();
+defined("System-access") or header('location: /error');
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link href="css/style.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
-        <title> Página de Projeto </title>
-    </head>
     <body>
          <header>
         <?php

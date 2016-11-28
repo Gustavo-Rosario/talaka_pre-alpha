@@ -1,3 +1,6 @@
+<?php
+defined("System-access") or header('location: /error');
+?> 
 <!DOCTYPE html>
 <html>
 
@@ -13,7 +16,7 @@
 <body>
     <div id='bgForms'>
         <div id="help">
-            Você não possui uma conta? <span><a style="text-decoration: none; color: white" href="/signin"> Crie uma </a></span>
+            Você não possui uma conta? <span><a style="text-decoration: none; color: white" href="/signup"> Crie uma </a></span>
         </div>
     
         <div id="areaLogin">
@@ -33,7 +36,7 @@
             <p> ou use seu email: </p>
             
             <form onsubmit="return false" id="login">
-                <input type="email" name="email" placeholder="E-mail">
+                <input type="text" name="email" placeholder="E-mail">
                 <input type="password" name="password" placeholder="Senha">
                 <a href="#">Esqueci minha senha</a>
                 <input id="login-button" type="submit" value="Fazer login">

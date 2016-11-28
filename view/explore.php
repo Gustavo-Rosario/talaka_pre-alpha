@@ -1,5 +1,5 @@
 <?php
-defined("System-access") or exit("Não permitido o acesso direto");
+defined("System-access") or header('location: /error');
 ?>
     <div id="container">
         <div id="searchText">
@@ -11,8 +11,8 @@ defined("System-access") or exit("Não permitido o acesso direto");
         <div class="wrapper explore">
             <h1> <?= $data['total'];?> Resultados foram encontrados</h1>
             <?php
-                $numPag = ($data['total'] == 1)? 1 : round($data['total'] / 6);
-                for($a = 0; $a < (count($data) - 2); $a++){ 
+                $numPag = ($data['total'] == 1)? 1 : ceil($data['total'] / 6);
+                for($a = 0; $a < (count($data) - 3); $a++){ 
                     $percent = (($data['d'.$a]->collected) * 100)/ $data['d'.$a]->meta;
             ?>
             <a <?= 'href="https://'.$_SERVER['HTTP_HOST'].'/project/'.$data['d'.$a]->id.'"';?>>
@@ -21,9 +21,9 @@ defined("System-access") or exit("Não permitido o acesso direto");
                     <div class="projectOwner" <?php echo 'style="background-image:url(/user-img/'.$data['d'.$a]->imgU.')"' ?>></div>
                 </div>
                 <div class="eachProjectInfo">
-                    <p><?= System::getCategory($data['d'.$a]->idC);?></p>
+                    <p><span class='iconsprite sprite sprite-commerce'></span><?= System::getCategory($data['d'.$a]->idC);?></p>
                     <h2><?= $data['d'.$a]->title;?></h2>
-                    <p> <?=  (strlen($data['d'.$a]->ds) > 300)? substr($data['d'.$a]->ds,0,300)." (...)" : $data['d'.$a]->ds;
+                    <p> <?=  (strlen($data['d'.$a]->ds) > 270)? substr($data['d'.$a]->ds,0,270)." (...)" : $data['d'.$a]->ds;
                     ?> </p>
                     
                     <div class="meta">
@@ -45,7 +45,8 @@ defined("System-access") or exit("Não permitido o acesso direto");
             <ul id='listProjects'>
                 <?php
                     for($i=1;$i<=$numPag;$i++){
-                        echo "<a href='/explore/name/".explode('"',$data['termo'])[1]."/".$i."'><li>".$i."</li></a>";
+                        $style = ($i ==  $data['atual'])? "id='actualPage'" :"";
+                        echo "<a href='/explore/name/".explode('"',$data['termo'])[1]."/".$i."'><li ". $style .">".$i."</li></a>";
                     }
                 ?>
                 

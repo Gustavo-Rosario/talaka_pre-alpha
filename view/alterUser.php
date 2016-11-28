@@ -1,5 +1,5 @@
 <?php
-defined("System-access") or exit("Não permitido o acesso direto");
+defined("System-access") or header('location: /error');
 ?>
 <div id='container' class='bg'>
     <div class='wrapper' id='profileAlter'>
@@ -11,10 +11,14 @@ defined("System-access") or exit("Não permitido o acesso direto");
             
             <ul>
                 <li>
-                    <p><span>86</span><br> Projetos apoiados</p>
+                    <p><span>
+                        <?= $finances ?>
+                    </span><br> Projetos cadastrados</p>
                 </li>
                 <li>
-                    <p><span>86</span><br> Projetos cadastrados</p>
+                    <p><span>
+                        <?= $projects ?>
+                    </span><br> Projetos apoiados</p>
                 </li>
             </ul>
             <form method='post' action=''>

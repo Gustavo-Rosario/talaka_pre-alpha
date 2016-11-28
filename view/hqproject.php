@@ -1,6 +1,6 @@
 <?php
-defined("System-access") or exit("Não permitido o acesso direto");
-?>    
+defined("System-access") or header('location: /error');
+?> 
     <script type="text/javascript" src="/view/js/visit.js"></script>
     <?= '<span id="projectID" style="display:none">'.$id.';</span>';?>
     <?php   if (isset($_SESSION['cdUser'])){ ?>
@@ -78,8 +78,11 @@ Nam massa nunc, mollis eget nibh nec, ultrices laoreet nibh. In enim urna, pelle
                     
                     <h2><?= $total; ?> financiamentos</h2>
                 </div>
-                <button id="btn_finance" <?= ($_SESSION['cdUser'] === $creID)? '>Dados Estatísticos':'onclick="finance()">  <span class="iconsprite sprite sprite-like"></span>  Financiar';?> </button>
-                <button id="btn_demo"> <span class="iconsprite sprite sprite-eye"></span>Visualizar Demonstração</button>
+                <?= ($_SESSION['cdUser'] === $creID)? '<a href="/statistic/'.$id.'"><button id="btn_finance"><span class="iconsprite sprite sprite-like"></span>Dados Estatísticos</button></a>': ( (!isset($_SESSION['cdUser']))?'<button id="btn_finance" onclick=\'alert( "Faça Login para Financiar" )\'>  <span class="iconsprite sprite sprite-like"></span>  Financiar</button>' : '<button id="btn_finance" onclick="showFin()">  <span class="iconsprite sprite sprite-like"></span>  Financiar</button>');?> 
+                
+                <a target='_blank' href='../proj-pdf/twd.pdf'>
+                    <button id="btn_demo"><span class="iconsprite sprite sprite-eye"></span>Visualizar Demonstração</button>
+                </a>
 
 
                 <div id="socialnetwork">

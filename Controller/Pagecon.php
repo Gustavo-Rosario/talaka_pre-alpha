@@ -38,8 +38,8 @@ class Pagecon{
     }
     
     
-    public function explorecat($id){
-        $data = $this->page->curl("/exec/visitor/cat/".$id);
+    public function explorecat($id,$pag){
+        $data = $this->page->curl("/exec/visitor/cat/".$id."/".$pag);
         $nm = System::getCategory($id);
         $data['termo'] = 'Categoria procurado : "'.$nm.'"';
         $this->page->load("../view/nav.php",array("pag_title" =>$nm));
@@ -91,6 +91,7 @@ class Pagecon{
             $user = $this->page->curl('/exec/client/profile/'.$_SESSION['cdUser']);
             $user['myprojects'] = $this->page->curl('/exec/client/myprojects/'.$_SESSION['cdUser']);
             $user['myfinances'] = $this->page->curl('/exec/client/myfinances/'.$_SESSION['cdUser']);
+            $user['myuser'] = true;
             $this->page->load("../view/nav.php",array("pag_title" =>"Meu Perfil"));
             $this->page->load("../view/profile.php",$user);
             $this->page->load("../view/footer.php");
@@ -112,11 +113,23 @@ class Pagecon{
         }
     }
     
+    public function statistic($id){
+        if (!isset($_SESSION['cdUser'])){
+            header('location: /');
+        } else {
+            $sta = $this->page->curl('/exec/client/statistic/'.$id);
+            $this->page->load("../view/nav.php",array("pag_title" =>"Dados Estatíticos"));
+            $this->page->load('../view/statistic.php', array("stats"=>$sta));
+            $this->page->load("../view/footer.php");
+        }
+    }
+    
     //Especial
     public function visit($id){
         $this->page->curl("/exec/visitor/visitation/".$id,"PUT");
         return json_encode(array("stats"=>"success","data"=>null));
     }
+    
     
 }
 

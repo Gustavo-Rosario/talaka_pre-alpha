@@ -1,5 +1,5 @@
 <?php
-defined("System-access") or exit("Não permitido o acesso direto");
+defined("System-access") or header('location: /error');
 ?>
 <footer>
     <ul>

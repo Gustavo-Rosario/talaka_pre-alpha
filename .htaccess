@@ -3,7 +3,10 @@ RewriteEngine On
 #Header set Access-Control-Allow-Methods: "GET, POST, PUT"
 #Header set Access-Control-Allow-Headers: "origin,Content-Type"
 ErrorDocument 404 /view/error.php
+RewriteRule ^error? /view/error.php
+RewriteRule ^view/?$ /view/error.php
 RewriteRule ^profile/?$ /view/error.php
+RewriteRule ^statistic/?$ /view/error.php
 RewriteRule ^explore/name/([A-Za-z0-9\s]+)/?$ /view/error.php
 RewriteRule ^exec/([A-Za-z]+)/([A-Za-z]+)/?$ app/web.php?class=$1&met=$2
 RewriteRule ^project/([0-9]+)/?$ app/web.php?class=Pagecon&met=project&arg0=$1
@@ -12,8 +15,17 @@ RewriteRule ^explore/name/([A-Za-z0-9\s]+)/([0-9]+)?$ app/web.php?class=Pagecon&
 RewriteRule ^explore/category/([0-9\s]+)/?$ app/web.php?class=Pagecon&met=explorecat&arg0=$1
 RewriteRule ^explore/category/([0-9\s]+)/([0-9]+)?$ app/web.php?class=Pagecon&met=explorecat&arg0=$1&arg1=$2
 RewriteRule ^/?$ app/web.php?class=Pagecon&met=index
-RewriteRule ^([A-Za-z]+)/?$ app/web.php?class=Pagecon&met=$1
-RewriteRule ^([A-Za-z]+)/([0-9]+)?$ app/web.php?class=Pagecon&met=$1&arg0=$2
+RewriteRule ^signin/? app/web.php?class=Pagecon&met=signin
+RewriteRule ^signup/? app/web.php?class=Pagecon&met=signup
+RewriteRule ^myprofile/? app/web.php?class=Pagecon&met=myprofile
+RewriteRule ^altprofile/? app/web.php?class=Pagecon&met=altprofile
+RewriteRule ^campaign/? app/web.php?class=Pagecon&met=campaign
+RewriteRule ^newProject/? app/web.php?class=Pagecon&met=newProject
+RewriteRule ^newproject/? app/web.php?class=Pagecon&met=newProject
+#RewriteRule ^([A-Za-z]+)/?$ app/web.php?class=Pagecon&met=$1
+RewriteRule ^statistic/([0-9]+)?$ app/web.php?class=Pagecon&met=statistic&arg0=$1
+RewriteRule ^profile/([0-9]+)?$ app/web.php?class=Pagecon&met=profile&arg0=$1
+#RewriteRule ^([A-Za-z]+)/([0-9]+)?$ app/web.php?class=Pagecon&met=$1&arg0=$2
 RewriteRule ^exec/([A-Za-z]+)/([A-Za-z]+)/([0-9]+)/?$ app/web.php?class=$1&met=$2&arg0=$3
 RewriteRule ^exec/([A-Za-z]+)/([A-Za-z]+)/([A-Za-z0-9!@#$%^&*\s]+)/?$ app/web.php?class=$1&met=$2&arg0=$3
 RewriteRule ^exec/([A-Za-z]+)/([A-Za-z]+)/([A-Za-z0-9!@#$%^&*\s]+)/([0-9]+)?$ app/web.php?class=$1&met=$2&arg0=$3&arg1=$4 [L] 

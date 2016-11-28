@@ -1,5 +1,5 @@
 <?php
-defined("System-access") or exit("Não permitido o acesso direto");
+defined("System-access") or header('location: /error');
 ?>
 <script src="https://cdn.rawgit.com/kottenator/jquery-circle-progress/1.2.0/dist/circle-progress.js"></script>
 <div id="container">
@@ -7,7 +7,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
             <div id="carouselWrapper">
                 
                 <?php
-                for($a = 1; $a <= (count($data)); $a++){
+                    for($a = 1; $a <= (count($data)); $a++){
                 ?>
                 <div class="carouselEach">
                     <div class="carouselCover" <?= 'style="background-size:cover;background-image:url(../../proj-img/'.$data['d'.$a]->imgB.')"' ?>></div>
@@ -115,7 +115,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
                     <div class="eachPeopleSay">
                         <ul>
                             <li class="userPhoto"></li>
-                            <li><p>Nome do usuário<br><b>Cidade - Estado</b></p></li>
+                            <li><p>Gilmar Aldemar<br><b>Praia Grande - SP</b></p></li>
                         </ul>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id feugiat augue. Vivamus id faucibus orci. Pellentesque volutpat nisi eu erat feugiat facilisis facilisis non nisi. Nam a scelerisque lacus. Quisque posuere gravida ante eget porta. Ut tincidunt vestibulum turpis ut congue. Nam dignissim dapibus velit venenatis placerat.
@@ -126,7 +126,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
                     <div class="eachPeopleSay">
                         <ul>
                             <li class="userPhoto"></li>
-                            <li><p>Nome do usuário<br><b>Cidade - Estado</b></p></li>
+                            <li><p>Rubens Carvalho<br><b>São Paulo - São Paulo</b></p></li>
                         </ul>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id feugiat augue. Vivamus id faucibus orci. Pellentesque volutpat nisi eu erat feugiat facilisis facilisis non nisi. Nam a scelerisque lacus. Quisque posuere gravida ante eget porta. Ut tincidunt vestibulum turpis ut congue. Nam dignissim dapibus velit venenatis placerat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id feugiat augue. Vivamus id faucibus orci. Pellentesque volutpat nisi eu erat feugiat facilisis facilisis non nisi. Nam a scelerisque lacus. Quisque posuere gravida ante eget porta. Ut tincidunt vestibulum turpis ut congue. Nam dignissim dapibus velit venenatis placerat.
@@ -137,7 +137,7 @@ defined("System-access") or exit("Não permitido o acesso direto");
                     <div class="eachPeopleSay">
                         <ul>
                             <li class="userPhoto"></li>
-                            <li><p>Nome do usuário<br><b>Cidade - Estado</b></p></li>
+                            <li><p>Katarina de Oliveira<br><b>Summoners - Drift</b></p></li>
                         </ul>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id feugiat augue. Vivamus id faucibus orci. Pellentesque volutpat nisi eu erat feugiat facilisis facilisis non nisi. Nam a scelerisque lacus. Quisque posuere gravida ante eget porta. Ut tincidunt vestibulum turpis ut congue. Nam dignissim dapibus velit venenatis placerat.
@@ -154,42 +154,42 @@ defined("System-access") or exit("Não permitido o acesso direto");
             <div class="wrapper">
                 <h1>Conheça as categorias</h1>
                 <ul id="categories">
-                    <a href='/explore/category/1'>
+                    <a href='/explore/category/1/1'>
                         <li id='bgAction'>
                             <div class='categoriesCover'></div>
                             <div class="icon" id="catAction"></div>
                         </li>
                     </a>
                     
-                    <a href='/explore/category/3'>
+                    <a href='/explore/category/3/1'>
                         <li id='bgComedy'>
                             <div class='categoriesCover'></div>
                             <div class="icon" id="catComedy"></div>
                         </li>
                     </a>
                     
-                    <a href='/explore/category/9'>
+                    <a href='/explore/category/9/1'>
                         <li id='bgHorror'>
                             <div class='categoriesCover'></div>
                             <div class="icon" id="catHorror"></div>
                         </li>
                     </a>
                     
-                    <a href='/explore/category/8'>
+                    <a href='/explore/category/8/1'>
                         <li id='bgHero'>
                             <div class='categoriesCover'></div>
                             <div class="icon" id="catHero"></div>
                         </li>
                     </a>
                     
-                    <a href='/explore/category/2'>
+                    <a href='/explore/category/2/1'>
                         <li id='bgBiblio'>
                             <div class='categoriesCover'></div>
                             <div class="icon" id="catBibliography"></div>
                         </li>
                     </a>
                     
-                    <a href='/explore/category/7'>
+                    <a href='/explore/category/7/1'>
                         <li id='bgHistory'>
                             <div class='categoriesCover'></div>
                             <div class="icon" id="catHistory"></div>
@@ -197,28 +197,28 @@ defined("System-access") or exit("Não permitido o acesso direto");
                     </a>
                     
                     
-                    <a href='/explore/category/10'>
+                    <a href='/explore/category/10/1'>
                         <li id='bgTirinhas'>
                             <div class='categoriesCover'></div>
                             <div class="icon" id="catTirinhas"></div>
                         </li>
                     </a>
                     
-                    <a href='/explore/category/6'>
+                    <a href='/explore/category/6/1'>
                         <li id='bgFic'>
                             <div class='categoriesCover'></div>
                             <div class="icon" id="catFic"></div>
                         </li>
                     </a>
                     
-                    <a href='/explore/category/4'>
+                    <a href='/explore/category/4/1'>
                         <li id='bgDrama'>
                             <div class='categoriesCover'></div>
                             <div class="icon" id="catDrama"></div>
                         </li>
                     </a>
                     
-                    <a href='/explore/category/5'>
+                    <a href='/explore/category/5/1'>
                         <li id='bgSport'>
                             <div class='categoriesCover'></div>
                             <div class="icon" id="catSport"></div>

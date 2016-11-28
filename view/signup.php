@@ -1,3 +1,6 @@
+<?php
+defined("System-access") or header('location: /error');
+?> 
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +13,7 @@
     <script src='/view/js/script.js' type='text/javascript'></script>
 </head>
 
-<body>
+<body style='overflow:auto'>
     <div id='bgForms'>
     <div id="signup">
         <div id="signupStep">
@@ -34,8 +37,15 @@
             <label for='confirmar'>Confirme sua senha </label>
             <input type="password" id='confirmar' name="confirmPassword" placeholder="Confirme sua senha" required>
             
+            <label for='signbio'>Biografia</label>
+            <textarea id='signbio' style='
+                margin:0 auto 20px auto;
+                display:block;
+                width:83%;
+                padding:2% 1% 2% 2%
+            ' placeholder='Biografia atual do usuário' required></textarea>
             <!--
-            <input type="file" name="img" required>
+            <input type="file" name="img" required>  
             -->
             <input type="submit" value="Cadastrar">
         </form>

@@ -1,3 +1,6 @@
+<?php
+defined("System-access") or header('location: /error');
+?> 
 <!DOCTYPE html>
 <html>
 <body>
@@ -29,7 +32,27 @@
                         <li></li>
                         <li></li>
                     </ul>
-                    <buttton id="message">Enviar mensagem</buttton>
+                    
+                    <?php
+                        if (isset($myuser)){
+                           echo '
+                            <a href="/altprofile">
+                                <button id="message">
+                                    Editar perfil
+                                </button>
+                            </a>
+                            ';
+                        } else {
+                            echo '
+                            <button id="message">
+                                Enviar mensagem
+                            </button>
+                            ';
+                        }
+                    ?>
+                        
+                    
+                  
                 </div>
             </div>
         </div>
