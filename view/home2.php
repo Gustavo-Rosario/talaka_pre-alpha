@@ -58,11 +58,11 @@ defined("System-access") or header('location: /error');
 
         <div class="sect" id="sectProjects">
             <div class="wrapper">
-                <ul>
+                <ul id="destaque">
                     <li><span class="icon icon1" id="iconPopular"></span><b>Projetos populares</b></li>
                     <li><span class="icon icon1" id="iconNear"></span><b>Populares perto de você</b></li>
                     <li><span class="icon icon1" id="iconBalloon"></span><b>Mais comentados</b></li>
-                    <li><span class="icon icon1" id="iconNew"></span><b>Novos projetos</b></li>
+                    <li id="teste"><span class="icon icon1" id="iconNew"></span><b>Novos projetos</b></li>
                     <li><span class="icon icon1" id="iconAut"></span><b>Novos autores</b></li>
                 </ul>
             </div>

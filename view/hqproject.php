@@ -73,13 +73,21 @@ Nam massa nunc, mollis eget nibh nec, ultrices laoreet nibh. In enim urna, pelle
             <div id="finance" class="column columnRight">
                 <div id="goal">
                     <h1 id='goal'>R$<?= $collected ?>,00 <br><span>Investidos de R$<?= $meta ?>,00</span></h1>
-                    <h2><?= round( ( strtotime($dtF) - strtotime(date("Y-m-d")) ) / (60 * 60 * 24) ); ?> dias restantes
-                    <br><span><?= implode("/", array_reverse(explode("-",$dtB)) )." à ".implode("/", array_reverse(explode("-",$dtF)) ); ?></span></h2>
-                    
+                    <?php
+                    if($close == 1){
+                        echo "<h2>Projeto finalizado</h2>";
+                        ?>
+                        <h2><?= $total; ?> financiamentos</h2>
+                    </div>
+                    <?php
+                    }else{
+                        echo"<h2>". round( ( strtotime($dtF) - strtotime(date("Y-m-d")) ) / (60 * 60 * 24) ) . " dias restantes
+                        <br><span>". implode("/", array_reverse(explode("-",$dtB)) )." à ".implode("/", array_reverse(explode("-",$dtF)) ) ."</span></h2>";
+                    ?>
                     <h2><?= $total; ?> financiamentos</h2>
                 </div>
                 <?= ($_SESSION['cdUser'] === $creID)? '<a href="/statistic/'.$id.'"><button id="btn_finance"><span class="iconsprite sprite sprite-like"></span>Dados Estatísticos</button></a>': ( (!isset($_SESSION['cdUser']))?'<button id="btn_finance" onclick=\'alert( "Faça Login para Financiar" )\'>  <span class="iconsprite sprite sprite-like"></span>  Financiar</button>' : '<button id="btn_finance" onclick="showFin()">  <span class="iconsprite sprite sprite-like"></span>  Financiar</button>');?> 
-                
+                <?php } ?>
                 <a target='_blank' href='../proj-pdf/twd.pdf'>
                     <button id="btn_demo"><span class="iconsprite sprite sprite-eye"></span>Visualizar Demonstração</button>
                 </a>

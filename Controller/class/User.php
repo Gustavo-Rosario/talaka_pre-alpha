@@ -27,9 +27,14 @@ abstract class User{
         $resp = ( $data = $this->db->pesqProject($name,$pag) )? "success" : "fail_select";
         return json_encode(array("stats" => $resp, "data" => $data));
     }
-    
+    //-------------PROJETOS DA PAG INICIAL-------------------//
     public function pesqOldGET($num){
-        $resp = ($data = $this->db->listProject($num) )? "success" : "fail_select";
+        $resp = ($data = $this->db->listProject($num,"old") )? "success" : "fail_select";
+        return json_encode(array("stats" => $resp, "data" => $data));
+    }
+    
+    public function pesqNewGET($num){
+        $resp = ($data = $this->db->listProject($num,"new") )? "success" : "fail_select";
         return json_encode(array("stats" => $resp, "data" => $data));
     }
     

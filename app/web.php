@@ -1,11 +1,11 @@
 <?php
 session_start();
 //Classes a serem implementadas
-include_once("../Model/class/Connection.php");
-include_once("../Model/class/System.php");
-include_once("../Model/class/User.php");
-include_once("../Model/class/Client.php");
-include_once("../Model/class/Visitor.php");
+include_once("../Model/Connection.php");
+include_once("../Model/System.php");
+include_once("../Controller/class/User.php");
+include_once("../Controller/class/Client.php");
+include_once("../Controller/class/Visitor.php");
 include_once("../Controller/Pagecon.php");
 
 //Criando o objeto da classe para execução
@@ -35,6 +35,8 @@ $method = ($class === "Pagecon" )? $met : $met.$httpM;
 //curl -v -X GET "http://talaka-pre-alpha-gmastersupreme-1.c9users.io/exec/visitor/cat/1/1"
 //Login User
 //curl -v -X POST "http://talaka-pre-alpha-gmastersupreme-1.c9users.io/exec/client/auth" -H "Content-Type: application/json"  -d '{"login":"mikasa","pwd":"1234"}'
+//Lista New Project
+//curl -v -X GET "http://talaka-pre-alpha-gmastersupreme-1.c9users.io/exec/visitor/pesqNew/6"
 $resp = (isset($arg0))? ( (isset($arg1))? json_decode($obj->$method($arg0,$arg1) )  : json_decode($obj->$method($arg0)) ) : json_decode($obj->$method());
 /*
 Para o Listar

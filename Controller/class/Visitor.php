@@ -20,7 +20,7 @@ class Visitor extends User{
             $obj = json_decode($json);
             $pwd = $obj->ds_pwd;
             $obj->ds_img_back = "grimgar.png";
-            $obj->ds_biography = htmlspecialchars_decode( htmlentities($obj->ds_resume) );
+            // $obj->ds_biography = htmlspecialchars_decode( htmlentities($obj->ds_resume) );
             $obj->ds_pwd = hash("ripemd160" , $obj->ds_pwd);
             if($this->db->inserir('User',$obj)){
                 $login = (object)array("login" => $obj->ds_login, "pwd" => $pwd);

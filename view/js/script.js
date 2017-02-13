@@ -17,29 +17,33 @@ function finance(log){
 
 function fin(project){
     var valor = $("input[name='valor']").val();
-    var values = {'cd_project':project,'vl_financing':valor};
-    var json = JSON.stringify(values);
-    var server = document.URL;
-    var id = $('#spanCdUser').html();
-    $.ajax({
-        url: "https://"+server.split("/")[2]+"/exec/client/invest/"+id,
-        method: "POST",
-        async: true,
-        headers:{"content-type":"application/json"},
-        data: json,
-        contentType: "application/json",
-        processData: false,
-    }).done(function(response){
-        var r = JSON.parse(response);
-        if(r.stats === "success"){
-            alert('Financiado com sucess');
-            location.reload();
-        }else{
-            alert('deu ruim');
-        }
-    }).fail(function(response){
-        alert("Deu mega ruim");
-    });
+    if(valor > 9999){
+        alert("Valor inválido");
+    }else{
+        var values = {'cd_project':project,'vl_financing':valor};
+        var json = JSON.stringify(values);
+        var server = document.URL;
+        var id = $('#spanCdUser').html();
+        $.ajax({
+            url: "https://"+server.split("/")[2]+"/exec/client/invest/"+id,
+            method: "POST",
+            async: true,
+            headers:{"content-type":"application/json"},
+            data: json,
+            contentType: "application/json",
+            processData: false,
+        }).done(function(response){
+            var r = JSON.parse(response);
+            if(r.stats === "success"){
+                alert('Financiado com sucess');
+                location.reload();
+            }else{
+                alert('deu ruim');
+            }
+        }).fail(function(response){
+            alert("Deu mega ruim");
+        });
+    }
 }
 
 function validator(){
@@ -52,7 +56,7 @@ function validator(){
                 var login = $("input[name='login']").val();
                 var senha = $("input[name='password']").val();
                 var bio = $("#signbio").val();
-                alert(bio);
+                // alert(bio);
                 var values = { "nm_user": nome, "ds_pwd": senha,"dt_birth": date,"ds_biography":bio,"ds_login": login,"ds_path_img":"avatar.png" };
                 var json = JSON.stringify(values);
                 var server = document.URL;
@@ -177,7 +181,91 @@ function main() {
                 alert("Deu mega ruim");
             });
     });
-    
-     
+    //-------------------HOME-----------------------------------//
+    $("#teste").click(function(){
+        $(".explore").html("<div class='cssload-container'>"
+                                    	+"<div class='cssload-whirlpool'></div>"
+                                    +"</div>");
+        var server = document.URL;
+        $.ajax({
+                url: "https://"+server.split("/")[2]+"/exec/visitor/pesqNew/6",
+                method: "GET",
+                async: true,
+                headers:{"content-type":"application/json"},
+                contentType: "application/json",
+                processData: false,
+            }).done(function(response){
+                var r = JSON.parse(response);
+                if(r.stats === "success"){
+                    var project = $.map(JSON.parse(r.data), function(el) { return el });
+                    $(".explore").fadeIn();
+                    for(var b = 0; b < 6; b++){ 
+                        var percent = ((project[b].collected) * 100)/ project[b].meta;
+                        
+                        $(".explore").append(
+                        '<a href="https://'+server.split("/")[2]+'/project/'+project[b].id+'">'
+                            +'<div class="eachProject">'
+                                +'<div class="eachProjectCover" style="background-image:url(../../proj-img/'+project[b].img+')"></div>'
+                                +'<div class="projectOwner" style="background-image:url(/user-img/'+project[b].imgU+')"></div>'
+                                +'<div class="eachProjectInfo">'
+                                    +'<p><span class="iconsprite sprite sprite-commerce"></span> CATEGORIA </p>' //System::getCategory(project[b].idC)
+                                    +'<h2>'+project[b].title+'</h2>'
+                                    +'<p>'+ ( ((project[b].ds).length > 300)? project[b].ds.substr(0,300) + " (...)" : project[b].ds)
+                                    +'</p>'
+                                    +'<div class="meta">'
+                                        +'<p><b>R$ '+project[b].collected+',00</b> <span>acumulados</span></p>'
+                                        +'<div class="progressbar">'
+                                            +'<div class="progressbarvalue" style="width:'+percent+'%"></div>'
+                                        +'</div>'
+                                        +'<ul>'
+                                            +'<li>'+ Math.round(percent)+'%</li>'
+                                            +'<li>Aberto até '+implode("/", ( project[b].dtB.split("-") ).reverse() ) +'</li>'
+                                        +'</ul>'
+                                    +'</div>'
+                                +'</div>'
+                            +'</div>'
+                        +'</a>');
+                        }
+                        $(".cssload-container").remove();
+                }else{
+                    alert('Problema');
+                }
+            }).fail(function(response){
+                alert("Deu mega ruim");
+            });
+    });
 }
+//Função de terceiros
+function implode (glue, pieces) {
+  //  discuss at: http://locutus.io/php/implode/
+  // original by: Kevin van Zonneveld (http://kvz.io)
+  // improved by: Waldo Malqui Silva (http://waldo.malqui.info)
+  // improved by: Itsacon (http://www.itsacon.net/)
+  // bugfixed by: Brett Zamir (http://brett-zamir.me)
+  //   example 1: implode(' ', ['Kevin', 'van', 'Zonneveld'])
+  //   returns 1: 'Kevin van Zonneveld'
+  //   example 2: implode(' ', {first:'Kevin', last: 'van Zonneveld'})
+  //   returns 2: 'Kevin van Zonneveld'
 
+  var i = ''
+  var retVal = ''
+  var tGlue = ''
+
+  if (arguments.length === 1) {
+    pieces = glue
+    glue = ''
+  }
+
+  if (typeof pieces === 'object') {
+    if (Object.prototype.toString.call(pieces) === '[object Array]') {
+      return pieces.join(glue)
+    }
+    for (i in pieces) {
+      retVal += tGlue + pieces[i]
+      tGlue = glue
+    }
+    return retVal
+  }
+
+  return pieces
+}

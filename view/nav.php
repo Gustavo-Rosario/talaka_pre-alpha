@@ -4,6 +4,7 @@ defined("System-access") or header('location: /error');
 <head>
     <meta charset="UTF-8">
     <link href="/view/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/view/css/loader.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,400,700|Roboto:100,400,700" rel="stylesheet">
     <script src='/view/js/jquery.min.js' type='text/javascript'></script>
     <script src='/view/js/script.js' type='text/javascript'></script>
@@ -16,7 +17,7 @@ defined("System-access") or header('location: /error');
     <div class="wrapper">
         <ul>
             <li>
-                <a href="/"><h1>Talaka</h1></a>
+                <a href="/"><h1>Talaka <span style="color:#DC367F">&beta;</span></h1></a>
             </li>
             <li>
                 <input id="search" name="name" type="search" placeholder="Pesquisar">

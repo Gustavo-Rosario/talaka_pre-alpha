@@ -33,7 +33,7 @@ defined("System-access") or header('location: /error');
                         </div>
                         <ul>
                             <li><?= round($percent); ?>%</li>
-                            <li>Aberto até <?= implode("/", array_reverse(explode("-",$data['d'.$a]->dt)) ); ?></li>
+                            <li><?= ($data['d'.$a]->close)? "Projeto finalizado" : "Aberto até". implode("/", array_reverse(explode("-",$data['d'.$a]->dt)) ); ?></li>
                         </ul>
                     </div>
                 </div>
